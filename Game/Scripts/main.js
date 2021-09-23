@@ -48,15 +48,6 @@ var qWorth = parseInt(clicked_element.classList[2])
                     question.style.visibility = "hidden"
                     clicked_element.style.color = "#010a78"
                     clicked_element.style.pointerEvents = "none"
-
-                    take_p1.onclick = function () {takeScore()}
-                    add_p1.onclick = function () {addScore()}
-
-                    take_p2.onclick = function () {takeScore()}
-                    add_p2.onclick = function () {addScore()} 
-
-                    take_p2.onclick = function () {takeScore()}
-                    add_p2.onclick = function () {addScore()}
                 }
           }
         } catch(error) {
