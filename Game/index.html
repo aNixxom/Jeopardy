@@ -3,11 +3,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/table.css">
     <link rel="stylesheet" href="CSS/questions.css">
+    <link rel="stylesheet" href="CSS/settings.css">
     <title>IT Jeopardy 2021</title>
 </head>
 <body>
+    <div class="settings">
+            <ion-icon calss="menu" id="menu-button" name="menu"></ion-icon>      
+            <div class="settings-menu">
+                <p class="settings-header">Settings Menu</p>
+                <div class="settings-container top">
+                    <div class="flex-container">
+                        <div class="settings-option">
+                            Option 1
+                        </div>
+                        <div class="toggle-button">
+                            <ion-icon class="toggle-buttons" name="radio-button-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-container middle">
+                    <div class="flex-container">
+                        <div class="settings-option">
+                            Option 1
+                        </div>
+                        <div class="toggle-button">
+                            <ion-icon class="toggle-buttons" name="radio-button-off-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
     <div id="main">
         <table class="main_table">
             <div class="questions" id="q1"> <!--Question One (q1)-->
@@ -235,8 +262,11 @@
             </table>
         </div>
     </div>
+    <script type="module" src="Scripts/settings.js"></script>
     <script type="module" src="Scripts/vars.js"></script>
     <script type="module" src="Scripts/main.js"></script>
     <script type="module" src="Scripts/buttons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
