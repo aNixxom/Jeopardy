@@ -1,0 +1,86 @@
+:root {
+    --global-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    --global-border-radius: 4px; 
+}
+
+
+.settings-menu {
+    display: none;
+    margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 12%;
+}
+
+p.settings-header {
+    text-align: center;
+    padding-left:10px;
+    font-size: 50px;
+    color:white;
+    font-family: var(--global-font);
+    -webkit-user-select: none;
+}
+div.settings-container {
+    border-radius: var(--global-border-radius);
+    margin-left: 25%;
+    margin-right: 25%;
+    font-family: var(--global-font);
+    background-color: #010a78;
+    -webkit-user-select: none;
+    color: d7a04b;
+}
+
+div.settings-container.top {
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+    margin-left: 25%;
+    margin-right: 25%;
+    font-family: var(--global-font);
+    background-color: #010a78;
+    -webkit-user-select: none;
+    color: d7a04b;
+}
+
+div.settings-container.middle {
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+    margin-left: 25%;
+    margin-right: 25%;
+    font-family: var(--global-font);
+    background-color: #010a78;
+    -webkit-user-select: none;
+    color: d7a04b;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.settings-option {
+    flex: 1;
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    font-size: 50px;
+}
+
+.toggle-button {
+    position: relative;
+    top: 50%;
+    right: 10%;
+    margin: auto;
+}
+
+
+
+ion-icon.settings-toggle {
+    font-size: 30px;
+    margin-right: 10;
+    color:white;
+}
+
+ion-icon.settings-toggle:hover {
+    font-size: 30px;
+    position: relative;
+    color:gray;
+}
