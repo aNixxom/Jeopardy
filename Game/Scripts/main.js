@@ -19,8 +19,7 @@ const playAnimation = ()  => { // Progress Bar animation event (start)
 
 window.addEventListener('click', function(event){
 const clicked_element = document.getElementById(event.target.id)
-const staticQuestionWorth = parseInt(clicked_element.classList[2])
-var qWorth = parseInt(clicked_element.classList[2])
+
 
 //const clicked_element_nodetype = clicked_element.nodeType //should return 1
 //const clicked_element_textcontent = clicked_element.textContent 
@@ -35,7 +34,6 @@ var qWorth = parseInt(clicked_element.classList[2])
                 const question = document.getElementById(question_id)
                 
                 console.info("CURRENT QUESTION:", question_id)
-                console.info("QUESTION WORTH:", qWorth)
               
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"
