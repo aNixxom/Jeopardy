@@ -1,5 +1,9 @@
 const _dom = {
   main: document.getElementById("main"),
+  menu_button: document.getElementById("menu-button"),
+  settings_menu: document.querySelector(".settings-menu"),
+  toggle_switch: document.querySelector(".toggle-buttons"),
+
   // Questions --------------------
   q1: document.getElementById("q1"),
   q2: document.getElementById("q2"),
