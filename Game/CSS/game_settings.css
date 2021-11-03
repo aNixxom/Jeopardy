@@ -29,7 +29,7 @@ p.settings-header {
     font-size: 50px;
     color: var(--theme-blue-settings-header-color);
     font-family: var(--theme-blue-font);
-    -webkit-user-select: none;
+    user-select: none;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
@@ -37,7 +37,7 @@ div.settings-container {
     margin-right: 25%;
     font-family: var(--theme-blue-font);
     background-color: #010a78;
-    -webkit-user-select: none;
+    user-select: none;
     color: d7a04b;
 }
 

@@ -1,10 +1,22 @@
 const _dom = {
+  questionLength: 6000, //Default 6000
+  //  Settings --------------------
+  editMode: document.getElementById('n-bar'),
+  caretBackOutline: document.getElementsByName("caret-back-outline"),
   main: document.getElementById("main"),
   menu_button: document.getElementById("menu-button"),
+  add_player: document.getElementById("add_player"),
+  take_player: document.getElementById("take_player"),
   settings_menu: document.querySelector(".settings-menu"),
-  toggle_switch: document.querySelector(".toggle-buttons"),
-
+  doubleTimeSwitch: document.querySelector(".settings-toggle-button-one"),
+  editModeSwitch: document.querySelector(".settings-toggle-button-two"),
+  doubleTimeCheatEnabled: false, // Default false
+  editModeToggled: false, // Default false
+  isOpen: false, // Default false
+  inputMenuOpen: false, // Default false
+  double_time_cheat: document.getElementById("double-time-cheat"),
   // Questions --------------------
+  viewingQuestion: false, // Default false
   q1: document.getElementById("q1"),
   q2: document.getElementById("q2"),
   q3: document.getElementById("q3"),
@@ -60,6 +72,9 @@ const _dom = {
   add_p3: document.getElementById("add_p3")
   
 }
+
+
+
 
 export { _dom }
 
