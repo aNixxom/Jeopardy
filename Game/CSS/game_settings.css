@@ -1,8 +1,19 @@
-:root {
-    --global-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    --global-border-radius: 4px; 
+
+
+.bar-menu {
+    display:flex;
+    align-items: center;
 }
 
+#player_count {
+    font-size: 58px;
+}
+
+
+ion-icon {
+    color: white;
+    font-size: 50px;
+}
 
 .settings-menu {
     display: none;
@@ -16,15 +27,15 @@ p.settings-header {
     text-align: center;
     padding-left:10px;
     font-size: 50px;
-    color:white;
-    font-family: var(--global-font);
+    color: var(--theme-blue-settings-header-color);
+    font-family: var(--theme-blue-font);
     -webkit-user-select: none;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
     margin-left: 25%;
     margin-right: 25%;
-    font-family: var(--global-font);
+    font-family: var(--theme-blue-font);
     background-color: #010a78;
     -webkit-user-select: none;
     color: d7a04b;
@@ -33,23 +44,14 @@ div.settings-container {
 div.settings-container.top {
     border-bottom-left-radius:0;
     border-bottom-right-radius:0;
-    margin-left: 25%;
-    margin-right: 25%;
-    font-family: var(--global-font);
-    background-color: #010a78;
-    -webkit-user-select: none;
-    color: d7a04b;
 }
 
-div.settings-container.middle {
-    border-top-left-radius:0;
-    border-top-right-radius:0;
-    margin-left: 25%;
-    margin-right: 25%;
-    font-family: var(--global-font);
-    background-color: #010a78;
-    -webkit-user-select: none;
-    color: d7a04b;
+.settings-container.full-round {
+    border-radius: 0;
+}
+
+.settings-container.bottom {
+    border-radius: 0;
 }
 
 .flex-container {
@@ -71,16 +73,8 @@ div.settings-container.middle {
     margin: auto;
 }
 
-
-
-ion-icon.settings-toggle {
-    font-size: 30px;
-    margin-right: 10;
-    color:white;
-}
-
-ion-icon.settings-toggle:hover {
-    font-size: 30px;
-    position: relative;
-    color:gray;
+.toggle-buttons {
+    font-size: 51;
+    color: white;
+    cursor: pointer;
 }
