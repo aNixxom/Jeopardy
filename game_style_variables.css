@@ -1,0 +1,23 @@
+:root {
+    /* Blue Theme */
+    --theme-blue-points-color: #d7a04b;
+    --theme-blue-box-background-color: #010a78;
+    --theme-blue-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    --theme-blue-settings-header-color:white;
+    
+    /* ########### */
+  
+    /*Gray Theme*/
+    --theme-gray-box-background-color: #808080;
+    --theme-gray-points-color: white;
+    --theme-gray-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    
+  
+    
+  
+  
+    /* Global Styling */
+    --global-box-font-size: 58px;
+    --global-box-borders: black solid 2px;
+    --global-border-radius: 4px;  
+  }
