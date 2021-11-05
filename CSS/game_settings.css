@@ -78,3 +78,32 @@ div.settings-container.top {
     color: white;
     cursor: pointer;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.theme-list {
+    display: none;
+    position: absolute;
+    width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    z-index: 1;
+}
+
+.dropdown:hover .theme-list {
+    display: block;
+}
+
+.theme-option:hover {
+    cursor: pointer;
+    background-color: #B7B3B3;
+    border-radius: 4px;;
+}
