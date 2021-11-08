@@ -1,6 +1,7 @@
 const _dom = {
   questionLength: 6000, //Default 6000
   //  Settings --------------------
+  colorTheme: "default", // Default color (light, dark)
   editMode: document.getElementById('n-bar'),
   caretBackOutline: document.getElementsByName("caret-back-outline"),
   main: document.getElementById("main"),

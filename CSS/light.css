@@ -1,22 +1,12 @@
 :root {
-    /* Blue Theme  (default)*/
-    --theme-blue-points-color: white;
-    --theme-gray-box-background-color: #808080;
-    --theme-blue-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    --theme-blue-settings-header-color:white;
-    
-    /* ########### */
   
     /*Gray Theme*/
+    --theme-gray-settings-header-color:white;
     --theme-gray-box-background-color: #808080;
     --theme-gray-points-color: white;
     --theme-gray-text-color: white;
     --theme-gray-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     
-  
-    
-  
-  
     /* Global Styling */
     --global-box-font-size: 58px;
     --global-box-borders: black solid 2px;
@@ -89,9 +79,9 @@
     font-size: 58px;
     position: absolute;
     background-color: #808080;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;    
     border-radius: 4px;
-    color:var(--theme-blue-font);
+    color:var(--theme-gray-font);
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
@@ -100,7 +90,10 @@
     user-select: none;
     text-align: center;
 }
-  
+ 
+.question-color {
+    color: white
+}
   
 .timer-container {
     height: 25px;
@@ -154,18 +147,18 @@ p.settings-header {
     text-align: center;
     padding-left:10px;
     font-size: 50px;
-    color: var(--theme-blue-settings-header-color);
-    font-family: var(--theme-blue-font);
+    color: var(--theme-gray-settings-header-color);
+    font-family: var(--theme-gray-font);
     user-select: none;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
     margin-left: 25%;
     margin-right: 25%;
-    font-family: var(--theme-blue-font);
+    font-family: var(--theme-gray-font);
     background-color: #808080;
     user-select: none;
-    color: d7a04b;
+    color: var(--theme-gray-text-color);
 }
 
 div.settings-container.top {
@@ -175,6 +168,12 @@ div.settings-container.top {
 
 .settings-container.full-round {
     border-radius: 0;
+}
+
+.player-number-counter {
+    color:var(--theme-gray-text-color);
+    cursor: default;
+    text-decoration: none;
 }
 
 .settings-container.bottom {
@@ -271,7 +270,7 @@ table.player-info-table {
     width: 25%;
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-font);
+    font-family: var(--theme-gray-font);
     text-align: center;
     background-color: var(--theme-gray-box-background-color);
     color: white;
@@ -283,7 +282,7 @@ table.player-info-table {
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-font);
+    font-family: var(--theme-gray-font);
     background-color: var(--theme-gray-box-background-color);
     color: var(--theme-gray-points-color);
     cursor: pointer;
@@ -295,7 +294,7 @@ table.player-info-table {
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-font);
+    font-family: var(--theme-gray-font);
     background-color: var(--theme-gray-box-background-color);
     color: var(--theme-gray-points-color);
 }
@@ -305,9 +304,9 @@ table.player-info-table {
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-global-font);
+    font-family: var(--theme-gray-global-font);
     background-color: var(--theme-gray-box-background-color);
-    color: var(--theme-blue-gray-color);
+    color: var(--theme-gray-gray-color);
 }
   
   
@@ -322,7 +321,7 @@ button {
     color: var(--theme-gray-points-color);
     font-size: 20px;
     border-radius: 2px;
-    font-family: var(--theme-blue-font);
+    font-family: var(--theme-gray-font);
     padding-left: 10px;
     padding-right: 10px;
     user-select: none;

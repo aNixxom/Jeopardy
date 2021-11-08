@@ -8,6 +8,7 @@
     /* ########### */
   
     /*Gray Theme*/
+    --theme-gray-settings-header-color:white;
     --theme-gray-box-background-color: #808080;
     --theme-gray-points-color: white;
     --theme-gray-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -174,6 +175,11 @@ div.settings-container.top {
 
 .settings-container.full-round {
     border-radius: 0;
+}
+
+.player-number-counter {
+    color: var(--theme-blue-points-color);
+    cursor: default;
 }
 
 .settings-container.bottom {

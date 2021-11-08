@@ -1,3 +1,5 @@
+import {_dom} from '/Scripts/game_variables.js'
+
 let themes = [
     "light-theme-option",
     "dark-theme-option",
@@ -16,6 +18,10 @@ function changeTheme(e) {
         if (e.target.id == themes[i]) { // If clicked element is a theme 
             if(e.target.id == themes[0]) {
                 setStyleSheet('CSS/light.css')
+                _dom.colorTheme = "light"
+            } else if(e.target.id = themes[2]) {
+                setStyleSheet('CSS/style.css')
+                _dom.colorTheme = "default"
             }
         }
     }
@@ -25,4 +31,3 @@ function setStyleSheet(url) {
   let stylesheet = document.getElementById('stylesheet')
   stylesheet.setAttribute('href', url)
 }
-
