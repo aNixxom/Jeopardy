@@ -2,7 +2,7 @@
 
 If you encounter any bugs/errors please feel free to comment and let me know :)
  
-![image](https://user-images.githubusercontent.com/91269723/134526722-e2c5c200-e111-481d-9ec6-8fb906c5eb65.png)
+![image](https://user-images.githubusercontent.com/91269723/140763183-ebb316a3-81a2-4dcc-9cf5-6ac16a32bbb6.png)
 *Preview of the game board*
 
 ![image](https://user-images.githubusercontent.com/91269723/140762326-7303809d-5b29-4dee-96b2-2a9ad69a8278.png)
