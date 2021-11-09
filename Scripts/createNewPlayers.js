@@ -97,6 +97,11 @@ function addPlayer() {
 
 function takePlayer() {
 
+    if(_pVars.total_players <= 3) {
+        alert("you can't have less than 3 players")
+        return
+    }
+
     var every_id = document.querySelectorAll('*[id]')
     _pVars.players_added -= 1
     _pVars.total_players = _pVars.players_added + _pVars.starting_players 
@@ -112,6 +117,8 @@ function takePlayer() {
     let player_score_to_remove = player_list[player_list.length - 1] //gets last score in list
     let player_name_to_remove = player_name_list[player_name_list.length -1] //gets last name in list
     let player_buttons_to_remove = player_buttons_list[player_buttons_list.length -1] //gets last button in list
+
+    
 
     var checkPoint = confirm("Are you sure you want to remove a player?")
     if(checkPoint == true) {
