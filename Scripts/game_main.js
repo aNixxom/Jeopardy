@@ -57,11 +57,7 @@ const clicked_element = document.getElementById(event.target.id)
                 function show_question() {
                     stopAnimation()
                     question.style.visibility = "hidden"
-                    if(_dom.colorTheme == "light") {
-                        clicked_element.style.color = "#808080"
-                    } else if(_dom.colorTheme == "defaultBlue") {
-                        clicked_element.style.color = "#010a78"
-                    }
+                    clicked_element.innerText = "-"
                     clicked_element.style.pointerEvents = "none"
                 }
           }
