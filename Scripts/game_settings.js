@@ -30,11 +30,14 @@ _dom.doubleTimeSwitch.onclick = function toggle(event) {
     var clicked = event.target.classList[0]
     if(_dom.doubleTimeCheatEnabled == false && clicked == "settings-toggle-button-one") {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-on-outline")
-        _dom.questionLength = 12000
         _dom.doubleTimeCheatEnabled = true
-    } else if(_dom.doubleTimeCheatEnabled == true ) {
+        console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
+        _dom.questionLength = 12000
+    } else if(_dom.doubleTimeCheatEnabled == true && clicked == "settings-toggle-button-one" ) {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.doubleTimeCheatEnabled = false
+        _dom.questionLength = 6000
+        console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
     }
 }
 

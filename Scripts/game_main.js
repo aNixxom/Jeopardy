@@ -14,11 +14,13 @@ const stopAnimation = () => { // Progress Bar animation event (end)
 }
 
 const playAnimation = ()  => { // Progress Bar animation event (start)
+    console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
     const progressBar = document.querySelectorAll(".timer-bar") // Gets all the questions with ".timer-bar"
     for (var i = 0; i < progressBar.length;  i++) {
         if(_dom.doubleTimeCheatEnabled == true) {
             progressBar[i].setAttribute("id", 'play-timer-animation-double');
         } else if(_dom.doubleTimeCheatEnabled == false) {
+            progressBar[i].removeAttribute("id", 'play-timer-animation-double')
             progressBar[i].setAttribute("id", 'play-timer-animation');
         }
         
@@ -46,6 +48,7 @@ const clicked_element = document.getElementById(event.target.id)
                 const question = document.getElementById(question_id)
                 
                 console.info("CURRENT QUESTION:", question_id)
+                console.log(_dom.doubleTimeCheatEnabled)
                 _dom.viewingQuestion = true
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"

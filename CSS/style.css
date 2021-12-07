@@ -1,27 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 :root {
     /* Blue Theme  (default)*/
     --theme-blue-points-color: #d7a04b;
     --theme-blue-box-background-color: #010a78;
     --theme-blue-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     --theme-blue-settings-header-color:white;
-    
-    /* ########### */
-  
-    /*Gray Theme*/
-    --theme-gray-settings-header-color:white;
-    --theme-gray-box-background-color: #808080;
-    --theme-gray-points-color: white;
-    --theme-gray-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    
-  
-    
-  
-  
+
     /* Global Styling */
     --global-box-font-size: 58px;
     --global-box-borders: black solid 2px;
     --global-border-radius: 4px;  
-  }
+}
 
 .notifications {
     background-color: orangered;
@@ -89,7 +79,8 @@
     font-size: 58px;
     position: absolute;
     background-color: #010a78;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     border-radius: 4px;
     color: #d7a04b;
     width: 80%;
@@ -118,10 +109,19 @@
 #play-timer-animation {
     animation: timer-bar-animation 6s  1;
 }
+
+#play-timer-animation-double {
+    animation: timer-bar-animation-double 12s 1;
+}
   
 @keyframes timer-bar-animation {
     0% {width: 0%}
     100% {width: 100%}
+}
+
+@keyframes timer-bar-animation-double {
+    0% {width: 0%;}
+    100% {width: 100%;}
 }
 
 
@@ -155,14 +155,18 @@ p.settings-header {
     padding-left:10px;
     font-size: 50px;
     color: var(--theme-blue-settings-header-color);
-    font-family: var(--theme-blue-font);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
     user-select: none;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
     margin-left: 25%;
     margin-right: 25%;
-    font-family: var(--theme-blue-font);
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
     background-color: #010a78;
     user-select: none;
     color: d7a04b;
@@ -271,12 +275,15 @@ table.player-info-table {
   
   
 .headers {
+    text-transform: uppercase;
+    letter-spacing: 5px;
     font-size: 60px;
     border-radius: var(--global-border-radius);
     width: 25%;
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-font);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     text-align: center;
     background-color: var(--theme-blue-box-background-color);
     color: white;
@@ -284,11 +291,12 @@ table.player-info-table {
 }
   
 .boxes {
+    letter-spacing: 1px;
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-font);
+    font-family: 'Roboto', sans-serif;
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
     cursor: pointer;
@@ -300,7 +308,8 @@ table.player-info-table {
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
     user-select: none;
-    font-family: var(--theme-blue-font);
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
 }
@@ -314,12 +323,11 @@ table.player-info-table {
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
 }
-  
-  
+
 tr.player_score_buttons {
     text-align: center;
 }
-  
+
 button {
     background-color: var(--theme-blue-box-background-color);
     border: none;
@@ -327,12 +335,9 @@ button {
     color: var(--theme-blue-points-color);
     font-size: 20px;
     border-radius: 2px;
-    font-family: var(--theme-blue-font);
-    padding-left: 10px;
-    padding-right: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding: 0 10px;
     user-select: none;
     cursor: pointer;
 } 
-  
-  
-  
