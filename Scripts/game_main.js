@@ -2,7 +2,6 @@
 var every_id = document.querySelectorAll('*[id]')
 import {_dom} from '/Scripts/game_variables.js'
 
-
 const stopAnimation = () => { // Progress Bar animation event (end)
     const progressBar = document.querySelectorAll(".timer-bar")
     for (var i = 0; i < progressBar.length;  i++) {
@@ -44,24 +43,32 @@ const clicked_element = document.getElementById(event.target.id)
     for (let i = 0; i < every_id.length; i++) {
         try {
             if(clicked_element.classList[1] == every_id[i].id) {
+                let attrTest = this.document.createAttribute('class')
                 const question_id = clicked_element.classList[1]
                 const question = document.getElementById(question_id)
                 
                 console.info("CURRENT QUESTION:", question_id)
                 console.log(_dom.doubleTimeCheatEnabled)
                 _dom.viewingQuestion = true
+
+                question.setAttribute('class', 'questions animate__animated animate__zoomIn')
+                console.log(question.attributes)
+
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"
     
-                playAnimation()
+                setTimeout(hide_question, 1)
                 setTimeout(show_question, _dom.questionLength)
-                
-    
+
                 function show_question() {
                     stopAnimation()
                     question.style.visibility = "hidden"
                     clicked_element.innerText = "-"
                     clicked_element.style.pointerEvents = "none"
+                }
+
+                function hide_question() {
+                    playAnimation()
                 }
           }
         } catch(error) {

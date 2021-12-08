@@ -9,8 +9,8 @@ function openMenu() {
     if(isOpen == false && _dom.viewingQuestion == false) {
         //console.info(event.target.id) (used for debug)
         _dom.main.style.visibility = "hidden"
+        _dom.settings_menu.setAttribute('class', 'settings-menu animate__animated animate__zoomIn')
         _dom.settings_menu.style.display = "block"
-        _dom.settings_menu.style.display = "initial"
         isOpen = true
     } else if(isOpen == true) {
         closeMenu()

@@ -11,6 +11,8 @@
     --global-box-font-size: 58px;
     --global-box-borders: black solid 2px;
     --global-border-radius: 4px;  
+
+    user-select: none;
 }
 
 .notifications {
@@ -91,7 +93,7 @@
     user-select: none;
     text-align: center;
 }
-  
+
   
 .timer-container {
     height: 25px;
@@ -147,7 +149,6 @@ ion-icon {
     margin: auto;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 12%;
 }
 
 p.settings-header {
@@ -300,6 +301,11 @@ table.player-info-table {
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
     cursor: pointer;
+    transition: transform 2s;
+}
+
+.boxes:hover {
+    border-color: #d7a04b;
 }
   
 .score_boxes {
