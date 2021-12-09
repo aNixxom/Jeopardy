@@ -3,9 +3,9 @@ let saveButton = document.getElementById('save')
 let names = document.getElementById('player_names')
 
 import { newPlayerNames } from '/Scripts/edit_player_name.js'
-for(let i=0; i < names.children.length; i++) {
-    console.log(names.children.item(i).innerHTML)
-}  
+
+saveButton.addEventListener('click', saveGame)
+loadButton.addEventListener('click', loadSave)
 
 function saveGame() {
     if(typeof(Storage) !== "undefined") {
@@ -14,18 +14,17 @@ function saveGame() {
             console.log(localStorage.getItem(i))
         }
     } else {
-        console.log("Error") // do nothing
+        return
     }
 }
 
-saveButton.addEventListener('click', saveGame)
-loadButton.addEventListener('click', loadSave)
-
 function loadSave() {
     if(typeof(Storage) !== "undefined") {
-        
+        for(let j=0; j < names.children.length; j++) {
+            names.children.item(j).innerHTML = localStorage.getItem(j)
+        }
     } else {
-        console.log('Hello')
+        return 
     }
 }
 

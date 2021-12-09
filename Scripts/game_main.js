@@ -2,6 +2,10 @@
 var every_id = document.querySelectorAll('*[id]')
 import {_dom} from '/Scripts/game_variables.js'
 
+window.onbeforeunload = function() {
+    return "Data will be lost if you leave the page, are you sure?";
+}
+
 const stopAnimation = () => { // Progress Bar animation event (end)
     const progressBar = document.querySelectorAll(".timer-bar")
     for (var i = 0; i < progressBar.length;  i++) {
