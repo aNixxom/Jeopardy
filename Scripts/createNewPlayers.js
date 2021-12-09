@@ -1,6 +1,7 @@
 import {_dom} from '/Scripts/game_variables.js'
 import {closeMenu} from '/Scripts/game_settings.js'
 import {_pVars} from '/Scripts/test.js'
+import { newPlayerNames } from './edit_player_name.js'
 
 var current_player_count = document.getElementById('player_count')
 let player_list = [ // Default player count
@@ -40,6 +41,8 @@ function addPlayer() {
     const tr_player_names = document.getElementById('player_names')
     let th_player_name = document.createElement('th') // Creats player name
     let playerName = prompt("Enter Name")
+    newPlayerNames.push(playerName)
+    console.log(newPlayerNames)
 
     if(playerName == null || playerName == "") { // If player does not enter a name, or they hit cancel return and break the function
         return

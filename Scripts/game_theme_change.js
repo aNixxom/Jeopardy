@@ -14,7 +14,7 @@ window.addEventListener('click', changeTheme)
 current_theme.addEventListener('mouseover', showThemeMenu)
 
 function changeTheme(e) {
-    console.log(e.target.id);
+    //console.log(e.target.id);
 
     for(let i = 0; i < themes.length; i++) {
         if (e.target.id == themes[i]) { // If clicked element is a valid theme 

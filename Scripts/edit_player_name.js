@@ -3,11 +3,16 @@ import { player_name_list } from '/Scripts/createNewPlayers.js'
 import { _dom } from '/Scripts/game_variables.js'
 
 
+
 let editButton = document.getElementById('edit-context-menu') // Gets 'edit-context-menu' from DOM 
 let inputMenu = document.getElementById('input-menu')
 let cancelButton = document.getElementById('cancel-context-menu') // Gets 'cancel-context-menu' from DOM
 
 let clicked = null // Pre-defined variable to hold the id of clicked player
+
+let newPlayerNames = [
+
+]
 
 window.addEventListener('contextmenu', editMenu);
 editButton.addEventListener('click', createInputMenu);
@@ -59,7 +64,9 @@ function userPressEnter(input) {
         } else {
            for(let i = 0; i < player_name_list.length; i++) {
                if(clicked == player_name_list[i]) { // If clicked id is real then change code
-                   document.getElementById(clicked).innerText = inputMenuValue.value
+                    document.getElementById(clicked).innerText = inputMenuValue.value
+                    newPlayerNames.push(inputMenuValue.value)
+                    console.log(newPlayerNames)
                }
            }
         }
@@ -69,3 +76,4 @@ function userPressEnter(input) {
     }
 }
 
+export { newPlayerNames }

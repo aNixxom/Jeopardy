@@ -46,7 +46,7 @@ _dom.editModeSwitch.onclick = function toggle(event) {
     if(_dom.editModeToggled == false && clicked == "settings-toggle-button-two") {
         _dom.editModeSwitch.setAttribute("name", "radio-button-on-outline")
         _dom.editModeToggled = true
-        n_bar.style.display = "initial"
+        n_bar.setAttribute('class', 'notifications animate__animated animate__fadeInDown')
         n_bar.style.display = "block"
     } else if(_dom.editModeToggled == true ) {
         _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
