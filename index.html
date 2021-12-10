@@ -19,8 +19,7 @@
       <div class="input-menu-container" id="imc">
       </div>
     </div>
-    <button id="load">load save</button>
-    <button id="save">save game</button>
+    <div id="popup"></div>
     <div class="settings">
       <div class="bar-menu">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="48px" height="48px" id="menu-button" style="cursor:pointer;">
@@ -29,9 +28,6 @@
             <title>Settings Menu</title>
           </g>
         </svg>
-        <div class="notifications" id="n-bar">
-          EDIT MODE ENABLED
-        </div>
       </div>
       <div class="settings-menu">
         <p class="settings-header">Settings Menu</p>
@@ -71,7 +67,7 @@
         <div class="settings-container bottom">
           <!--Fourth settings box-->
           <div class="flex-container">
-            <div class="settings-option">
+            <!-- <div class="settings-option">
               <u>Change Theme</u>
             </div>
             <div class="toggle-button" style="font-size: 58px">
@@ -83,7 +79,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+          <button id="load">load save</button>
+          <button id="save">save game</button>
         </div>
       </div>
     </div>
@@ -329,7 +327,7 @@
       </table>
     </div>
     <script type="module" src="Scripts/createNewPlayers.js"></script>
-    <script type="module" src="Scripts/game_theme_change.js"></script>
+    <!-- <script type="module" src="Scripts/game_theme_change.js"></script> -->
     <script type="module" src="Scripts/game_settings.js"></script>
     <script type="module" src="Scripts/game_variables.js"></script>
     <script type="module" src="Scripts/game_main.js"></script>

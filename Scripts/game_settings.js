@@ -4,11 +4,12 @@ import {_dom} from '/Scripts/game_variables.js'
 
 var isOpen = false
 var n_bar = document.getElementById('n-bar')
+let mainBody = document.querySelector('body')
 
 function openMenu() {
     if(isOpen == false && _dom.viewingQuestion == false) {
         //console.info(event.target.id) (used for debug)
-        _dom.main.style.visibility = "hidden"
+        _dom.main.style.display = "none"
         _dom.settings_menu.setAttribute('class', 'settings-menu animate__animated animate__zoomIn')
         _dom.settings_menu.style.display = "block"
         isOpen = true
@@ -18,7 +19,7 @@ function openMenu() {
 }
 
 function closeMenu() {
-    _dom.main.style.visibility = "visible"
+    _dom.main.style.display = "block"
     _dom.settings_menu.style.display = "none"
     isOpen = false
 }
@@ -46,13 +47,11 @@ _dom.editModeSwitch.onclick = function toggle(event) {
     if(_dom.editModeToggled == false && clicked == "settings-toggle-button-two") {
         _dom.editModeSwitch.setAttribute("name", "radio-button-on-outline")
         _dom.editModeToggled = true
-        n_bar.setAttribute('class', 'notifications animate__animated animate__fadeInDown')
-        n_bar.style.display = "block"
+        document.querySelector('body').style.border = "red solid 2px"
     } else if(_dom.editModeToggled == true ) {
         _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.editModeToggled = false
-        n_bar.style.display = "none"
-       
+        mainBody.style.border = "2px transparent solid"  
     }
 }
 

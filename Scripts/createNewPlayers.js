@@ -4,6 +4,7 @@ import {_pVars} from '/Scripts/test.js'
 import { newPlayerNames } from './edit_player_name.js'
 
 var current_player_count = document.getElementById('player_count')
+let popup = document.getElementById('popup')
 let player_list = [ // Default player count
     'player1_score',
     'player2_score',
@@ -101,7 +102,10 @@ function addPlayer() {
 function takePlayer() {
 
     if(_pVars.total_players <= 3) {
-        alert("you can't have less than 3 players")
+
+        popup.innerHTML = "You can't have less than 3 players"
+        popup.className = "show"
+        setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
         return
     }
 

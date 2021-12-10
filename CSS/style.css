@@ -15,20 +15,6 @@
     user-select: none;
 }
 
-.notifications {
-    background-color: orangered;
-    text-align: center;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 25px;
-    border-radius: 5px;
-    user-select: none;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    display: none;  
-    font-weight: bolder;
-}
 
 .input-menu {
     display: none;
@@ -189,7 +175,12 @@ div.settings-container.top {
 }
 
 .flex-container {
+    justify-content: center;
     display: flex;
+}
+
+.flex-container > button {
+    border-spacing: 10px;
 }
 
 .settings-option {
@@ -247,14 +238,16 @@ div.settings-container.top {
 body {
     background-color: black;
     overflow: hidden;
-  }
-  
+    border-radius: 2px;
+    border: 2px transparent solid;
+    margin:auto
+}
+
 #main {
+    animation: fadein 0.5s;
     visibility: visible;
 }
-  
-  
-  
+
 .main_table {
     table-layout: fixed;
     width: 100%;
@@ -270,8 +263,8 @@ table.player-info-table {
     width: 100%;
     padding-top: 11px;
 }
-  
-  
+
+
 .headers {
     text-transform: uppercase;
     letter-spacing: 5px;
@@ -287,7 +280,7 @@ table.player-info-table {
     color: white;
     padding: 5px;
 }
-  
+
 .boxes {
     letter-spacing: 1px;
     font-size: var(--global-box-font-size);
@@ -304,7 +297,7 @@ table.player-info-table {
 .boxes:hover {
     border-color: #d7a04b;
 }
-  
+
 .score_boxes {
     width: 25%;
     font-size: var(--global-box-font-size);
@@ -316,7 +309,7 @@ table.player-info-table {
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
 }
-  
+
 .player_boxes {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
@@ -353,3 +346,51 @@ button:hover {
 button:active {
     background-color: #0614c1;
 }
+
+button#load, button#save {
+    margin-top: 4px;
+    margin-left: 3px;
+}
+
+#popup {
+    background-color: #010a78;
+    border: #d7a04b solid 2px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#popup.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
