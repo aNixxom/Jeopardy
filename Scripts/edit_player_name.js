@@ -11,7 +11,7 @@ let cancelButton = document.getElementById('cancel-context-menu') // Gets 'cance
 let clicked = null // Pre-defined variable to hold the id of clicked player
 
 let newPlayerNames = [
-
+    
 ]
 
 window.addEventListener('contextmenu', editMenu);
