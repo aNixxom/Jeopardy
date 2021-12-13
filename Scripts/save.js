@@ -1,39 +1,47 @@
 let loadButton = document.getElementById('load')
 let saveButton = document.getElementById('save')
+let deleteButton = document.getElementById('delete')
 let popup = document.getElementById('popup')
-let names = document.getElementById('player_names')
 
-import { newPlayerNames } from '/Scripts/edit_player_name.js'
 import { closeMenu } from '/Scripts/game_settings.js'
 
 saveButton.addEventListener('click', saveGame)
 loadButton.addEventListener('click', loadSave)
+deleteButton.addEventListener('click', deleteLocalStorage)
 
 function saveGame() {
-    if(typeof(Storage) !== "undefined") {
-        for(let i=0; i < newPlayerNames.length; i++) {
-            localStorage.setItem(i, names.children.item(i).innerHTML)
-            console.log(localStorage.getItem(i))
-        }
-        popup.innerHTML = "Game saved"
-        popup.className = "show"
-        setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
-    } else {
-        return
-    }
+
+    localStorage.setItem('player1_name', document.getElementById('player1_name').innerText)
+    localStorage.setItem('player2_name', document.getElementById('player2_name').innerText)
+    localStorage.setItem('player3_name', document.getElementById('player3_name').innerText)
+
+    localStorage.setItem('player1_score', document.getElementById('player1_score').innerText)
+    localStorage.setItem('player2_score', document.getElementById('player2_score').innerText)
+    localStorage.setItem('player3_score', document.getElementById('player3_score').innerText)
+    
+    popup.innerHTML = "Game saved"
+    popup.className = "show"
+    setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
+    
 }
 
 function loadSave() {
-    if(typeof(Storage) !== "undefined") {
-        for(let j=0; j < names.children.length; j++) {
-            names.children.item(j).innerHTML = localStorage.getItem(j)
-        }
-        popup.innerHTML = "Loaded Game"
-        popup.className = "show"
-        setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
-        closeMenu()
-    } else {
-        return 
-    }
+    document.getElementById('player1_name').innerText = localStorage.getItem('player1_name')
+    document.getElementById('player2_name').innerText = localStorage.getItem('player2_name')
+    document.getElementById('player2_name').innerText = localStorage.getItem('player2_name')
+
+    document.getElementById('player1_score').innerText = localStorage.getItem('player1_score')
+    document.getElementById('player2_score').innerText = localStorage.getItem('player2_score')
+    document.getElementById('player3_score').innerText = localStorage.getItem('player3_score')
+
+    popup.innerHTML = "Loaded Game"
+    popup.className = "show"
+    setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
+    closeMenu()
+}
+
+function deleteLocalStorage() {
+    confirm("Delete saved game?")
+    localStorage.clear()
 }
 

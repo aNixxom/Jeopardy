@@ -281,6 +281,10 @@ table.player-info-table {
     padding: 5px;
 }
 
+.headers-edit:hover{ 
+    border: solid red 2px;
+}
+
 .boxes {
     letter-spacing: 1px;
     font-size: var(--global-box-font-size);
@@ -347,9 +351,15 @@ button:active {
     background-color: #0614c1;
 }
 
-button#load, button#save {
+button#load, button#save, button#delete{
     margin-top: 4px;
     margin-left: 3px;
+}
+
+button#delete:hover {
+    color: red;
+    border: red solid 2px;
+    transform: scale(1);
 }
 
 #popup {

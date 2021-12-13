@@ -3,12 +3,12 @@ import {_dom} from '/Scripts/game_variables.js'
 
 
 var isOpen = false
-var n_bar = document.getElementById('n-bar')
 let mainBody = document.querySelector('body')
+let player_headers = document.getElementsByClassName('headers'), i;
 
 function openMenu() {
     if(isOpen == false && _dom.viewingQuestion == false) {
-        //console.info(event.target.id) (used for debug)
+        
         _dom.main.style.display = "none"
         _dom.settings_menu.setAttribute('class', 'settings-menu animate__animated animate__zoomIn')
         _dom.settings_menu.style.display = "block"
@@ -46,11 +46,17 @@ _dom.editModeSwitch.onclick = function toggle(event) {
     var clicked = event.target.classList[0]
     if(_dom.editModeToggled == false && clicked == "settings-toggle-button-two") {
         _dom.editModeSwitch.setAttribute("name", "radio-button-on-outline")
+        for (i = 0; i < player_headers.length; i++) {
+            player_headers[i].className = "headers headers-edit"
+        }
         _dom.editModeToggled = true
         document.querySelector('body').style.border = "red solid 2px"
     } else if(_dom.editModeToggled == true ) {
         _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.editModeToggled = false
+        for (i = 0; i < player_headers.length; i++) {
+            player_headers[i].className = "headers"
+        }
         mainBody.style.border = "2px transparent solid"  
     }
 }
