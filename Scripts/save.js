@@ -18,11 +18,12 @@ function saveGame() {
     localStorage.setItem('player1_score', document.getElementById('player1_score').innerText)
     localStorage.setItem('player2_score', document.getElementById('player2_score').innerText)
     localStorage.setItem('player3_score', document.getElementById('player3_score').innerText)
-    
+
     popup.innerHTML = "Game saved"
     popup.className = "show"
     setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
     
+
 }
 
 function loadSave() {

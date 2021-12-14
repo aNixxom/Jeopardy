@@ -1,13 +1,32 @@
 import {_dom} from '/Scripts/game_variables.js'
 
-var p1s = document.getElementById("player1_score")
-var p2s = document.getElementById("player2_score")
-var p3s = document.getElementById("player3_score")
+let p1s = document.getElementById("player1_score")
+let p2s = document.getElementById("player2_score")
+let p3s = document.getElementById("player3_score")
+
+let p1_score 
+let p2_score
+let p3_score
+
+if (localStorage.getItem('player1_score') === null) {
+  p1_score = 0
+} else {
+  p1_score = parseInt(localStorage.getItem('player1_score'))
+}
+
+if (localStorage.getItem('player2_score') === null) {
+  p2_score = 0
+} else {
+  p2_score = parseInt(localStorage.getItem('player3_score'))
+}
+
+if (localStorage.getItem('player3_score') === null) {
+  p3_score = 0
+} else {
+  p3_score = parseInt(localStorage.getItem('player3_score'))
+}
 
 
-var p1_score = 0
-var p2_score = 0 
-var p3_score = 0
 var p4_score = 0
 var p5_score = 0
 var p6_score = 0
@@ -16,7 +35,6 @@ var p7_score = 0
 
 window.addEventListener('click', function(event) {
   var clicked_button = event.target.id
-  //console.log(clicked_button) // Used for debug
   
   if(clicked_button == 'add_p1') {
     p1_score += 200
@@ -43,8 +61,6 @@ window.addEventListener('click', function(event) {
 
 
 })
-
-
 
 window.addEventListener('click', function(event) {
   var clicked_button = event.target.id
