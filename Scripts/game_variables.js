@@ -2,17 +2,21 @@ const _dom = {
   questionLength: 6000, //Default 6000
   //  Settings --------------------
   colorTheme: "default", // Default color (light, dark)
+  loadedGame: false, // Defult false
   editMode: document.getElementById('n-bar'),
   caretBackOutline: document.getElementsByName("caret-back-outline"),
   main: document.getElementById("main"),
   menu_button: document.getElementById("menu-button"),
+  default_point_value: 200,
   add_player: document.getElementById("add_player"),
   take_player: document.getElementById("take_player"),
   settings_menu: document.querySelector(".settings-menu"),
   doubleTimeSwitch: document.querySelector(".settings-toggle-button-one"),
   editModeSwitch: document.querySelector(".settings-toggle-button-two"),
+  doublePointsSwitch: document.querySelector(".settings-toggle-button-three"), 
   doubleTimeCheatEnabled: false, // Default false
   editModeToggled: false, // Default false
+  doublePointToggled: false, // Default flase
   isOpen: false, // Default false
   inputMenuOpen: false, // Default false
   double_time_cheat: document.getElementById("double-time-cheat"),
@@ -70,11 +74,16 @@ const _dom = {
   // Add Player Scores
   add_p1: document.getElementById("add_p1"),
   add_p2: document.getElementById("add_p2"),
-  add_p3: document.getElementById("add_p3")
-  
+  add_p3: document.getElementById("add_p3"),
+  // Player numbers
+  p1_score: 0,
+  p2_score: 0,
+  p3_score: 0,
+  p4_score: 0,
+  p5_score: 0,
+  p6_score: 0,
+  p7_score: 0
 }
-
-
 
 
 export { _dom }
