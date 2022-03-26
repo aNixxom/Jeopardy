@@ -1,18 +1,19 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="CSS/style.css" id='stylesheet'>
-    <link
-    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.3/csshake.min.css" integrity="sha512-RliK2gk03WxUELn57ddjWLhEfhUiOZ85VvWLImFy8A7FOPMkF4Z9YGQ3VKX5jpwkEerAL6I0nC+JNeCPrxWBTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="logo.png">
     <title>IT Jeopardy 2021</title>
   </head>
-  <body>
+  <body id="mainBody">
     <div id="context-menu" class="context-menu">
       <div class="top-context-menu" id="edit-context-menu">Edit Player Name</div>
-      <div id="cancel-context-menu" style="color: red;">Cancel</div> 
+      <div id="cancel-context-menu">Cancel</div> 
     </div>
     <div class="input-menu" id="input-menu">
       <div class="input-menu-container" id="imc">
@@ -28,6 +29,7 @@
           </g>
         </svg>
       </div>
+      <div id="settingsContainer">
       <div class="settings-menu">
         <p class="settings-header">Settings Menu</p>
         <div class="settings-container top">
@@ -49,6 +51,17 @@
             </div>
             <div class="toggle-button">
               <ion-icon class="settings-toggle-button-two" name="radio-button-off-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+        <div class="settings-container full-round">
+          <!--Second settings box-->
+          <div class="flex-container">
+            <div class="settings-option">
+              <u>Dounle Points</u>
+            </div>
+            <div class="toggle-button">
+              <ion-icon class="settings-toggle-button-three" name="radio-button-off-outline"></ion-icon>
             </div>
           </div>
         </div>
@@ -79,13 +92,14 @@
               </div>
             </div>
           </div> -->
-          <button id="load">load save</button>
-          <button id="delete">delete save</button>
-          <button id="save">save game</button>
+          <button class="data-button" id="load" title="click to load game">load save</button>
+          <button class="data-button" id="delete" title="THIS WILL ERASE ALL SAVED GAME DATA">delete save</button>
+          <button class="data-button" id="save" title="click to save game">save game</button>
           
         </div>
       </div>
     </div>
+  </div>
     <div id="main">
       <div class="questions" id="q1">
         <!--Question One (q1)-->
@@ -272,25 +286,25 @@
             <th class="boxes q11 200" id="r1c3">$200</th>
             <th class="boxes q16 200" id="r1c4">$200</th>
           </tr>
-          <tr>
+          <tr id="2r2c">
             <th class="boxes q2 400" id="r2c1">$400</th>
             <th class="boxes q7 400" id="r2c2">$400</th>
             <th class="boxes q12 400" id="r2c3">$400</th>
             <th class="boxes q17 400" id="r2c4">$400</th>
           </tr>
-          <tr>
+          <tr id="3r3c">
             <th class="boxes q3 600" id="r3c1">$600</th>
             <th class="boxes q8 600" id="r3c2">$600</th>
             <th class="boxes q13 600" id="r3c3">$600</th>
             <th class="boxes q18 600" id="r3c4">$600</th>
           </tr>
-          <tr>
+          <tr id="4r4c">
             <th class="boxes q4 800" id="r4c1">$800</th>
             <th class="boxes q9 800" id="r4c2">$800</th>
             <th class="boxes q14 800" id="r4c3">$800</th>
             <th class="boxes q19 800" id="r4c4">$800</th>
           </tr>
-          <tr>
+          <tr id="5r5c">
             <th class="boxes q5 1000" id="r5c1">$1000</th>
             <th class="boxes q10 1000" id="r5c2">$1000</th>
             <th class="boxes q15 1000" id="r5c3">$1000</th>
@@ -306,22 +320,22 @@
             <th class="headers" id="player3_name">Player 3</th>
           </tr>
           <tr id="player_score_text">
-            <th class="score_boxes" id="player1_score">0</th>
-            <th class="score_boxes" id="player2_score">0</th>
-            <th class="score_boxes" id="player3_score">0</th>
+            <th class="score_boxes p1b" id="player1_score">0</th>
+            <th class="score_boxes p2b" id="player2_score">0</th>
+            <th class="score_boxes p3b" id="player3_score">0</th>
           </tr>
           <tr class="player-score-buttons" id="player_score_buttons" style="text-align: center">
             <td style="text-align: center">
-              <button id="add_p1">ADD</button>
-              <button id="take_p1">TAKE</button>
+              <button class="points-button" id="add_p1">ADD</button>
+              <button class="points-button" id="take_p1">TAKE</button>
             </td>
             <td>
-              <button id="add_p2">ADD</button>
-              <button id="take_p2">TAKE</button>
+              <button class="points-button" id="add_p2">ADD</button>
+              <button class="points-button" id="take_p2">TAKE</button>
             </td>
             <td>
-              <button id="add_p3">ADD</button>
-              <button id="take_p3">TAKE</button>
+              <button class="points-button" id="add_p3">ADD</button>
+              <button class="points-button" id="take_p3">TAKE</button>
             </td>
           </tr>
         </td>
@@ -339,5 +353,4 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
-
 </html>
