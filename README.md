@@ -7,12 +7,37 @@ If you encounter any bugs/errors please feel free to comment and let me know :)
 *Preview of the game board*
 
 
-![settings_preview](https://user-images.githubusercontent.com/91269723/145595815-5dfc030c-cf5b-40f2-9db0-2e835c1b2bcd.PNG)
+![image](https://user-images.githubusercontent.com/91269723/160221985-61a29408-777b-4dce-a563-8103d48ccf1b.png)
+
 *Preview of the new settings menu*
 
 
 **To Do**
+
+General: 
 - [x] Create basic settings menu 
 - [x] Create settings menu functions 
 - [ ] Tidy up some code *(that should be fun :P)*
 - [ ] Randomize questions 
+
+Edit mode: 
+ - [ ] Edit Questions
+ - [x] Edit Player Names
+ - [ ] Edit Categorys 
+
+
+Save: 
+ - [ ] Save Edits
+ - [ ] Save Game Status
+ - [x] Save Player Names
+ - [x] Save Player points
+ - [ ] Save Game Settings 
+
+Cheats: 
+ - [x] Double Time
+ - [x] Double Points
+
+
+Sudo: 
+    get player saved score (make sure it's an int) 
+    add player saved score user _dom.default_point_value
