@@ -39,7 +39,7 @@ input[type=text] {
     text-align: center;
     border-radius: 5px;
     width:150px;
-    background: #0614c1;
+    background: #010a78;
     border-color: #d7a04b;
     border: #d7a04b solid 2px;
     color: white;
@@ -61,6 +61,7 @@ input[type=text] {
   /* GAME QUESTION */
 
 .questions {
+    text-shadow:2px 2px black;
     font-size: 58px;
     position: absolute;
     background-color: #010a78;
@@ -153,7 +154,7 @@ div.settings-container {
     letter-spacing: 1px;
     background-color: #010a78;
     user-select: none;
-    color: d7a04b;
+    color: #d7a04b;
 }
 
 div.settings-container.top {
@@ -237,10 +238,9 @@ div.settings-container.top {
 
 body {
     background-color: black;
-    overflow: hidden;
-    border-radius: 2px;
     border: 2px transparent solid;
-    margin:auto
+    margin: auto;
+    height: 99.5vh;
 }
 
 #main {
@@ -328,7 +328,8 @@ tr.player_score_buttons {
     text-align: center;
 }
 
-button {
+.points-button,.data-button{
+    margin: 2px;
     text-transform: uppercase;
     background-color: var(--theme-blue-box-background-color);
     border: 2px solid transparent;
