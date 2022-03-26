@@ -2,10 +2,6 @@
 var every_id = document.querySelectorAll('*[id]')
 import {_dom} from '/Scripts/game_variables.js'
 
-window.onbeforeunload = function() {
-    return "Data will be lost if you leave the page, are you sure?";
-}
-
 const stopAnimation = () => { // Progress Bar animation event (end)
     const progressBar = document.querySelectorAll(".timer-bar")
     for (var i = 0; i < progressBar.length;  i++) {
@@ -26,7 +22,6 @@ const playAnimation = ()  => { // Progress Bar animation event (start)
             progressBar[i].removeAttribute("id", 'play-timer-animation-double')
             progressBar[i].setAttribute("id", 'play-timer-animation');
         }
-        
     }
 }
 
@@ -34,23 +29,15 @@ if(_dom.viewingQuestion == true) {
     _dom.menu_button.style.cursor = "not-allowed"
 }
 
-
 window.addEventListener('click', function(event){
 const clicked_element = document.getElementById(event.target.id)
-
-//const clicked_element_nodetype = clicked_element.nodeType //should return 1
-//const clicked_element_textcontent = clicked_element.textContent 
-//console.log(clicked_element_nodetype, clicked_element.getAttributeNames()) 
-//console.log(clicked_element_textcontent)
-
 
     for (let i = 0; i < every_id.length; i++) {
         try {
             if(clicked_element.classList[1] == every_id[i].id) {
-                let attrTest = this.document.createAttribute('class')
                 const question_id = clicked_element.classList[1]
                 const question = document.getElementById(question_id)
-                
+
                 console.info("CURRENT QUESTION:", question_id)
                 console.log(_dom.doubleTimeCheatEnabled)
                 _dom.viewingQuestion = true
@@ -60,7 +47,7 @@ const clicked_element = document.getElementById(event.target.id)
 
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"
-    
+
                 setTimeout(hide_question, 1)
                 setTimeout(show_question, _dom.questionLength)
 
