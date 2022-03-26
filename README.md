@@ -8,7 +8,6 @@ If you encounter any bugs/errors please feel free to comment and let me know :)
 
 
 ![image](https://user-images.githubusercontent.com/91269723/160221985-61a29408-777b-4dce-a563-8103d48ccf1b.png)
-
 *Preview of the new settings menu*
 
 
