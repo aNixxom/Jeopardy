@@ -1,5 +1,5 @@
 //var questionLength = 6000 // Default 6000 (six seconds)
-var every_id = document.querySelectorAll('*[id]')
+let every_id = document.querySelectorAll('*[id]')
 import {_dom} from '/Scripts/game_variables.js'
 
 const stopAnimation = () => { // Progress Bar animation event (end)
