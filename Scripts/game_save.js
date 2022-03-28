@@ -2,6 +2,8 @@ let loadButton = document.getElementById('load')
 let saveButton = document.getElementById('save')
 let deleteButton = document.getElementById('delete')
 let popup = document.getElementById('popup')
+let player_names_table = document.getElementById('player_names')
+let player_score_text = document.getElementById('player_score_text')
 
 import { closeMenu } from '/Scripts/game_settings.js'
 import { systemMessage, screenShake} from '/Scripts/createNewPlayers.js'
@@ -13,19 +15,17 @@ deleteButton.addEventListener('click', deleteLocalStorage)
 
 
 
+
 function saveGame() {
 
-    localStorage.setItem('player1_name', document.getElementById('player1_name').innerText)
-    localStorage.setItem('player2_name', document.getElementById('player2_name').innerText)
-    localStorage.setItem('player3_name', document.getElementById('player3_name').innerText)
+    for(let i = 0; i < player_names_table.children.length; i++) {
+        localStorage.setItem(player_names_table.children[i].id, player_names_table.children[i].innerHTML)
+    }
 
-    localStorage.setItem('player1_score', document.getElementById('player1_score').innerText)
-    localStorage.setItem('player2_score', document.getElementById('player2_score').innerText)
-    localStorage.setItem('player3_score', document.getElementById('player3_score').innerText)
-
-    
+    for(let i = 0; i < player_score_text.children.length; i++) {
+        localStorage.setItem(player_score_text.children[i].id, player_score_text.children[i].innerHTML)
+    }
     systemMessage("Game saved")
-    
 }
 
 function loadSave() {
@@ -34,6 +34,7 @@ function loadSave() {
        screenShake()
        return
     }
+
     document.getElementById('player1_name').innerText = localStorage.getItem('player1_name')
     document.getElementById('player2_name').innerText = localStorage.getItem('player2_name')
     document.getElementById('player3_name').innerText = localStorage.getItem('player3_name')
