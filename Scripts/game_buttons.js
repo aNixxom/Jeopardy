@@ -19,8 +19,8 @@ window.addEventListener('click', function(event) {
     _dom.p3_score = +_dom.default_point_value + +_dom.p3_score
     p3s.innerText = _dom.p3_score
   } else if (clicked_button == 'add_p4') {
-    p4_score  += _dom.default_point_value
-    document.getElementById('player4_score').innerText = p4_score
+    _dom.p4_score  += _dom.default_point_value
+    document.getElementById('player4_score').innerText = _dom.p4_score
   } else if (clicked_button == 'add_p5') {
     p5_score  += _dom.default_point_value
     document.getElementById('player5_score').innerText = p5_score

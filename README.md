@@ -40,3 +40,4 @@ Cheats:
 Sudo: 
     get player saved score (make sure it's an int) 
     add player saved score user _dom.default_point_value
+    check if new created variable != null 

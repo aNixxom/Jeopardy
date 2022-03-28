@@ -3,7 +3,7 @@ import {closeMenu} from '/Scripts/game_settings.js'
 import {_pVars} from '/Scripts/test.js'
 
 
-var current_player_count = document.getElementById('player_count')
+let current_player_count = document.getElementById('player_count')
 let settingsContainer = document.getElementById('settingsContainer')
 let popup = document.getElementById('popup')
 let player_list = [ // Default player count
@@ -36,7 +36,7 @@ function screenShake() {
 }
 
 function addPlayer() {
-    if(_pVars.total_players >= 8) {
+    if(_pVars.total_players >= 7) {
         screenShake()
         systemMessage("You can't have more than 7 players")
         return
@@ -55,16 +55,15 @@ function addPlayer() {
 
         _pVars.players_added += 1 // add 1 to player list
         _pVars.total_players = _pVars.players_added + _pVars.starting_players // new player total 
-        var player_Number = _pVars.total_players.toString()
-        console.log(_pVars.total_players)
-        var number_of_players = (` ${player_Number} `)
+        let player_Number = _pVars.total_players.toString()
+        let number_of_players = (` ${player_Number} `)
 
-        var s_test = ("player" + player_Number + "_score")
-        var n_test = ("player" + player_Number + "_name")
-        var b_test = ("player" + player_Number + "_buttons")
-        player_buttons_list.push(b_test)
-        player_list.push(s_test)
-        player_name_list.push(n_test)
+        let new_player_score = ("player" + player_Number + "_score")
+        let new_player_name = ("player" + player_Number + "_name")
+        let new_player_buttons = ("player" + player_Number + "_buttons")
+        player_buttons_list.push(new_player_buttons)
+        player_list.push(new_player_score)
+        player_name_list.push(new_player_name)
 
         current_player_count.innerText = number_of_players
 
@@ -116,12 +115,12 @@ function takePlayer() {
         return
     }
 
-    var every_id = document.querySelectorAll('*[id]')
+    let every_id = document.querySelectorAll('*[id]')
     _pVars.players_added -= 1
     _pVars.total_players = _pVars.players_added + _pVars.starting_players 
 
-    var player_Number = _pVars.total_players.toString()
-    var number_of_players = (` ${player_Number} `)
+    let player_Number = _pVars.total_players.toString()
+    let number_of_players = (` ${player_Number} `)
 
     current_player_count.innerText = number_of_players
 
@@ -131,7 +130,7 @@ function takePlayer() {
 
     
 
-    var checkPoint = confirm("Are you sure you want to remove a player?")
+    let checkPoint = confirm("Are you sure you want to remove a player?")
     if(checkPoint == true) {
         for (let i = 0; i < every_id.length; i++) {
             if(player_score_to_remove == every_id[i].id) {
