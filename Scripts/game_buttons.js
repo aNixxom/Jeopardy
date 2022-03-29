@@ -19,17 +19,17 @@ window.addEventListener('click', function(event) {
     _dom.p3_score = +_dom.default_point_value + +_dom.p3_score
     p3s.innerText = _dom.p3_score
   } else if (clicked_button == 'add_p4') {
-    _dom.p4_score  += _dom.default_point_value
+    _dom.p4_score = +_dom.default_point_value + +_dom.p4_score
     document.getElementById('player4_score').innerText = _dom.p4_score
   } else if (clicked_button == 'add_p5') {
-    p5_score  += _dom.default_point_value
-    document.getElementById('player5_score').innerText = p5_score
+    _dom.p5_score = +_dom.default_point_value + +_dom.p5_score
+    document.getElementById('player5_score').innerText = _dom.p5_score
   } else if (clicked_button == 'add_p6') {
-    p6_score  += _dom.default_point_value
-    document.getElementById('player6_score').innerText = p6_score
+    _dom.p6_score = +_dom.default_point_value + +_dom.p6_score
+    document.getElementById('player6_score').innerText = _dom.p6_score
   } else if (clicked_button == 'add_p7') {
-    p7_score  += _dom.default_point_value
-    document.getElementById('player7_score').innerText = p7_score
+    _dom.p7_score = +_dom.default_point_value + +_dom.p7_score
+    document.getElementById('player7_score').innerText = _dom.p7_score
   } 
 })
 
@@ -48,17 +48,17 @@ window.addEventListener('click', function(event) {
     _dom.p3_score  -= _dom.default_point_value
     p3s.innerHTML = _dom.p3_score
   } else if (clicked_button == 'take_p4') {
-    p4_score  -= _dom.default_point_value
-    document.getElementById('player4_score').innerText = p4_score
+    _dom.p4_score  -= _dom.default_point_value
+    document.getElementById('player4_score').innerText = _dom.p4_score
   } else if (clicked_button == 'take_p5') {
-    p5_score  -= _dom.default_point_value
-    document.getElementById('player5_score').innerText = p5_score
+    _dom.p5_score  -= _dom.default_point_value
+    document.getElementById('player5_score').innerText = _dom.p5_score
   } else if (clicked_button == 'take_p6') {
-    p6_score  -= _dom.default_point_value
-    document.getElementById('player6_score').innerText = p6_score
+    _dom.p6_score  -= _dom.default_point_value
+    document.getElementById('player6_score').innerText = _dom.p6_score
   } else if (clicked_button == 'take_p7') {
-    p7_score  -= _dom.default_point_value
-    document.getElementById('player7_score').innerText = p7_score
+    _dom.p7_score  -= _dom.default_point_value
+    document.getElementById('player7_score').innerText = _dom.p7_score
   } 
 
 })
