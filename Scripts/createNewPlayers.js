@@ -99,11 +99,7 @@ function addPlayer() {
         td_player_score_buttons.appendChild(td_add_button) // Appends ADD button to new player
         td_player_score_buttons.appendChild(td_take_button) // Appends TAKE button to new player
         tr_player_score_buttons.appendChild(td_player_score_buttons) // Appends TAKE & ADD to MAIN table
-
-        console.table(player_name_list)
-
         closeMenu()
-        
     }
 }
 
