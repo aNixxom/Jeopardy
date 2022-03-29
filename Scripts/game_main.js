@@ -43,7 +43,6 @@ const clicked_element = document.getElementById(event.target.id)
                 _dom.viewingQuestion = true
 
                 question.setAttribute('class', 'questions animate__animated animate__zoomIn')
-                console.log(question.attributes)
 
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"
