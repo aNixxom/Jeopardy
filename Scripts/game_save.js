@@ -13,6 +13,12 @@ saveButton.addEventListener('click', saveGame)
 loadButton.addEventListener('click', loadSave)
 deleteButton.addEventListener('click', deleteLocalStorage)
 
+if(localStorage.length != 0) {
+    let loadRecentSave = confirm("Load recent save?")
+    if(loadRecentSave == true) {
+        loadSave()
+    }
+}
 
 
 
@@ -29,26 +35,31 @@ function saveGame() {
 }
 
 function loadSave() {
+
     if(localStorage.length === 0) {
        systemMessage("No game data found")
        screenShake()
        return
+    } 
+
+    for(let i = 0; i < player_names_table.children.length; i++) {
+        document.getElementById(player_names_table.children[i].id).innerText = localStorage.getItem(player_names_table.children[i].id)
     }
 
-    document.getElementById('player1_name').innerText = localStorage.getItem('player1_name')
-    document.getElementById('player2_name').innerText = localStorage.getItem('player2_name')
-    document.getElementById('player3_name').innerText = localStorage.getItem('player3_name')
-
-    document.getElementById('player1_score').innerText = parseInt(localStorage.getItem('player1_score'))
-    document.getElementById('player2_score').innerText = parseInt(localStorage.getItem('player2_score'))
-    document.getElementById('player3_score').innerText = parseInt(localStorage.getItem('player3_score'))
+    for(let i = 0; i < player_score_text.children.length; i++ ) {
+        document.getElementById(player_score_text.children[i].id).innerText = localStorage.getItem(player_score_text.children[i].id)
+    }
 
     _dom.p1_score = localStorage.getItem('player1_score')
     _dom.p2_score = localStorage.getItem('player2_score')
     _dom.p3_score = localStorage.getItem('player3_score')
+    _dom.p4_score = localStorage.getItem('player4_score')
+    _dom.p5_score = localStorage.getItem('player5_score')
+    _dom.p6_score = localStorage.getItem('player6_score')
+    _dom.p7_score = localStorage.getItem('player7_score')
+
 
     _dom.loadedGame = true
-    console.log(_dom.loadedGame)
 
     systemMessage("Loaded Save")
     closeMenu()
@@ -64,4 +75,3 @@ function deleteLocalStorage() {
     localStorage.clear()
     systemMessage("Deleted saved games")
 }
-
