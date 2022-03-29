@@ -1,6 +1,6 @@
-import {_dom} from '/Scripts/game_variables.js'
+import {_dom, _pVars} from '/Scripts/game_variables.js'
 import {closeMenu} from '/Scripts/game_settings.js'
-import {_pVars} from '/Scripts/test.js'
+
 
 
 let current_player_count = document.getElementById('player_count')
