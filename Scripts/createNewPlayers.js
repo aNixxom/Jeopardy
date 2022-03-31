@@ -82,7 +82,7 @@ function addPlayer() {
         tr_player_score_text.appendChild(th_player_score_text)
 
         const tr_player_score_buttons = document.getElementById('player_score_buttons')
-        let td_player_score_buttons = document.createElement('td')
+        let td_player_score_buttons = document.createElement('th')
         let td_add_button = document.createElement('button') // Creates ADD button for player
         let td_take_button = document.createElement('button') // Creats TAKE button for player
 
@@ -158,4 +158,4 @@ function takePlayer() {
 _dom.add_player.onclick = function () {addPlayer()}
 _dom.take_player.onclick = function () {takePlayer()}
 
-export { player_buttons_list, player_name_list, player_list, systemMessage, screenShake}
+export { player_buttons_list, player_name_list, player_list, systemMessage, screenShake, addPlayer}
