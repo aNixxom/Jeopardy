@@ -21,8 +21,9 @@ if(localStorage.length != 0) {
 }
 
 
-
 function saveGame() {
+    let player_names_table = document.getElementById('player_names')
+    let player_score_text = document.getElementById('player_score_text')
 
     for(let i = 0; i < player_names_table.children.length; i++) {
         localStorage.setItem(player_names_table.children[i].id, player_names_table.children[i].innerHTML)
@@ -31,10 +32,16 @@ function saveGame() {
     for(let i = 0; i < player_score_text.children.length; i++) {
         localStorage.setItem(player_score_text.children[i].id, player_score_text.children[i].innerHTML)
     }
+
+    localStorage.setItem('player_count', document.getElementById('player_count'))
     systemMessage("Game saved")
 }
 
 function loadSave() {
+    let player_names_table = document.getElementById('player_names')
+    let player_score_text = document.getElementById('player_score_text')
+    
+    document.getElementById('player_count').innerText = document.children.length
 
     if(localStorage.length === 0) {
        systemMessage("No game data found")
