@@ -1,7 +1,4 @@
 # Jeopardy
-
-If you encounter any bugs/errors please feel free to comment and let me know :)
- 
  
 ![cover](https://user-images.githubusercontent.com/91269723/145595696-0e7677cc-ec0b-40e4-9b46-91a8f1714cda.PNG)
 *Preview of the game board*
