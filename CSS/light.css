@@ -1,16 +1,16 @@
 :root {
-  
+
     /*Gray Theme*/
     --theme-gray-settings-header-color:white;
     --theme-gray-box-background-color: #808080;
     --theme-gray-points-color: white;
     --theme-gray-text-color: white;
     --theme-gray-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    
+
     /* Global Styling */
     --global-box-font-size: 58px;
     --global-box-borders: black solid 2px;
-    --global-border-radius: 4px;  
+    --global-border-radius: 4px;
 }
 
 .notifications {
@@ -24,18 +24,18 @@
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    display: none;  
+    display: none;
     font-weight: bolder;
   }
-  
-  
-  
+
+
+
   .input-menu {
     display: none;
   }
-  
+
   input[type=text] {
-  
+
     text-align: center;
     outline: none;
     border-color: black;
@@ -46,7 +46,7 @@
     font-size: 30px;
     border-radius: 4px;
   }
-  
+
   .context-menu{
     display: none;
     user-select: none;
@@ -63,14 +63,14 @@
     padding: 2px;
     background-color: gay;
     }
-  
+
     .context-menu div.top-context-menu {
       border-bottom-color: red;
     }
-  
+
   .context-menu div:hover{
     background:#B7B3B3;
-    cursor:pointer;  
+    cursor:pointer;
   }
 
   /* GAME QUESTION */
@@ -79,7 +79,7 @@
     font-size: 58px;
     position: absolute;
     background-color: #808080;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;    
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     border-radius: 4px;
     color:var(--theme-gray-font);
     width: 80%;
@@ -90,28 +90,26 @@
     user-select: none;
     text-align: center;
 }
- 
+
 .question-color {
     color: white
 }
-  
 .timer-container {
     height: 25px;
     background-color:#808080;
     position: relative;
 }
-  
+
 .timer-container .timer-bar {
     position: absolute;
     height: 100%;
     background-color: var(--theme-gray-text-color);
-    
 }
-  
+
 #play-timer-animation {
     animation: timer-bar-animation 6s  1;
 }
-  
+
 @keyframes timer-bar-animation {
     0% {width: 0%}
     100% {width: 100%}
@@ -239,13 +237,13 @@ body {
     background-color: black;
     overflow: hidden;
   }
-  
+
 #main {
     visibility: visible;
 }
-  
-  
-  
+
+
+
 .main_table {
     table-layout: fixed;
     width: 100%;
@@ -255,14 +253,14 @@ body {
     background-color: black;
     border-radius: 5px;
 }
-  
+
 table.player-info-table {
     table-layout: fixed;
     width: 100%;
     padding-top: 11px;
 }
-  
-  
+
+
 .headers {
     font-size: 60px;
     border-radius: var(--global-border-radius);
@@ -275,7 +273,7 @@ table.player-info-table {
     color: white;
     padding: 5px;
 }
-  
+
 .boxes {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
@@ -286,7 +284,7 @@ table.player-info-table {
     color: var(--theme-gray-points-color);
     cursor: pointer;
 }
-  
+
 .score_boxes {
     width: 25%;
     font-size: var(--global-box-font-size);
@@ -297,7 +295,7 @@ table.player-info-table {
     background-color: var(--theme-gray-box-background-color);
     color: var(--theme-gray-points-color);
 }
-  
+
 .player_boxes {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
@@ -307,12 +305,12 @@ table.player-info-table {
     background-color: var(--theme-gray-box-background-color);
     color: var(--theme-gray-gray-color);
 }
-  
-  
+
+
 tr.player_score_buttons {
     text-align: center;
 }
-  
+
 button {
     background-color: var(--theme-gray-box-background-color);
     border: none;
@@ -325,7 +323,6 @@ button {
     padding-right: 10px;
     user-select: none;
     cursor: pointer;
-} 
-  
-  
-  
+}
+
+
