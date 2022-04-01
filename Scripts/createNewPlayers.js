@@ -42,7 +42,7 @@ function addPlayer() {
         return
     } else {
     }
-    
+
     const tr_player_names = document.getElementById('player_names')
     let th_player_name = document.createElement('th') // Creats player name
     let playerName = prompt("Enter Name")
@@ -113,7 +113,7 @@ function takePlayer() {
 
     let every_id = document.querySelectorAll('*[id]')
     _pVars.players_added -= 1
-    _pVars.total_players = _pVars.players_added + _pVars.starting_players 
+    _pVars.total_players = _pVars.players_added + _pVars.starting_players
 
     let player_Number = _pVars.total_players.toString()
     let number_of_players = (` ${player_Number} `)
@@ -124,7 +124,7 @@ function takePlayer() {
     let player_name_to_remove = player_name_list.pop() //gets last name in list
     let player_buttons_to_remove = player_buttons_list.pop() //gets last button in list
 
-    
+
 
     let checkPoint = confirm("Are you sure you want to remove a player?")
     if(checkPoint == true) {
@@ -132,12 +132,12 @@ function takePlayer() {
             if(player_score_to_remove == every_id[i].id) {
                 let score_to_remove = document.getElementById(player_score_to_remove)
                 score_to_remove.remove()
-            } 
+            }
             if(player_name_to_remove == every_id[i].id) {
                 let player_name_remove = document.getElementById(player_name_to_remove)
                 player_name_remove.remove()
             }
-    
+
             if(player_buttons_to_remove == every_id[i].id) {
                 let player_button_remove = document.getElementById(player_buttons_to_remove)
                 player_button_remove.remove()
@@ -145,13 +145,13 @@ function takePlayer() {
             closeMenu()
         }
     } else {
-        return 
+        return
     }
 
     if(_pVars.total_players <= 0) {
         alert("You can not have 0 players")
         return
-    } 
+    }
     console.table(player_name_list)
 
 }

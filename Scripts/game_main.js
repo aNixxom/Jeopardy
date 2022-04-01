@@ -8,7 +8,7 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         progressBar[i].removeAttribute("id", 'play-timer-animation');
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
-        
+
     }
 }
 

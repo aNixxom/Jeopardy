@@ -40,14 +40,14 @@ function saveGame() {
 function loadSave() {
     let player_names_table = document.getElementById('player_names')
     let player_score_text = document.getElementById('player_score_text')
-    
+
     document.getElementById('player_count').innerText = document.children.length
 
     if(localStorage.length === 0) {
        systemMessage("No game data found")
        screenShake()
        return
-    } 
+    }
 
     for(let i = 0; i < player_names_table.children.length; i++) {
         document.getElementById(player_names_table.children[i].id).innerText = localStorage.getItem(player_names_table.children[i].id)

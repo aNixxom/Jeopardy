@@ -14,7 +14,7 @@ let fiverfivec = document.getElementById("5r5c")
 
 function openMenu() {
     if(isOpen == false && _dom.viewingQuestion == false) {
-        
+
         _dom.main.style.display = "none"
         // _dom.settings_menu.setAttribute('class', 'settings-menu animate__animated animate__zoomIn')
         _dom.settings_menu.style.display = "block"
@@ -45,7 +45,7 @@ _dom.doubleTimeSwitch.onclick = function toggle(event) {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.doubleTimeCheatEnabled = false
         _dom.questionLength = 6000
-        mainBody.style.border = "2px transparent solid" 
+        mainBody.style.border = "2px transparent solid"
         console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
     }
 }

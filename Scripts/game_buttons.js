@@ -7,8 +7,8 @@ let p3s = document.getElementById("player3_score")
 window.addEventListener('click', function(event) {
   let clicked_button = event.target.id
 
-  
-  
+
+
   if(clicked_button == 'add_p1') {
     let p1s = document.getElementById('player1_score')
     _dom.p1_score = +_dom.default_point_value + +_dom.p1_score
@@ -33,7 +33,7 @@ window.addEventListener('click', function(event) {
   } else if (clicked_button == 'add_p7') {
     _dom.p7_score = +_dom.default_point_value + +_dom.p7_score
     document.getElementById('player7_score').innerText = _dom.p7_score
-  } 
+  }
 })
 
 

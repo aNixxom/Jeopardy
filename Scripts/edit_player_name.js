@@ -4,14 +4,14 @@ import { _dom } from '/Scripts/game_variables.js'
 
 
 
-let editButton = document.getElementById('edit-context-menu') // Gets 'edit-context-menu' from DOM 
+let editButton = document.getElementById('edit-context-menu') // Gets 'edit-context-menu' from DOM
 let inputMenu = document.getElementById('input-menu')
 let cancelButton = document.getElementById('cancel-context-menu') // Gets 'cancel-context-menu' from DOM
 
 let clicked = null // Pre-defined variable to hold the id of clicked player
 
 let newPlayerNames = [
-    
+
 ]
 
 window.addEventListener('contextmenu', editMenu);
