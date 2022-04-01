@@ -2,7 +2,7 @@ const _dom = {
   questionLength: 6000, //Default 6000
   //  Settings --------------------
   colorTheme: "default", // Default color (light, dark)
-  loadedGame: false, // Defult false
+  loadedGame: false, // Default false
   editMode: document.getElementById('n-bar'),
   caretBackOutline: document.getElementsByName("caret-back-outline"),
   main: document.getElementById("main"),
@@ -16,7 +16,7 @@ const _dom = {
   doublePointsSwitch: document.querySelector(".settings-toggle-button-three"), 
   doubleTimeCheatEnabled: false, // Default false
   editModeToggled: false, // Default false
-  doublePointToggled: false, // Default flase
+  doublePointToggled: false, // Default false
   isOpen: false, // Default false
   inputMenuOpen: false, // Default false
   double_time_cheat: document.getElementById("double-time-cheat"),
@@ -52,17 +52,17 @@ const _dom = {
   r2c2: document.getElementById("r2c2"),
   r2c3: document.getElementById("r2c3"),
   r2c4: document.getElementById("r2c4"),
-  // Click Evnet objects ---------- (Third Row ($600))
+  // Click event objects ---------- (Third Row ($600))
   r3c1: document.getElementById("r3c1"), //q3
   r3c2: document.getElementById("r3c2"),
   r3c3: document.getElementById("r3c3"),
   r3c4: document.getElementById("r3c4"),
-  // Click Evnet objects ---------- (Fourth Row ($800))
+  // Click event objects ---------- (Fourth Row ($800))
   r4c1: document.getElementById("r4c1"), //q4
   r4c2: document.getElementById("r4c2"),
   r4c3: document.getElementById("r4c3"),
   r4c4: document.getElementById("r4c4"),
-  // Click Evnet objects ---------- (Fith Row ($1000))
+  // Click event objects ---------- ( Fifth Row ($1000))
   r5c1: document.getElementById("r5c1"), //q5
   r5c2: document.getElementById("r5c2"),
   r5c3: document.getElementById("r5c3"),
