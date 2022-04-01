@@ -44,7 +44,7 @@ function addPlayer() {
     }
 
     const tr_player_names = document.getElementById('player_names')
-    let th_player_name = document.createElement('th') // Creats player name
+    let th_player_name = document.createElement('th') // Creates player name
     let playerName = prompt("Enter Name")
 
     if(playerName == null || playerName == "") { // If player does not enter a name, or they hit cancel return and break the function
@@ -73,7 +73,7 @@ function addPlayer() {
         tr_player_names.appendChild(th_player_name) // Appends player name to the player name table
 
         const tr_player_score_text = document.getElementById('player_score_text')
-        let th_player_score_text = document.createElement('th') // Creats player score text (0)
+        let th_player_score_text = document.createElement('th') // Creates player score text (0)
 
 
         th_player_score_text.setAttribute('class', "score_boxes ")
@@ -84,7 +84,7 @@ function addPlayer() {
         const tr_player_score_buttons = document.getElementById('player_score_buttons')
         let td_player_score_buttons = document.createElement('th')
         let td_add_button = document.createElement('button') // Creates ADD button for player
-        let td_take_button = document.createElement('button') // Creats TAKE button for player
+        let td_take_button = document.createElement('button') // Creates TAKE button for player
 
         td_add_button.innerText = "ADD"
         td_add_button.setAttribute('id', `add_p${player_Number}`)

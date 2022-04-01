@@ -11,7 +11,7 @@ window.onload = function() {
 
     for(row = 0; row < 1; row ++) {
         let player_name_row = document.createElement('tr') // table row
-        let player_score_row = document.createElement('tr') // tabel row
+        let player_score_row = document.createElement('tr') // table row
         let player_button_row = document.createElement('tr') // table row
 
         player_name_row.setAttribute('id', "player_names") // id "player_names" to player_name_row
@@ -48,12 +48,12 @@ window.onload = function() {
             take_button.setAttribute('id', `take_p${cell + 1}`) // add "take_p{X}" to take_button
 
             button_td_holder.appendChild(add_button) // append add_button to button_td_holder
-            button_td_holder.appendChild(take_button) // append take_buton to button_td_holder
+            button_td_holder.appendChild(take_button) // append take_button to button_td_holder
 
          }
         player_table.appendChild(player_name_row) // add player_name_row to player_table
         player_table.appendChild(player_score_row) // add player_score_row to player_table
-        player_table.appendChild(player_button_row) // add player_button_row to plaer_table
+        player_table.appendChild(player_button_row) // add player_button_row to player_table
     }
     document.getElementById('main').appendChild(player_table) // add player_table to body
 }
