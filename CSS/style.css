@@ -128,6 +128,10 @@ ion-icon {
     font-size: 50px;
 }
 
+ion-icon:hover {
+  cursor: pointer;
+}
+
 .settings-menu {
     display: none;
     margin: auto;
@@ -192,6 +196,11 @@ div.settings-container.top {
     font-size: 50px;
 }
 
+.settings-center {
+    text-align: center;
+}
+
+
 .toggle-button {
     position: relative;
     top: 50%;
@@ -204,6 +213,10 @@ div.settings-container.top {
     color: white;
     cursor: pointer;
 }
+
+/* .toggle-button > ion-icon.settings-toggle-button-four:active {
+    display: none;
+} */
 
 .dropdown {
     position: relative;
