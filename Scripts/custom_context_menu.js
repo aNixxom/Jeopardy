@@ -1,9 +1,6 @@
 import {_dom} from '/Scripts/game_variables.js'
 
-//console.log(editModeToggled) //Debug
-
-
-var menu = document.querySelector('.context-menu') // Gets 'context-menu' from DOM
+var menu = document.querySelector('.context-menu') // Gets 'context-menu' from DOM 
 
 function showEditMenu() {
     menu.style.display = "block"
@@ -27,6 +24,5 @@ window.addEventListener("click", function(event){
     return;
         hideEditMenu()
 })
-
 
 export { hideEditMenu, removeInputMenu, showEditMenu }
