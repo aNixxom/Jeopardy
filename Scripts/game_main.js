@@ -1,5 +1,6 @@
-//var questionLength = 6000 // Default 6000 (six seconds)
+//var questionLength = 6000 | Default 6000 (six seconds)
 let every_id = document.querySelectorAll('*[id]')
+let every_class = document.querySelectorAll('*[class]')
 import {_dom} from '/Scripts/game_variables.js'
 
 const stopAnimation = () => { // Progress Bar animation event (end)
@@ -8,7 +9,7 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         progressBar[i].removeAttribute("id", 'play-timer-animation');
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
-
+        
     }
 }
 
@@ -25,10 +26,6 @@ const playAnimation = ()  => { // Progress Bar animation event (start)
     }
 }
 
-if(_dom.viewingQuestion == true) {
-    _dom.menu_button.style.cursor = "not-allowed"
-}
-
 window.addEventListener('click', function(event){
 const clicked_element = document.getElementById(event.target.id)
 
@@ -38,11 +35,16 @@ const clicked_element = document.getElementById(event.target.id)
                 const question_id = clicked_element.classList[1]
                 const question = document.getElementById(question_id)
 
-                console.info("CURRENT QUESTION:", question_id)
-                console.log(_dom.doubleTimeCheatEnabled)
+                // console.info("CURRENT QUESTION:", question_id)
+                // console.log(_dom.doubleTimeCheatEnabled)
                 _dom.viewingQuestion = true
 
+                if(_dom.viewingQuestion == true) {
+                    _dom.menu_button.style.cursor = "not-allowed"
+                }
+
                 question.setAttribute('class', 'questions animate__animated animate__zoomIn')
+                // console.log(question.attributes)
 
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"
@@ -51,13 +53,20 @@ const clicked_element = document.getElementById(event.target.id)
                 setTimeout(show_question, _dom.questionLength)
 
                 function show_question() {
+                    let question_number = clicked_element.classList[1]
+                    let question_val = clicked_element.classList[2]
+
                     stopAnimation()
                     question.style.visibility = "hidden"
                     clicked_element.innerText = "-"
                     clicked_element.style.pointerEvents = "none"
+                    clicked_element.setAttribute('class', `boxes ${question_number} ${question_val} used`)
+                    _dom.viewingQuestion = false
+                    _dom.menu_button.style.cursor = "pointer"
                 }
 
                 function hide_question() {
+                    
                     playAnimation()
                 }
           }
