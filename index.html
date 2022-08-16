@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="CSS/style.css" id='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.3/csshake.min.css" integrity="sha512-RliK2gk03WxUELn57ddjWLhEfhUiOZ85VvWLImFy8A7FOPMkF4Z9YGQ3VKX5jpwkEerAL6I0nC+JNeCPrxWBTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/jpg" href="icon.png">
     <title>IT Jeopardy 2021</title>
   </head>
   <body id="mainBody">
@@ -95,7 +95,6 @@
           <button class="data-button" id="load" title="click to load game">load save</button>
           <button class="data-button" id="delete" title="THIS WILL ERASE ALL SAVED GAME DATA">delete save</button>
           <button class="data-button" id="save" title="click to save game">save game</button>
-          
         </div>
       </div>
     </div>
@@ -272,7 +271,7 @@
           <div class="timer-bar"></div>
         </div>
       </div>
-      <table class="main_table">
+      <table class="main_table" id="main-table">
         <tbody>
           <tr>
             <th class="headers">Acronyms</th>
@@ -281,7 +280,7 @@
             <th class="headers">Linux </th>
           </tr>
           <tr id="frfc">
-            <th class="boxes q1 200" id="r1c1">$200</th>
+            <th class="boxes q1 200 used" id="r1c1">$200</th>
             <th class="boxes q6 200" id="r1c2">$200</th>
             <th class="boxes q11 200" id="r1c3">$200</th>
             <th class="boxes q16 200" id="r1c4">$200</th>
@@ -312,7 +311,8 @@
           </tr>
         </tbody>
       </table>
-      <!-- <table class="player-info-table" id="player-info-table">
+      <div id="dy-table"></div>
+      <table class="player-info-table">
         <td id="player_names_table">
           <tr id="player_names">
             <th class="headers" id="player1_name">Player 1</th>
@@ -339,17 +339,17 @@
             </td>
           </tr>
         </td>
-      </table> -->
+      </table>
     </div>
     <script type="module" src="Scripts/createNewPlayers.js"></script>
+    <!-- <script type="module" src="Scripts/game_theme_change.js"></script> -->
     <script type="module" src="Scripts/game_settings.js"></script>
-    <script type="module" src="Scripts/game_variables.js"></script>
     <script type="module" src="Scripts/game_main.js"></script>
     <script type="module" src="Scripts/game_buttons.js"></script>
     <script type="module" src="Scripts/custom_context_menu.js"></script>
     <script type="module" src="Scripts/edit_player_name.js"></script>
-    <script type="module" src="Scripts/game_save.js" defer></script>
-    <script type="module" src="Scripts/game_setup.js" defer></script>
+    <script type="module" src="Scripts/game_save.js"></script>
+    <script type="module" src="Scripts/game_variables.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
