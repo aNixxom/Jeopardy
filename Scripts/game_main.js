@@ -1,7 +1,8 @@
-//var questionLength = 6000 | Default 6000 (six seconds)
+import {_dom} from '/Scripts/game_variables.js'
+
 let every_id = document.querySelectorAll('*[id]')
 let every_class = document.querySelectorAll('*[class]')
-import {_dom} from '/Scripts/game_variables.js'
+let background_music = new Audio('/background.mp4')
 
 const stopAnimation = () => { // Progress Bar animation event (end)
     const progressBar = document.querySelectorAll(".timer-bar")
@@ -9,17 +10,20 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         progressBar[i].removeAttribute("id", 'play-timer-animation');
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
+        stopMusic()
         
     }
 }
 
 const playAnimation = ()  => { // Progress Bar animation event (start)
-    console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
     const progressBar = document.querySelectorAll(".timer-bar") // Gets all the questions with ".timer-bar"
     for (var i = 0; i < progressBar.length;  i++) {
         if(_dom.doubleTimeCheatEnabled == true) {
+            background_music.play()
             progressBar[i].setAttribute("id", 'play-timer-animation-double');
+            setTimeout(stopMusic, 12000)
         } else if(_dom.doubleTimeCheatEnabled == false) {
+            background_music.play()
             progressBar[i].removeAttribute("id", 'play-timer-animation-double')
             progressBar[i].setAttribute("id", 'play-timer-animation');
         }
@@ -55,7 +59,7 @@ const clicked_element = document.getElementById(event.target.id)
                 function show_question() {
                     let question_number = clicked_element.classList[1]
                     let question_val = clicked_element.classList[2]
-
+                    
                     stopAnimation()
                     question.style.visibility = "hidden"
                     clicked_element.innerText = "-"
@@ -75,3 +79,8 @@ const clicked_element = document.getElementById(event.target.id)
         }
   }
 });
+
+function stopMusic() {
+    background_music.pause()
+    background_music.currentTime = 0
+}
