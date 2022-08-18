@@ -24,10 +24,10 @@ Edit mode:
 
 Save: 
  - [ ] Save Edits
- - [ ] Save Game Status
+ - [x] Save Game Status
  - [x] Save Player Names
  - [x] Save Player points
- - [ ] Save Game Settings 
+ - [x] Save Game Settings 
 
 Cheats: 
  - [x] Double Time
