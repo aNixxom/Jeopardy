@@ -1,5 +1,5 @@
 const _dom = {
-  questionLength: 100, //Default 6000
+  questionLength: 6000, //Default 6000
   //  Settings --------------------
   colorTheme: "default", // Default color (light, dark)
   loadedGame: false, // Defult false
@@ -7,6 +7,11 @@ const _dom = {
   caretBackOutline: document.getElementsByName("caret-back-outline"),
   main: document.getElementById("main"),
   menu_button: document.getElementById("menu-button"),
+  mute_button: document.getElementById("mute-button"),
+  unmute_button: document.getElementById("unmute-button"),
+  countdown_music: new Audio('/countdown.mp3'),
+  times_up: new Audio('/times-up.mp3'),
+  is_muted: false, //default false
   default_point_value: 200,
   add_player: document.getElementById("add_player"),
   take_player: document.getElementById("take_player"),
@@ -48,6 +53,10 @@ const _dom = {
   r1c2: document.getElementById("r1c2"),
   r1c3: document.getElementById("r1c3"),
   r1c4: document.getElementById("r1c4"),
+  r1c1ra: document.getElementById('q1_correct'),
+  r1c2ra: document.getElementById('q2_correct'),
+  r1c3ra: document.getElementById('q3_correct'),
+  r1c4ra: document.getElementById('q4_correct'),
   // Click Event objects --------- (Second Row ($400))
   r2c1: document.getElementById("r2c1"), //q2
   r2c2: document.getElementById("r2c2"),
@@ -83,10 +92,8 @@ const _dom = {
   p4_score: 0,
   p5_score: 0,
   p6_score: 0,
-  p7_score: 0
+  p7_score: 0,
 }
-
-
 
 const _pVars = {
   starting_players: 3,
