@@ -1,8 +1,6 @@
 import {_dom} from '/Scripts/game_variables.js'
 
 let every_id = document.querySelectorAll('*[id]')
-let every_class = document.querySelectorAll('*[class]')
-let background_music = new Audio('/background.mp4')
 
 const stopAnimation = () => { // Progress Bar animation event (end)
     const progressBar = document.querySelectorAll(".timer-bar")
@@ -10,7 +8,8 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         progressBar[i].removeAttribute("id", 'play-timer-animation');
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
-        stopMusic()
+        stopMusic(_dom.countdown_music)
+        _dom.times_up.play()
         
     }
 }
@@ -21,9 +20,10 @@ const playAnimation = ()  => { // Progress Bar animation event (start)
         if(_dom.doubleTimeCheatEnabled == true) {
             background_music.play()
             progressBar[i].setAttribute("id", 'play-timer-animation-double');
-            setTimeout(stopMusic, 12000)
+            setTimeout(stopMusic(_dom.countdown_music), 12000)
+
         } else if(_dom.doubleTimeCheatEnabled == false) {
-            background_music.play()
+            _dom.countdown_music.play()
             progressBar[i].removeAttribute("id", 'play-timer-animation-double')
             progressBar[i].setAttribute("id", 'play-timer-animation');
         }
@@ -70,17 +70,16 @@ const clicked_element = document.getElementById(event.target.id)
                 }
 
                 function hide_question() {
-                    
                     playAnimation()
                 }
           }
         } catch(error) {
-           // Do nothing
+
         }
   }
 });
 
-function stopMusic() {
-    background_music.pause()
-    background_music.currentTime = 0
+function stopMusic(sound) {
+    sound.pause()
+    sound.currentTime = 0
 }
