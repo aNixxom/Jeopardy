@@ -22,12 +22,9 @@
     <div id="popup"></div>
     <div class="settings">
       <div class="bar-menu">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="48px" height="48px" id="menu-button" style="cursor:pointer;">
-          <g id="surface24793741">
-            <path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 2 5 L 2 7 L 22 7 L 22 5 Z M 2 11 L 2 13 L 22 13 L 22 11 Z M 2 17 L 2 19 L 22 19 L 22 17 Z M 2 17 " />
-            <title>Settings Menu</title>
-          </g>
-        </svg>
+        <svg class="icon" id="menu-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="48px" height="48px"><g id="surface24793741"><path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 2 5 L 2 7 L 22 7 L 22 5 Z M 2 11 L 2 13 L 22 13 L 22 11 Z M 2 17 L 2 19 L 22 19 L 22 17 Z M 2 17 "/><title>Settings Menu</title></g></svg>
+        <svg class="icon" id="mute-button" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M30.1 40.85q-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425 4.55-1.6 7.35-5.45t2.8-8.7q0-4.85-2.8-8.725T28.85 9.8q-.4-.1-.625-.45Q28 9 28 8.6q0-.85.675-1.325T30.1 7.05q5.35 1.9 8.625 6.525Q42 18.2 42 23.95t-3.275 10.375Q35.45 38.95 30.1 40.85ZM7.5 30q-.65 0-1.075-.425Q6 29.15 6 28.5v-9q0-.65.425-1.075Q6.85 18 7.5 18H14l7.45-7.45q.7-.7 1.625-.325Q24 10.6 24 11.6v24.8q0 1-.925 1.375t-1.625-.325L14 30ZM27 32.4V15.55q2.7.85 4.35 3.2Q33 21.1 33 24q0 2.95-1.65 5.25T27 32.4Zm-6-16.8L15.35 21H9v6h6.35L21 32.45ZM16.3 24Z"/><title>Mute Audio</title></svg>
+        <svg class="icon" id="unmute-button" fill="#ffffff" style="display:none;" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m39.55 44.1-5.5-5.5q-1 .7-2.075 1.275-1.075.575-2.225.975-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425.9-.3 1.775-.7.875-.4 1.625-.95l-8.25-8.3v8.25q0 1-.925 1.375T21.1 37.45L13.65 30h-6.5q-.65 0-1.075-.425-.425-.425-.425-1.075v-9q0-.65.425-1.075Q6.5 18 7.15 18h6.3L3.5 8.05q-.45-.45-.425-1.075Q3.1 6.35 3.55 5.9 4 5.45 4.6 5.45q.6 0 1.05.45l36.1 36.05q.45.45.45 1.075t-.45 1.075q-.45.45-1.1.45-.65 0-1.1-.45Zm-9.8-37.05q5.35 1.9 8.625 6.525Q41.65 18.2 41.65 23.95q0 2.55-.7 5t-2.1 4.65l-2.15-2.15q1-1.7 1.475-3.6.475-1.9.475-3.9 0-4.95-2.775-8.9T28.5 9.75q-.4-.1-.625-.425Q27.65 9 27.65 8.6q0-.85.675-1.325t1.425-.225ZM18.6 23.15Zm13.55 3.75-4.5-4.5v-6.5Q30 17 31.325 19.2q1.325 2.2 1.325 4.8 0 .75-.125 1.475-.125.725-.375 1.425Zm-8.5-8.5-5.2-5.2 2.65-2.65q.7-.7 1.625-.325.925.375.925 1.375Zm-3 14.3v-7.5l-4.2-4.2h-7.8v6h6.3Z"/><title>Unmute Audio</title></svg>
       </div>
       <div id="settingsContainer">
       <div class="settings-menu">
@@ -36,7 +33,7 @@
           <!--First settings box-->
           <div class="flex-container">
             <div class="settings-option">
-              <u>Double Time</u>
+              <u title="you will have 12 seconds to view a question">Double Time</u>
             </div>
             <div class="toggle-button" style="font-size: 50px;">
               <ion-icon class="settings-toggle-button-one" name="radio-button-off-outline"></ion-icon>
@@ -47,7 +44,7 @@
           <!--Second settings box-->
           <div class="flex-container">
             <div class="settings-option">
-              <u>Edit Mode</u>
+              <u title="click to enable edit mode">Edit Mode</u>
             </div>
             <div class="toggle-button">
               <ion-icon class="settings-toggle-button-two" name="radio-button-off-outline"></ion-icon>
@@ -58,7 +55,7 @@
           <!--Second settings box-->
           <div class="flex-container">
             <div class="settings-option">
-              <u>Double Points</u>
+              <u title="points are worth twice as much">Double Points</u>
             </div>
             <div class="toggle-button">
               <ion-icon class="settings-toggle-button-three" name="radio-button-off-outline"></ion-icon>
@@ -72,7 +69,7 @@
               <u>Player Count</u>
             </div>
             <div class="toggle-button" style="font-size: 58px">
-              <p style="color: white; cursor: pointer;"><strong id="take_player">-</strong><b class="player-number-counter" id="player_count"> 3 </b><strong id="add_player">+</strong></p>
+              <p style="color: white; cursor: pointer;"><strong id="take_player" title="remove a player">-</strong><b class="player-number-counter" id="player_count"> 3 </b><strong id="add_player" title="add a player">+</strong></p>
             </div>
           </div>
         </div>
@@ -95,6 +92,7 @@
           <button class="data-button" id="load" title="click to load game">load save</button>
           <button class="data-button" id="delete" title="THIS WILL ERASE ALL SAVED GAME DATA">delete save</button>
           <button class="data-button" id="save" title="click to save game">save game</button>
+          
         </div>
       </div>
     </div>
@@ -103,6 +101,11 @@
       <div class="questions" id="q1">
         <!--Question One (q1)-->
         <p class="question-color">What does <u>RAM</u> stand for?</p>
+        <!-- <div class="choices">
+          <p id="q1_correct">Random Access Memory</p>
+          <p>Remote Access Memory</p>
+          <p>Random Aquatic Memory</p>
+        </div> -->
         <div class="timer-container">
           <div class="timer-bar"></div>
         </div>
@@ -271,7 +274,7 @@
           <div class="timer-bar"></div>
         </div>
       </div>
-      <table class="main_table" id="main-table">
+      <table class="main_table">
         <tbody>
           <tr>
             <th class="headers">Acronyms</th>
@@ -280,7 +283,7 @@
             <th class="headers">Linux </th>
           </tr>
           <tr id="frfc">
-            <th class="boxes q1 200 used" id="r1c1">$200</th>
+            <th class="boxes q1 200" id="r1c1">$200</th>
             <th class="boxes q6 200" id="r1c2">$200</th>
             <th class="boxes q11 200" id="r1c3">$200</th>
             <th class="boxes q16 200" id="r1c4">$200</th>
