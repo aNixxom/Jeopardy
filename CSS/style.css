@@ -110,6 +110,25 @@ input[type=text] {
     100% {width: 100%;}
 }
 
+.choices {
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+.choices > p {
+    margin: 0;
+    margin-bottom: 10px;    
+    outline: 1px solid #d7a04b;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 0;
+}
+
+.choices >p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 /* GAME SETTINGS */
 
@@ -130,6 +149,14 @@ ion-icon {
 
 ion-icon:hover {
   cursor: pointer;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.icon:hover {
+    cursor: pointer;
 }
 
 .settings-menu {
