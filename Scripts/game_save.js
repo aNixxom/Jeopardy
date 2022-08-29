@@ -12,7 +12,7 @@ let threerthreec = document.getElementById("3r3c")
 let four4fourc = document.getElementById("4r4c")
 let fiverfivec = document.getElementById("5r5c")
 
-import { closeMenu } from '/Scripts/game_settings.js'
+import { closeMenu, changeAudio } from '/Scripts/game_settings.js'
 import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
 import {_dom} from '/Scripts/game_variables.js'
 import {_pVars} from '/Scripts/game_variables.js'
@@ -39,11 +39,10 @@ function saveGame() {
     }
 
     for(let i = 0; i < every_class.length; i++) {
-        if(every_class[i].className.includes('used')) {
+        if(every_class[i].classList.contains('used')) {
             let question_id = every_class[i].id
             let question_class = every_class[i].className.slice(-4)
             localStorage.setItem(question_id, question_class)
-            
         }
     }
  
@@ -57,6 +56,10 @@ function saveGame() {
 
     if(_dom.doublePointToggled == true) {
         localStorage.setItem('doublePointToggled', true)
+    }
+
+    if(_dom.is_muted == true) {
+        localStorage.setItem('audioMuted', true)
     }
 
     console.log(localStorage)
@@ -138,6 +141,19 @@ function loadSave() {
 
     if (localStorage.getItem('player7_score') != null) {
         addSavedPlayer(localStorage.getItem('player7_name'), localStorage.getItem('player7_score'))
+    }
+
+    if (localStorage.getItem('audioMuted') == "true" ) {
+        _dom.mute_button.style.display = "none"
+        _dom.unmute_button.style.display = "block"
+
+        _dom.countdown_music.muted = true
+        _dom.countdown_music.pause()
+        _dom.countdown_music.currentTime = 0
+
+        _dom.times_up.muted = true
+        _dom.times_up.pause()
+        _dom.times_up.currentTime = 0
     }
 
     for(let i = 0; i < player_names_table.children.length; i++) {
