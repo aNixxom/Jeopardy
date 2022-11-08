@@ -62,17 +62,24 @@ _dom.doubleTimeSwitch.onclick = function toggle(event) {
     if(_dom.doubleTimeCheatEnabled == false && clicked == "settings-toggle-button-one") {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-on-outline")
         _dom.doubleTimeCheatEnabled = true
+        _dom.double_time_icon.style.display = "block"
         systemMessage("Enabled Double Time")
-        console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
         _dom.questionLength = 12000
     } else if(_dom.doubleTimeCheatEnabled == true && clicked == "settings-toggle-button-one" ) {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.doubleTimeCheatEnabled = false
         _dom.questionLength = 6000
+        _dom.double_time_icon.style.display = "none"
         systemMessage("Disabled Double Time")
-       // mainBody.style.border = "2px transparent solid" 
-        console.log("doubleTimeCheatEnabled: " + _dom.doubleTimeCheatEnabled)
     }
+}
+
+_dom.double_time_icon.onclick = function toggleIcon(e) {
+    _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
+    _dom.doubleTimeCheatEnabled = false
+    _dom.questionLength = 6000
+    _dom.double_time_icon.style.display = "none"
+    systemMessage("Disabled Double Time")
 }
 
 _dom.editModeSwitch.onclick = function toggle(event) {
@@ -83,17 +90,27 @@ _dom.editModeSwitch.onclick = function toggle(event) {
             player_headers[i].className = "headers headers-edit"
         }
         _dom.editModeToggled = true
-        systemMessage("Eenabled Edit Mode")
-        document.querySelector('body').style.border = "red solid 2px"
+        _dom.edit_mode_icon.style.display = "block"
+        systemMessage("Enabled Edit Mode")
     } else if(_dom.editModeToggled == true ) {
         _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.editModeToggled = false
+        _dom.edit_mode_icon.style.display = "none"
         for (i = 0; i < player_headers.length; i++) {
             player_headers[i].className = "headers"
         }
-        mainBody.style.border = "2px transparent solid"
         systemMessage("Disabled Edit Mode")
     }
+}
+
+_dom.edit_mode_icon.onclick = function toggleIcon(e) {
+    _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
+    _dom.editModeToggled = false
+    _dom.edit_mode_icon.style.display = "none"
+    for (i = 0; i < player_headers.length; i++) {
+        player_headers[i].className = "headers"
+    }
+    systemMessage("Disabled Edit Mode")
 }
 
 _dom.doublePointsSwitch.onclick = function toggle(event) {
@@ -101,7 +118,6 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
     if(_dom.doublePointToggled == false && clicked == "settings-toggle-button-three") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
         systemMessage("Enabled Double Points")
-        //document.querySelector('body').style.border = "green solid 2px"
         for(i = 0; i < frfc.children.length; i++) {
            checkQuestion(frfc, '$400')
         }
@@ -119,10 +135,10 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         }
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
+        _dom.double_points_icon.style.display = "block"
     } else if(_dom.doublePointToggled == true) {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
         systemMessage("Disabled Double Points")
-        //mainBody.style.border = "2px transparent solid"  
         for(i = 0; i < frfc.children.length; i++) {
             checkQuestion(frfc, '$200')
         }
@@ -140,6 +156,36 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         }
         _dom.default_point_value = 200
         _dom.doublePointToggled = false
+        _dom.double_points_icon.style.display = "none"
+    }
+}
+
+_dom.double_points_icon.onclick = function toggleIcon() {
+    _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
+    systemMessage("Disabled Double Points")
+    for(i = 0; i < frfc.children.length; i++) {
+        checkQuestion(frfc, '$200')
+    }
+    for(i = 0; i < secondrsecondc.children.length; i++) {
+        checkQuestion(secondrsecondc, '$400')
+    }
+    for(i = 0; i < threerthreec.children.length; i++) {
+        checkQuestion(threerthreec, '$600')
+    }
+    for(i= 0; i < four4fourc.children.length; i++) {
+        checkQuestion(four4fourc, '$800')
+    }
+    for(i = 0; i < fiverfivec.children.length; i++) {
+        checkQuestion(fiverfivec, '$1000')
+    }
+    _dom.default_point_value = 200
+    _dom.doublePointToggled = false
+    _dom.double_points_icon.style.display = "none"
+}
+
+function checkQuestion(question, points) {
+    if(question.children[i].innerHTML != '-') {
+        question.children[i].innerHTML = points
     }
 }
 
