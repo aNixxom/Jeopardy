@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +6,13 @@
     <link rel="stylesheet" href="CSS/style.css" id='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.3/csshake.min.css" integrity="sha512-RliK2gk03WxUELn57ddjWLhEfhUiOZ85VvWLImFy8A7FOPMkF4Z9YGQ3VKX5jpwkEerAL6I0nC+JNeCPrxWBTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" type="image/jpg" href="icon.png">
-    <title>IT Jeopardy 2021</title>
+    <title>IT Jeopardy 2022</title>
   </head>
   <body id="mainBody">
     <div id="context-menu" class="context-menu">
       <div class="top-context-menu" id="edit-context-menu">Edit Player Name</div>
+      <div id="reset-player-name">Reset Player Name</div>
       <div id="cancel-context-menu">Cancel</div> 
-    </div>
-    <div class="input-menu" id="input-menu">
-      <div class="input-menu-container" id="imc">
-      </div>
     </div>
     <div id="popup"></div>
     <div class="settings">
@@ -25,6 +20,12 @@
         <svg class="icon" id="menu-button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="48px" height="48px"><g id="surface24793741"><path style="stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 2 5 L 2 7 L 22 7 L 22 5 Z M 2 11 L 2 13 L 22 13 L 22 11 Z M 2 17 L 2 19 L 22 19 L 22 17 Z M 2 17 "/><title>Settings Menu</title></g></svg>
         <svg class="icon" id="mute-button" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M30.1 40.85q-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425 4.55-1.6 7.35-5.45t2.8-8.7q0-4.85-2.8-8.725T28.85 9.8q-.4-.1-.625-.45Q28 9 28 8.6q0-.85.675-1.325T30.1 7.05q5.35 1.9 8.625 6.525Q42 18.2 42 23.95t-3.275 10.375Q35.45 38.95 30.1 40.85ZM7.5 30q-.65 0-1.075-.425Q6 29.15 6 28.5v-9q0-.65.425-1.075Q6.85 18 7.5 18H14l7.45-7.45q.7-.7 1.625-.325Q24 10.6 24 11.6v24.8q0 1-.925 1.375t-1.625-.325L14 30ZM27 32.4V15.55q2.7.85 4.35 3.2Q33 21.1 33 24q0 2.95-1.65 5.25T27 32.4Zm-6-16.8L15.35 21H9v6h6.35L21 32.45ZM16.3 24Z"/><title>Mute Audio</title></svg>
         <svg class="icon" id="unmute-button" fill="#ffffff" style="display:none;" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m39.55 44.1-5.5-5.5q-1 .7-2.075 1.275-1.075.575-2.225.975-.8.25-1.45-.25-.65-.5-.65-1.35 0-.4.225-.725.225-.325.625-.425.9-.3 1.775-.7.875-.4 1.625-.95l-8.25-8.3v8.25q0 1-.925 1.375T21.1 37.45L13.65 30h-6.5q-.65 0-1.075-.425-.425-.425-.425-1.075v-9q0-.65.425-1.075Q6.5 18 7.15 18h6.3L3.5 8.05q-.45-.45-.425-1.075Q3.1 6.35 3.55 5.9 4 5.45 4.6 5.45q.6 0 1.05.45l36.1 36.05q.45.45.45 1.075t-.45 1.075q-.45.45-1.1.45-.65 0-1.1-.45Zm-9.8-37.05q5.35 1.9 8.625 6.525Q41.65 18.2 41.65 23.95q0 2.55-.7 5t-2.1 4.65l-2.15-2.15q1-1.7 1.475-3.6.475-1.9.475-3.9 0-4.95-2.775-8.9T28.5 9.75q-.4-.1-.625-.425Q27.65 9 27.65 8.6q0-.85.675-1.325t1.425-.225ZM18.6 23.15Zm13.55 3.75-4.5-4.5v-6.5Q30 17 31.325 19.2q1.325 2.2 1.325 4.8 0 .75-.125 1.475-.125.725-.375 1.425Zm-8.5-8.5-5.2-5.2 2.65-2.65q.7-.7 1.625-.325.925.375.925 1.375Zm-3 14.3v-7.5l-4.2-4.2h-7.8v6h6.3Z"/><title>Unmute Audio</title></svg>
+        <svg class="icon" id="eidt-mode-icon" fill="#ffffff" Style="display:none;" height="48" width="48"><path d="M9 39h2.2l22.15-22.15-2.2-2.2L9 36.8Zm30.7-24.3-6.4-6.4 2.1-2.1q.85-.85 2.1-.85t2.1.85l2.2 2.2q.85.85.85 2.1t-.85 2.1Zm-2.1 2.1L12.4 42H6v-6.4l25.2-25.2Zm-5.35-1.05-1.1-1.1 2.2 2.2Z"/><title>Edit Mode</title></svg>
+        <svg class="icon" id="double-points-icon" fill="#ffffff" style="display:none;" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M16.45 43.55q-.4-.4-.45-1-.05-.6.3-1.05L26 28 9.8 26.45q-1.3-.1-1.725-1.35-.425-1.25.575-2.1L29.4 4.4q.45-.45 1.075-.425.625.025 1.075.475.4.4.45 1 .05.6-.3 1.05L22 20l16.2 1.55q1.3.1 1.725 1.35.425 1.25-.575 2.1L18.6 43.6q-.45.45-1.075.425Q16.9 44 16.45 43.55Z"/><title>Double Points</title></svg>
+        <svg class="icon" id="double-time-icon" fill="#ffffff" style="display:none;" height="48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="m12.75 35.95-2.1-2.1 9.9-9.9-9.9-9.9 2.1-2.1 12 12Zm12.65 0-2.1-2.1 9.9-9.9-9.9-9.9 2.1-2.1 12 12Z"/><title>Doouble Time</title></svg>
+        <div class="input-menu" id="input-menu">
+          <div class="input-menu-container" id="imc"></div>
+        </div>
       </div>
       <div id="settingsContainer">
       <div class="settings-menu">
@@ -91,29 +92,32 @@
           </div> -->
           <button class="data-button" id="load" title="click to load game">load save</button>
           <button class="data-button" id="delete" title="THIS WILL ERASE ALL SAVED GAME DATA">delete save</button>
-          <button class="data-button" id="save" title="click to save game">save game</button>
-          
+          <button class="data-button" id="save" title="click to save game">save game</button>      
         </div>
       </div>
     </div>
   </div>
     <div id="main">
-      <div class="questions" id="q1">
-        <!--Question One (q1)-->
+      <!-- <div class="questions" id="q1">
         <p class="question-color">What does <u>RAM</u> stand for?</p>
-        <!-- <div class="choices">
+        <div class="choices">
           <p id="q1_correct">Random Access Memory</p>
           <p>Remote Access Memory</p>
           <p>Random Aquatic Memory</p>
-        </div> -->
+        </div>
         <div class="timer-container">
           <div class="timer-bar"></div>
         </div>
-      </div>
+      </div> -->
 
       <div class="questions" id="q2">
         <!--Question two (q2)-->
         <p class="question-color">What does <u>BIOS</u> stand for?</p>
+        <div class="choices">
+          <p id="q2_correct">Random Access Memory</p>
+          <p>Remote Access Memory</p>
+          <p>Random Aquatic Memory</p>
+        </div>
         <div class="timer-container">
           <div class="timer-bar"></div>
         </div>
@@ -276,14 +280,27 @@
       </div>
       <table class="main_table">
         <tbody>
-          <tr>
-            <th class="headers">Acronyms</th>
-            <th class="headers">General IT</th>
-            <th class="headers">Windows </th>
-            <th class="headers">Linux </th>
+          <tr class="headers">
+            <th>Acronyms</th>
+            <th>General IT</th>
+            <th>Windows </th>
+            <th >Linux </th>
           </tr>
           <tr id="frfc">
-            <th class="boxes q1 200" id="r1c1">$200</th>
+            <th class="boxes q1 200" id="r1c1">$200
+              <div class="questions" id="q1">
+                <!--Question One (q1)-->
+                <p class="question-color">What does <u>RAM</u> stand for?</p>
+                <div class="choices">
+                  <p id="q1_correct">Random Access Memory</p>
+                  <p>Remote Access Memory</p>
+                  <p>Random Aquatic Memory</p>
+                </div>
+                <div class="timer-container">
+                  <div class="timer-bar"></div>
+                </div>
+              </div>
+            </th>
             <th class="boxes q6 200" id="r1c2">$200</th>
             <th class="boxes q11 200" id="r1c3">$200</th>
             <th class="boxes q16 200" id="r1c4">$200</th>
@@ -353,6 +370,7 @@
     <script type="module" src="Scripts/edit_player_name.js"></script>
     <script type="module" src="Scripts/game_save.js"></script>
     <script type="module" src="Scripts/game_variables.js"></script>
+    <!-- <script type="module" src="Scripts/answer_check.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
