@@ -24,10 +24,7 @@ input[type=text] {
     text-align: center;
     outline: none;
     border-color: black;
-    width: 20%;
     padding-top: 0em;
-    margin-left: 40%;
-    margin-right: 40%;
     font-size: 30px;
     border-radius: 4px;
 }
@@ -52,6 +49,7 @@ input[type=text] {
     padding: 2px;
     background-color: gay;
 }
+
 
 .context-menu div:hover{
     border: solid #d7a04b 2px;
@@ -144,7 +142,7 @@ input[type=text] {
 
 ion-icon {
     color: white;
-    font-size: 50px;
+    font-size: 50px
 }
 
 ion-icon:hover {
@@ -152,6 +150,7 @@ ion-icon:hover {
 }
 
 .icon {
+    text-align: right;
     margin-right: 10px;
 }
 
@@ -305,7 +304,7 @@ table.player-info-table {
 }
 
 
-.headers {
+.headers, .headers-category {
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 60px;
@@ -323,6 +322,10 @@ table.player-info-table {
 
 .headers-edit:hover{ 
     border: solid red 2px;
+}
+
+.headers > th {
+    border: var(--global-box-borders);
 }
 
 .boxes {
@@ -408,7 +411,7 @@ button#delete:hover {
     border: #d7a04b solid 2px;
     font-family: 'Roboto', sans-serif;
     color: white;
-    visibility: hidden;
+    display: none;
     min-width: 250px;
     margin-left: -125px;
     text-align: center;
@@ -422,26 +425,16 @@ button#delete:hover {
 }
 
 #popup.show {
-    visibility: visible;
+    display: block;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
   
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
   
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
