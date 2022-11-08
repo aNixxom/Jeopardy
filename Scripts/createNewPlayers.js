@@ -22,10 +22,11 @@
         'player3_buttons'
     ]
 
-    function systemMessage(message) {
+    function systemMessage(message) { //default show_time is 27000
         popup.innerHTML = message
         popup.className = "show"
-        setTimeout(function(){popup.className = popup.className.replace("show", "") }, 3000)
+               
+        setTimeout(function(){popup.className = popup.className.replace("show", "") }, 2700)
     }
 
     function screenShake() {
@@ -45,12 +46,13 @@
         let th_player_name = document.createElement('th') // Creates player name
         let playerName = prompt("Enter Name")
 
-        if(playerName == null || playerName == "") { // If player does not enter a name, or they hit cancel return and break the function
+        if(playerName == null || playerName.length > 8 || playerName.length == 0) { // If player does not enter a name, or they hit cancel return and break the function
             screenShake()
             systemMessage('Please enter a valid name')
             return
         } else if (playerName != null && playerName != "") {
 
+            console.log(playerName.length)
             _pVars.players_added += 1 // add 1 to player list
             _pVars.total_players = _pVars.players_added + _pVars.starting_players // new player total 
             let player_Number = _pVars.total_players.toString()
@@ -65,7 +67,11 @@
 
             current_player_count.innerText = number_of_players
 
-            th_player_name.setAttribute('class', "headers")
+            if(_dom.editModeToggled == false) {
+                th_player_name.setAttribute('class', "headers")
+            } else {
+                th_player_name.setAttribute('class', "headers headers-edit")
+            }
             th_player_name.setAttribute('id', `player${player_Number}_name`)
             th_player_name.innerText = playerName // sets player name to the table cell
             tr_player_names.appendChild(th_player_name) // Appends player name to the player name table
@@ -113,7 +119,7 @@
         let th_player_name = document.createElement('th') // Creates player name
         let playerName = savedPlayerName
 
-        if(playerName == null || playerName == "") { // If player does not enter a name, or they hit cancel return and break the function
+        if(playerName == null || playerName == "" || playerName.length <= 10) { // If player does not enter a name, or they hit cancel return and break the function
             screenShake()
             systemMessage('Please enter a valid name')
             return
@@ -172,7 +178,7 @@
     function takePlayer() {
 
         if(_pVars.total_players <= 3) {
-            systemMessage("You can't have less than 3 players");
+            systemMessage("You can't have less than 3 players")
             screenShake()
             return
         }
