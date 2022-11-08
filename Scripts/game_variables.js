@@ -9,10 +9,16 @@ const _dom = {
   menu_button: document.getElementById("menu-button"),
   mute_button: document.getElementById("mute-button"),
   unmute_button: document.getElementById("unmute-button"),
-  countdown_music: new Audio('/countdown.mp3'),
-  times_up: new Audio('/times-up.mp3'),
+  double_time_icon: document.getElementById("double-time-icon"),
+  edit_mode_icon: document.getElementById("eidt-mode-icon"),
+  double_points_icon: document.getElementById("double-points-icon"),
+  double_time_icon: document.getElementById("double-time-icon"),
+  countdown_music: new Audio('/assets/countdown.mp3'),
+  times_up: new Audio('/assets/times-up.mp3'),
+  corret_answer_sound: new Audio('/assets/correct.mp3'),
   is_muted: false, //default false
-  default_point_value: 200,
+  correct_answer: false,
+  default_point_value: 200, // default 200
   add_player: document.getElementById("add_player"),
   take_player: document.getElementById("take_player"),
   settings_menu: document.querySelector(".settings-menu"),
@@ -102,4 +108,3 @@ const _pVars = {
 }
 
 export { _dom, _pVars}
-
