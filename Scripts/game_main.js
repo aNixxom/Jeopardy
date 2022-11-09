@@ -9,9 +9,10 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
         stopMusic(_dom.countdown_music)
+        console.log(_dom.correct_answer)
         if(_dom.correct_answer) {
             _dom.corret_answer_sound.play() 
-        } else if(_dom.correct_answer == false) {
+        } else if(_dom.correct_answer != true) {
             _dom.times_up.play()
         }
     }
@@ -43,30 +44,36 @@ window.addEventListener('click', function(event){
                 const question_id = clicked_element.classList[1]
                 const question = document.getElementById(question_id)
                 let choices = question.children[1]
-                 console.log(choices)
-                
-
-
-                _dom.viewingQuestion = true
-
+            
                 question.setAttribute('class', 'questions animate__animated animate__zoomIn')
 
+                _dom.viewingQuestion = true
                 _dom.main.style.visibility = "hidden"
                 question.style.visibility = "visible"
                 question.style.top = "0px"
+                question.style.right = "0px"
 
-                if(_dom.viewingQuestion == true) {
-                    _dom.menu_button.style.cursor = "not-allowed"
-                }
-
+                if(_dom.viewingQuestion == true) _dom.menu_button.style.cursor = "not-allowed"
 
                 choices.addEventListener('click', function(event) {
                     let clicked_answer = event.target
                     if(_dom.viewingQuestion == true && question_id) {
                         if(clicked_answer.id.includes(question_id)) {
                             _dom.correct_answer = true
-                            showQuestion()
-                           _dom.correct_answer = false
+                            _dom.answered_question = true
+
+                            let question_number = clicked_element.classList[1]
+                            let question_value = clicked_element.classList[2]
+                            
+                            stopAnimation()
+                            question.style.visibility = "hidden"
+                            clicked_element.innerText = "-"
+                            clicked_element.style.pointerEvents = "none"
+                            clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+                            _dom.viewingQuestion = false
+                            _dom.menu_button.style.cursor = "pointer"
+
+                            _dom.correct_answer = false
                         }
                     }
                 })
@@ -76,16 +83,21 @@ window.addEventListener('click', function(event){
 
 
                 function showQuestion() {
-                    let question_number = clicked_element.classList[1]
-                    let question_value = clicked_element.classList[2]
-                    
-                    stopAnimation()
-                    question.style.visibility = "hidden"
-                    clicked_element.innerText = "-"
-                    clicked_element.style.pointerEvents = "none"
-                    clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
-                    _dom.viewingQuestion = false
-                    _dom.menu_button.style.cursor = "pointer"
+                    if(_dom.answered_question == true) {
+                        _dom.answered_question = false
+                    } else {
+                        let question_number = clicked_element.classList[1]
+                        let question_value = clicked_element.classList[2]
+                        
+                        stopAnimation()
+                        question.style.visibility = "hidden"
+                        clicked_element.innerText = "-"
+                        clicked_element.style.pointerEvents = "none"
+                        clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+                        _dom.viewingQuestion = false
+                        _dom.menu_button.style.cursor = "pointer"
+                        _dom.answered_question = false
+                    }
                 }
           }
         } catch(error) {
