@@ -13,6 +13,7 @@
     --global-border-radius: 4px;  
 
     user-select: none;
+    overflow: hidden;
 }
 
 
@@ -111,16 +112,17 @@ input[type=text] {
 .choices {
     display: flex;
     text-align: center;
+    justify-content: center;
     width: 100%;
 }
 
 .choices > p {
     margin: 0;
     margin-bottom: 10px;    
-    outline: 1px solid #d7a04b;
+    outline: 2px solid #d7a04b;
     border-radius: 4px;
     margin: 10px;
-    padding: 0;
+    padding: 0.5em;
 }
 
 .choices >p:hover {
