@@ -108,4 +108,32 @@ const _pVars = {
   total_players: 0
 }
 
-export { _dom, _pVars}
+const _rows = {
+  r1c1: document.getElementById("r1c1"), //q1
+  r1c2: document.getElementById("r1c2"),
+  r1c3: document.getElementById("r1c3"),
+  r1c4: document.getElementById("r1c4"),
+
+  // Click Event objects --------- (Second Row ($400))
+  r2c1: document.getElementById("r2c1"), //q2
+  r2c2: document.getElementById("r2c2"),
+  r2c3: document.getElementById("r2c3"),
+  r2c4: document.getElementById("r2c4"),
+  // Click Evnet objects ---------- (Third Row ($600))
+  r3c1: document.getElementById("r3c1"), //q3
+  r3c2: document.getElementById("r3c2"),
+  r3c3: document.getElementById("r3c3"),
+  r3c4: document.getElementById("r3c4"),
+  // Click Evnet objects ---------- (Fourth Row ($800))
+  r4c1: document.getElementById("r4c1"), //q4
+  r4c2: document.getElementById("r4c2"),
+  r4c3: document.getElementById("r4c3"),
+  r4c4: document.getElementById("r4c4"),
+  // Click Evnet objects ---------- (Fith Row ($1000))
+  r5c1: document.getElementById("r5c1"), //q5
+  r5c2: document.getElementById("r5c2"),
+  r5c3: document.getElementById("r5c3"),
+  r5c4: document.getElementById("r5c4"),
+}
+
+export { _dom, _pVars, _rows}
