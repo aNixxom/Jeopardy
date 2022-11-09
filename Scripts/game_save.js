@@ -1,22 +1,15 @@
 let loadButton = document.getElementById('load')
 let saveButton = document.getElementById('save')
 let deleteButton = document.getElementById('delete')
-//let popup = document.getElementById('popup')
 let player_names_table = document.getElementById('player_names')
 let player_score_text = document.getElementById('player_score_text')
-//let main_table = document.getElementById('main-table')
 let every_class = document.querySelectorAll('*[class]')
 let player_headers = document.getElementsByClassName('headers'), i;
-let secondrsecondc = document.getElementById("2r2c")
-let threerthreec = document.getElementById("3r3c")
-let four4fourc = document.getElementById("4r4c")
-let fiverfivec = document.getElementById("5r5c")
-
 
 
 import { closeMenu, changeAudio } from '/Scripts/game_settings.js'
 import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
-import {_dom} from '/Scripts/game_variables.js'
+import {_dom, _rows} from '/Scripts/game_variables.js'
 import {_pVars} from '/Scripts/game_variables.js'
 
 saveButton.addEventListener('click', saveGame)
@@ -92,20 +85,25 @@ function loadSave() {
 
     if(localStorage.getItem('doublePointToggled') == "true") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        for(i = 0; i < frfc.children.length; i++) {
-           checkQuestion(frfc, '$400')
+        for(i = 0; i < 4; i++) {
+            let r1c1Node = _rows[`r1c${i+1}`].childNodes[0]
+            if(r1c1Node.nodeValue != '-') r1c1Node.nodeValue = "$" + +_rows[`r1c${i+1}`].classList[2] * 2
         }
-        for(i = 0; i < secondrsecondc.children.length; i++) {
-            checkQuestion(secondrsecondc, '$800')
+        for(i = 0; i < 4; i++) {
+            let r2c1Node = _rows[`r2c${i+1}`].childNodes[0]
+            if(r2c1Node.nodeValue != '-') r2c1Node.nodeValue = "$" + +_rows[`r2c${i+1}`].classList[2] * 2
         }
-        for(i = 0; i < threerthreec.children.length; i++) {
-            checkQuestion(threerthreec, '$1200')
+        for(i = 0; i < 4; i++) {
+            let r3c1Node = _rows[`r3c${i+1}`].childNodes[0]
+            if(r3c1Node.nodeValue != '-') r3c1Node.nodeValue = "$" + +_rows[`r3c${i+1}`].classList[2] * 2
         }
-        for(i= 0; i < four4fourc.children.length; i++) {
-            checkQuestion(four4fourc, '$1600')
+        for(i= 0; i < 4; i++) {
+            let r4c1Node = _rows[`r4c${i+1}`].childNodes[0]
+            if(r4c1Node.nodeValue != '-') r4c1Node.nodeValue = "$" + +_rows[`r4c${i+1}`].classList[2] * 2
         }
-        for(i = 0; i < fiverfivec.children.length; i++) {
-            checkQuestion(fiverfivec, '$2000')
+        for(i = 0; i < 4; i++) {
+            let r5c1Node = _rows[`r5c${i+1}`].childNodes[0]
+            if(r5c1Node.nodeValue != '-') r5c1Node.nodeValue = "$" + +_rows[`r5c${i+1}`].classList[2] * 2
         }
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
