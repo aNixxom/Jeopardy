@@ -13,13 +13,10 @@
 General: 
 - [x] Create basic settings menu 
 - [x] Create settings menu functions 
-- [ ] Tidy up some code *(that should be fun :P)*
-- [ ] Randomize questions 
+- [x] Tidy up some code *(that should be fun :P)*
 
 Edit mode: 
- - [ ] Edit Questions
  - [x] Edit Player Names
- - [ ] Edit Categorys 
 
 
 Save: 
