@@ -43,13 +43,15 @@ function changeAudio() {
         _dom.times_up.currentTime = 0
 
         _dom.is_muted = true
+        systemMessage("Muted Game Audio")
     } else {
         _dom.mute_button.style.display = "block"
         _dom.unmute_button.style.display = "none"
 
         _dom.countdown_music.muted = false
-        _dom.times_up.muted = true
+        _dom.times_up.muted = false
         _dom.is_muted = false
+        systemMessage("Unmuted Game Audio")
     }
 }
 
@@ -75,11 +77,15 @@ _dom.doubleTimeSwitch.onclick = function toggle(event) {
 }
 
 _dom.double_time_icon.onclick = function toggleIcon(e) {
-    _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
-    _dom.doubleTimeCheatEnabled = false
-    _dom.questionLength = 6000
-    _dom.double_time_icon.style.display = "none"
-    systemMessage("Disabled Double Time")
+    if(_dom.viewingQuestion == true) {
+        systemMessage("You can't disable this setting while viewing a question")
+    } else {
+        _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
+        _dom.doubleTimeCheatEnabled = false
+        _dom.questionLength = 6000
+        _dom.double_time_icon.style.display = "none"
+        systemMessage("Disabled Double Time")
+    }
 }
 
 _dom.editModeSwitch.onclick = function toggle(event) {
@@ -104,13 +110,17 @@ _dom.editModeSwitch.onclick = function toggle(event) {
 }
 
 _dom.edit_mode_icon.onclick = function toggleIcon(e) {
-    _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
-    _dom.editModeToggled = false
-    _dom.edit_mode_icon.style.display = "none"
-    for (i = 0; i < player_headers.length; i++) {
-        player_headers[i].className = "headers"
+    if(_dom.viewingQuestion == true) {
+        systemMessage("You can't disable this setting while viewing a question")
+    } else {
+        _dom.editModeSwitch.setAttribute("name", "radio-button-off-outline")
+        _dom.editModeToggled = false
+        _dom.edit_mode_icon.style.display = "none"
+        for (i = 0; i < player_headers.length; i++) {
+            player_headers[i].className = "headers"
+        }
+        systemMessage("Disabled Edit Mode")
     }
-    systemMessage("Disabled Edit Mode")
 }
 
 _dom.doublePointsSwitch.onclick = function toggle(event) {
@@ -161,31 +171,35 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
 }
 
 _dom.double_points_icon.onclick = function toggleIcon() {
-    _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
-    systemMessage("Disabled Double Points")
-    for(i = 0; i < frfc.children.length; i++) {
-        checkQuestion(frfc, '$200')
+    if(_dom.viewingQuestion == true) {
+        systemMessage("You can't disable this setting while viewing a question")
+    } else {
+        _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
+        for(i = 0; i < frfc.children.length; i++) {
+            checkQuestion(frfc, '$200')
+        }
+        for(i = 0; i < secondrsecondc.children.length; i++) {
+            checkQuestion(secondrsecondc, '$400')
+        }
+        for(i = 0; i < threerthreec.children.length; i++) {
+            checkQuestion(threerthreec, '$600')
+        }
+        for(i= 0; i < four4fourc.children.length; i++) {
+            checkQuestion(four4fourc, '$800')
+        }
+        for(i = 0; i < fiverfivec.children.length; i++) {
+            checkQuestion(fiverfivec, '$1000')
+        }
+        _dom.default_point_value = 200
+        _dom.doublePointToggled = false
+        _dom.double_points_icon.style.display = "none"
+        systemMessage("Disabled Double Points")
     }
-    for(i = 0; i < secondrsecondc.children.length; i++) {
-        checkQuestion(secondrsecondc, '$400')
-    }
-    for(i = 0; i < threerthreec.children.length; i++) {
-        checkQuestion(threerthreec, '$600')
-    }
-    for(i= 0; i < four4fourc.children.length; i++) {
-        checkQuestion(four4fourc, '$800')
-    }
-    for(i = 0; i < fiverfivec.children.length; i++) {
-        checkQuestion(fiverfivec, '$1000')
-    }
-    _dom.default_point_value = 200
-    _dom.doublePointToggled = false
-    _dom.double_points_icon.style.display = "none"
 }
 
 function checkQuestion(question, points) {
-    if(question.children[i].innerHTML != '-') {
-        question.children[i].innerHTML = points
+    if(question.children[1].innerHTML != '-') {
+        question.children[1].innerHTML = points
     }
 }
 
