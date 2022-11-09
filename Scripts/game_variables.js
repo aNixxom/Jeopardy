@@ -18,6 +18,7 @@ const _dom = {
   corret_answer_sound: new Audio('/assets/correct.mp3'),
   is_muted: false, //default false
   correct_answer: false,
+  answered_question: false,
   default_point_value: 200, // default 200
   add_player: document.getElementById("add_player"),
   take_player: document.getElementById("take_player"),
