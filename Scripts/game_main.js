@@ -53,7 +53,12 @@ window.addEventListener('click', function(event){
                 question.style.top = "0px"
                 question.style.right = "0px"
 
-                if(_dom.viewingQuestion == true) _dom.menu_button.style.cursor = "not-allowed"
+                if(_dom.viewingQuestion == true) {
+                    _dom.double_time_icon.style.cursor = "not-allowed"
+                    _dom.edit_mode_icon.style.cursor = "not-allowed"
+                    _dom.double_points_icon.style.cursor = "not-allowed"
+                    _dom.menu_button.style.cursor = "not-allowed"
+                }
 
                 choices.addEventListener('click', function(event) {
                     let clicked_answer = event.target
@@ -70,9 +75,12 @@ window.addEventListener('click', function(event){
                             clicked_element.innerText = "-"
                             clicked_element.style.pointerEvents = "none"
                             clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+
                             _dom.viewingQuestion = false
                             _dom.menu_button.style.cursor = "pointer"
-
+                            _dom.double_time_icon.style.cursor = "pointer"
+                            _dom.edit_mode_icon.style.cursor = "pointer"
+                            _dom.double_points_icon.style.cursor = "pointer"
                             _dom.correct_answer = false
                         }
                     }
