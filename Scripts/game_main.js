@@ -9,7 +9,6 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
         stopMusic(_dom.countdown_music)
-        console.log(_dom.correct_answer)
         if(_dom.correct_answer) {
             _dom.corret_answer_sound.play() 
         } else if(_dom.correct_answer != true) {
@@ -65,6 +64,25 @@ window.addEventListener('click', function(event){
                     if(_dom.viewingQuestion == true && question_id) {
                         if(clicked_answer.id.includes(question_id)) {
                             _dom.correct_answer = true
+                            _dom.answered_question = true
+
+                            let question_number = clicked_element.classList[1]
+                            let question_value = clicked_element.classList[2]
+                            
+                            stopAnimation()
+                            question.style.visibility = "hidden"
+                            clicked_element.innerText = "-"
+                            clicked_element.style.pointerEvents = "none"
+                            clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+
+                            _dom.viewingQuestion = false
+                            _dom.menu_button.style.cursor = "pointer"
+                            _dom.double_time_icon.style.cursor = "pointer"
+                            _dom.edit_mode_icon.style.cursor = "pointer"
+                            _dom.double_points_icon.style.cursor = "pointer"
+                            _dom.correct_answer = false
+                        } else {
+                            _dom.correct_answer = false
                             _dom.answered_question = true
 
                             let question_number = clicked_element.classList[1]

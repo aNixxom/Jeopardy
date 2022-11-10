@@ -35,6 +35,10 @@ function changeAudio() {
         _dom.times_up.pause()
         _dom.times_up.currentTime = 0
 
+        _dom.corret_answer_sound.muted = true
+        _dom.corret_answer_sound.pause()
+        _dom.corret_answer_sound.currentTime = 0
+
         _dom.is_muted = true
         systemMessage("Muted Game Audio")
     } else {
@@ -43,6 +47,7 @@ function changeAudio() {
 
         _dom.countdown_music.muted = false
         _dom.times_up.muted = false
+        _dom.corret_answer_sound.muted = false
         _dom.is_muted = false
         systemMessage("Unmuted Game Audio")
     }
