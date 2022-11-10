@@ -6,6 +6,15 @@ let p3s = document.getElementById("player3_score")
 
 window.addEventListener('click', function(event) {
   let clicked_button = event.target.id
+
+  try {
+    if(event.target.classList[1].includes('q')) {
+      _dom.default_point_value = event.target.classList[2]
+    }
+  } catch(error) {
+    // Do Nothing
+  }
+  
   
   if(clicked_button == 'add_p1') {
     _dom.p1_score = +_dom.default_point_value + +_dom.p1_score
