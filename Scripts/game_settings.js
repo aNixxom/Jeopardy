@@ -28,16 +28,8 @@ function changeAudio() {
         _dom.unmute_button.style.display = "block"
 
         _dom.countdown_music.muted = true
-        _dom.countdown_music.pause()
-        _dom.countdown_music.currentTime = 0
-
-        _dom.times_up.muted = true
-        _dom.times_up.pause()
-        _dom.times_up.currentTime = 0
-
-        _dom.corret_answer_sound.muted = true
-        _dom.corret_answer_sound.pause()
-        _dom.corret_answer_sound.currentTime = 0
+        _dom.times_up.muted = false
+        _dom.corret_answer_sound.muted = false
 
         _dom.is_muted = true
         systemMessage("Muted Game Audio")
