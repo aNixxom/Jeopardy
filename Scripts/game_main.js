@@ -4,12 +4,13 @@ let every_id = document.querySelectorAll('*[id]')
 
 const stopAnimation = () => { // Progress Bar animation event (end)
     const progressBar = document.querySelectorAll(".timer-bar")
-    for (var i = 0; i < progressBar.length;  i++) {
+    for (let i = 0; i < progressBar.length;  i++) {
         progressBar[i].removeAttribute("id", 'play-timer-animation');
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
         stopMusic(_dom.countdown_music)
-        if(_dom.correct_answer) {
+        console.log(_dom.correct_answer, _dom.answered_question)
+        if(_dom.correct_answer == true && _dom.answered_question == true) {
             _dom.corret_answer_sound.play() 
         } else if(_dom.correct_answer != true) {
             _dom.times_up.play()
@@ -37,12 +38,14 @@ window.addEventListener('click', function(event){
     const clicked_element = document.getElementById(event.target.id) // $
 
     for (let i = 0; i < every_id.length; i++) {
-        
         try {
             if(clicked_element.classList[1] == every_id[i].id) {
                 const question_id = clicked_element.classList[1]
                 const question = document.getElementById(question_id)
                 let choices = question.children[1]
+                let timerBar = question.children[2]
+                timerBar.children[0].setAttribute("id", "")
+                
             
                 question.setAttribute('class', 'questions animate__animated animate__zoomIn')
 
@@ -69,25 +72,24 @@ window.addEventListener('click', function(event){
                             exitQuestion()
 
                             _dom.correct_answer = false //reset for next question
-                        } else {
-                            _dom.correct_answer = false
-                            _dom.answered_question = true
+                        } else if(!clicked_answer.id.includes(question_id)) { //if user did not  select right answer 
+                            _dom.correct_answer = false // set to false to the times_up.mp3 will not play
+                            _dom.answered_question = true // set to true to prevent animations from running more than once
                             exitQuestion()
-                            _dom.correct_answer = false
-                            _
+                            _dom.correct_answer = false // reset for next question
+                        } else {
+                            console.log("What the fuck")
                         }
                     }
                 })
 
-                setTimeout(playAnimation(), 1)
+                setTimeout(playAnimation())
                 setTimeout(showQuestion, _dom.questionLength)
-
 
                 function showQuestion() {
                     if(_dom.answered_question == true) {
-                        _dom.answered_question = false
-                    } else {                        
-                        stopAnimation()
+                       return
+                    } else if(_dom.answered_question != true) {
                         exitQuestion()
                     }
                 }
