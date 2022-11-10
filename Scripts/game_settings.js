@@ -113,31 +113,16 @@ _dom.edit_mode_icon.onclick = function toggleIcon(e) {
     }
 }
 
-
 _dom.doublePointsSwitch.onclick = function toggle(event) {
     let clicked = event.target.classList[0]
     if(_dom.doublePointToggled == false && clicked == "settings-toggle-button-three") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
         systemMessage("Enabled Double Points")
-        for(i = 0; i < 4; i++) {
-            let r1c1Node = _rows[`r1c${i+1}`].childNodes[0]
-            if(r1c1Node.nodeValue != '-') r1c1Node.nodeValue = "$" + +_rows[`r1c${i+1}`].classList[2] * 2
-        }
-        for(i = 0; i < 4; i++) {
-            let r2c1Node = _rows[`r2c${i+1}`].childNodes[0]
-            if(r2c1Node.nodeValue != '-') r2c1Node.nodeValue = "$" + +_rows[`r2c${i+1}`].classList[2] * 2
-        }
-        for(i = 0; i < 4; i++) {
-            let r3c1Node = _rows[`r3c${i+1}`].childNodes[0]
-            if(r3c1Node.nodeValue != '-') r3c1Node.nodeValue = "$" + +_rows[`r3c${i+1}`].classList[2] * 2
-        }
-        for(i= 0; i < 4; i++) {
-            let r4c1Node = _rows[`r4c${i+1}`].childNodes[0]
-            if(r4c1Node.nodeValue != '-') r4c1Node.nodeValue = "$" + +_rows[`r4c${i+1}`].classList[2] * 2
-        }
-        for(i = 0; i < 4; i++) {
-            let r5c1Node = _rows[`r5c${i+1}`].childNodes[0]
-            if(r5c1Node.nodeValue != '-') r5c1Node.nodeValue = "$" + +_rows[`r5c${i+1}`].classList[2] * 2
+        for(i = 0; i < 5; i++) {
+            for(let j = 0; j < 4; j++) {
+                let rxcx = `r${i+1}c${j+1}`
+                checkScore(rxcx)
+            }  
         }
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
@@ -145,27 +130,13 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         
     } else if(_dom.doublePointToggled == true) {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
+        for(i = 0; i < 5; i++) {
+            for(let j = 0; j < 4; j++) {
+                let rxcx = `r${i+1}c${j+1}`
+                revertScore(rxcx)
+            }  
+        }
         systemMessage("Disabled Double Points")
-        for(i = 0; i < 4; i++) {
-            let r1c1Node = _rows[`r1c${i+1}`].childNodes[0]
-            if(r1c1Node.nodeValue != '-') r1c1Node.nodeValue = "$200" 
-        }
-        for(i = 0; i < 4; i++) {
-            let r2c1Node = _rows[`r2c${i+1}`].childNodes[0]
-            if(r2c1Node.nodeValue != '-') r2c1Node.nodeValue = "$400" 
-        }
-        for(i = 0; i < 4; i++) {
-            let r3c1Node = _rows[`r3c${i+1}`].childNodes[0]
-            if(r3c1Node.nodeValue != '-') r3c1Node.nodeValue = "$600" 
-        }
-        for(i= 0; i < 4; i++) {
-            let r4c1Node = _rows[`r4c${i+1}`].childNodes[0]
-            if(r4c1Node.nodeValue != '-') r4c1Node.nodeValue = "$800" 
-        }
-        for(i = 0; i < 4; i++) {
-            let r5c1Node = _rows[`r5c${i+1}`].childNodes[0]
-            if(r5c1Node.nodeValue != '-') r5c1Node.nodeValue = "$1000" 
-        }
         _dom.default_point_value = 200
         _dom.doublePointToggled = false
         _dom.double_points_icon.style.display = "none"
@@ -176,31 +147,27 @@ _dom.double_points_icon.onclick = function toggleIcon() {
     if(_dom.viewingQuestion == true) {
         systemMessage("You can't disable this setting while viewing a question")
     } else {
-        for(i = 0; i < 4; i++) {
-            let r1c1Node = _rows[`r1c${i+1}`].childNodes[0]
-            if(r1c1Node.nodeValue != '-') r1c1Node.nodeValue = "$200" 
-        }
-        for(i = 0; i < 4; i++) {
-            let r2c1Node = _rows[`r2c${i+1}`].childNodes[0]
-            if(r2c1Node.nodeValue != '-') r2c1Node.nodeValue = "$400" 
-        }
-        for(i = 0; i < 4; i++) {
-            let r3c1Node = _rows[`r3c${i+1}`].childNodes[0]
-            if(r3c1Node.nodeValue != '-') r3c1Node.nodeValue = "$600" 
-        }
-        for(i= 0; i < 4; i++) {
-            let r4c1Node = _rows[`r4c${i+1}`].childNodes[0]
-            if(r4c1Node.nodeValue != '-') r4c1Node.nodeValue = "$800" 
-        }
-        for(i = 0; i < 4; i++) {
-            let r5c1Node = _rows[`r5c${i+1}`].childNodes[0]
-            if(r5c1Node.nodeValue != '-') r5c1Node.nodeValue = "$1000" 
+        for(i = 0; i < 5; i++) {
+            for(let j = 0; j < 4; j++) {
+                let rxcx = `r${i+1}c${j+1}`
+                revertScore(rxcx)
+            }  
         }
         _dom.default_point_value = 200
         _dom.doublePointToggled = false
         _dom.double_points_icon.style.display = "none"
         systemMessage("Disabled Double Points")
     }
+}
+
+function checkScore(test) {
+    let rxcxNode = _rows[test].childNodes[0]
+    if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" + +_rows[test].classList[2] * 2
+}
+
+function revertScore(rxcx) {
+    let rxcxNode = _rows[rxcx].childNodes[0]
+    if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" +_rows[rxcx].classList[2]
 }
 
 export {closeMenu, changeAudio}
