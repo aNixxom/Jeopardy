@@ -42,7 +42,7 @@ window.addEventListener('click', function(event){
             if(clicked_element.classList[1] == every_id[i].id) {
                 const question_id = clicked_element.classList[1]
                 const question = document.getElementById(question_id)
-                            
+                
                 question.setAttribute('class', 'questions animate__animated animate__zoomIn')
 
                 _dom.viewingQuestion = true
