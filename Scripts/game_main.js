@@ -66,40 +66,15 @@ window.addEventListener('click', function(event){
                             _dom.correct_answer = true
                             _dom.answered_question = true
 
-                            let question_number = clicked_element.classList[1]
-                            let question_value = clicked_element.classList[2]
-                            
-                            stopAnimation()
-                            question.style.visibility = "hidden"
-                            clicked_element.innerText = "-"
-                            clicked_element.style.pointerEvents = "none"
-                            clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+                            exitQuestion()
 
-                            _dom.viewingQuestion = false
-                            _dom.menu_button.style.cursor = "pointer"
-                            _dom.double_time_icon.style.cursor = "pointer"
-                            _dom.edit_mode_icon.style.cursor = "pointer"
-                            _dom.double_points_icon.style.cursor = "pointer"
-                            _dom.correct_answer = false
+                            _dom.correct_answer = false //reset for next question
                         } else {
                             _dom.correct_answer = false
                             _dom.answered_question = true
-
-                            let question_number = clicked_element.classList[1]
-                            let question_value = clicked_element.classList[2]
-                            
-                            stopAnimation()
-                            question.style.visibility = "hidden"
-                            clicked_element.innerText = "-"
-                            clicked_element.style.pointerEvents = "none"
-                            clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
-
-                            _dom.viewingQuestion = false
-                            _dom.menu_button.style.cursor = "pointer"
-                            _dom.double_time_icon.style.cursor = "pointer"
-                            _dom.edit_mode_icon.style.cursor = "pointer"
-                            _dom.double_points_icon.style.cursor = "pointer"
+                            exitQuestion()
                             _dom.correct_answer = false
+                            _
                         }
                     }
                 })
@@ -111,19 +86,27 @@ window.addEventListener('click', function(event){
                 function showQuestion() {
                     if(_dom.answered_question == true) {
                         _dom.answered_question = false
-                    } else {
-                        let question_number = clicked_element.classList[1]
-                        let question_value = clicked_element.classList[2]
-                        
+                    } else {                        
                         stopAnimation()
-                        question.style.visibility = "hidden"
-                        clicked_element.innerText = "-"
-                        clicked_element.style.pointerEvents = "none"
-                        clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
-                        _dom.viewingQuestion = false
-                        _dom.menu_button.style.cursor = "pointer"
-                        _dom.answered_question = false
+                        exitQuestion()
                     }
+                }
+
+                function exitQuestion() {
+                    let question_number = clicked_element.classList[1]
+                    let question_value = clicked_element.classList[2]
+                    
+                    stopAnimation()
+                    question.style.visibility = "hidden"
+                    clicked_element.innerText = "-"
+                    clicked_element.style.pointerEvents = "none"
+                    clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+        
+                    _dom.viewingQuestion = false
+                    _dom.menu_button.style.cursor = "pointer"
+                    _dom.double_time_icon.style.cursor = "pointer"
+                    _dom.edit_mode_icon.style.cursor = "pointer"
+                    _dom.double_points_icon.style.cursor = "pointer"
                 }
           }
         } catch(error) {
@@ -136,7 +119,6 @@ function stopMusic(sound) {
     sound.pause()
     sound.currentTime = 0
 }
-
 
 
 export{stopAnimation}
