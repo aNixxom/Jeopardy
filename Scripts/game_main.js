@@ -9,7 +9,6 @@ const stopAnimation = () => { // Progress Bar animation event (end)
         _dom.main.style.visibility = "visible"
         _dom.viewingQuestion = false
         stopMusic(_dom.countdown_music)
-        console.log(_dom.correct_answer, _dom.answered_question)
         if(_dom.correct_answer == true && _dom.answered_question == true) {
             _dom.corret_answer_sound.play() 
         } else if(_dom.correct_answer != true) {
