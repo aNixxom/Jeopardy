@@ -117,7 +117,6 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
     let clicked = event.target.classList[0]
     if(_dom.doublePointToggled == false && clicked == "settings-toggle-button-three") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        systemMessage("Enabled Double Points")
         for(i = 0; i < 5; i++) {
             for(let j = 0; j < 4; j++) {
                 let rxcx = `r${i+1}c${j+1}`
@@ -127,6 +126,7 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
         _dom.double_points_icon.style.display = "block"
+        systemMessage("Enabled Double Points")
         
     } else if(_dom.doublePointToggled == true) {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
@@ -136,10 +136,10 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
                 revertScore(rxcx)
             }  
         }
-        systemMessage("Disabled Double Points")
         _dom.default_point_value = 200
         _dom.doublePointToggled = false
         _dom.double_points_icon.style.display = "none"
+        systemMessage("Disabled Double Points")
     }
 }
 
@@ -160,9 +160,9 @@ _dom.double_points_icon.onclick = function toggleIcon() {
     }
 }
 
-function checkScore(test) {
-    let rxcxNode = _rows[test].childNodes[0]
-    if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" + +_rows[test].classList[2] * 2
+function checkScore(rxcx) {
+    let rxcxNode = _rows[rxcx].childNodes[0]
+    if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" + +_rows[rxcx].classList[2] * 2
 }
 
 function revertScore(rxcx) {
