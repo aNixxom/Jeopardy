@@ -56,8 +56,7 @@ function saveGame() {
     if(_dom.is_muted == true) {
         localStorage.setItem('audioMuted', true)
     }
-
-    console.log(localStorage)
+    
     systemMessage("Game saved")
 }
 
