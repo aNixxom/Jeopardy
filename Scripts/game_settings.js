@@ -120,7 +120,7 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         for(i = 0; i < 5; i++) {
             for(let j = 0; j < 4; j++) {
                 let rxcx = `r${i+1}c${j+1}`
-                checkScore(rxcx)
+                doublePointValue(rxcx)
             }  
         }
         _dom.default_point_value = 400
@@ -133,7 +133,7 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         for(i = 0; i < 5; i++) {
             for(let j = 0; j < 4; j++) {
                 let rxcx = `r${i+1}c${j+1}`
-                revertScore(rxcx)
+                revertPointValue(rxcx)
             }  
         }
         _dom.default_point_value = 200
@@ -150,7 +150,7 @@ _dom.double_points_icon.onclick = function toggleIcon() {
         for(i = 0; i < 5; i++) {
             for(let j = 0; j < 4; j++) {
                 let rxcx = `r${i+1}c${j+1}`
-                revertScore(rxcx)
+                revertPointValue(rxcx)
             }  
         }
         _dom.default_point_value = 200
@@ -160,14 +160,14 @@ _dom.double_points_icon.onclick = function toggleIcon() {
     }
 }
 
-function checkScore(rxcx) {
+function doublePointValue(rxcx) {
     let rxcxNode = _rows[rxcx].childNodes[0]
     if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" + +_rows[rxcx].classList[2] * 2
 }
 
-function revertScore(rxcx) {
+function revertPointValue(rxcx) {
     let rxcxNode = _rows[rxcx].childNodes[0]
     if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" +_rows[rxcx].classList[2]
 }
 
-export {closeMenu, changeAudio}
+export {closeMenu, changeAudio, doublePointValue}
