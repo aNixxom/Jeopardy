@@ -7,7 +7,7 @@ let every_class = document.querySelectorAll('*[class]')
 let player_headers = document.getElementsByClassName('headers'), i;
 
 
-import { closeMenu, changeAudio } from '/Scripts/game_settings.js'
+import { closeMenu, doublePointValue} from '/Scripts/game_settings.js'
 import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
 import {_dom, _rows} from '/Scripts/game_variables.js'
 import {_pVars} from '/Scripts/game_variables.js'
@@ -85,25 +85,11 @@ function loadSave() {
 
     if(localStorage.getItem('doublePointToggled') == "true") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        for(i = 0; i < 4; i++) {
-            let r1c1Node = _rows[`r1c${i+1}`].childNodes[0]
-            if(r1c1Node.nodeValue != '-') r1c1Node.nodeValue = "$" + +_rows[`r1c${i+1}`].classList[2] * 2
-        }
-        for(i = 0; i < 4; i++) {
-            let r2c1Node = _rows[`r2c${i+1}`].childNodes[0]
-            if(r2c1Node.nodeValue != '-') r2c1Node.nodeValue = "$" + +_rows[`r2c${i+1}`].classList[2] * 2
-        }
-        for(i = 0; i < 4; i++) {
-            let r3c1Node = _rows[`r3c${i+1}`].childNodes[0]
-            if(r3c1Node.nodeValue != '-') r3c1Node.nodeValue = "$" + +_rows[`r3c${i+1}`].classList[2] * 2
-        }
-        for(i= 0; i < 4; i++) {
-            let r4c1Node = _rows[`r4c${i+1}`].childNodes[0]
-            if(r4c1Node.nodeValue != '-') r4c1Node.nodeValue = "$" + +_rows[`r4c${i+1}`].classList[2] * 2
-        }
-        for(i = 0; i < 4; i++) {
-            let r5c1Node = _rows[`r5c${i+1}`].childNodes[0]
-            if(r5c1Node.nodeValue != '-') r5c1Node.nodeValue = "$" + +_rows[`r5c${i+1}`].classList[2] * 2
+        for(i = 0; i < 5; i++) {
+            for(let j = 0; j < 4; j++) {
+                let rxcx = `r${i+1}c${j+1}`
+                doublePointValue(rxcx)
+            }
         }
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
@@ -182,10 +168,4 @@ function deleteLocalStorage() {
         } else {
             return
         }   
-}
-
-function checkQuestion(question, points) {
-    if(question.children[i].innerHTML != '-') {
-        question.children[i].innerHTML = points
-    }
 }
