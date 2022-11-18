@@ -23,8 +23,6 @@ const playAnimation = ()  => { // Progress Bar animation event (start)
         if(_dom.doubleTimeCheatEnabled == true) {
             _dom.countdown_music.play()
             progressBar[i].setAttribute("id", 'play-timer-animation-double');
-            setTimeout(stopMusic(_dom.countdown_music), 12000)
-
         } else if(_dom.doubleTimeCheatEnabled == false) {
             _dom.countdown_music.play()
             progressBar[i].removeAttribute("id", 'play-timer-animation-double')
