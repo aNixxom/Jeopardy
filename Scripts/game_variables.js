@@ -22,6 +22,9 @@ const _dom = {
   default_point_value: 200, // default 200
   add_player: document.getElementById("add_player"),
   take_player: document.getElementById("take_player"),
+  take_seconds: document.getElementById("take_seconds"),
+  add_seconds: document.getElementById("add_seconds"),
+  question_length_text: document.getElementById("question_length_text"),
   settings_menu: document.querySelector(".settings-menu"),
   doubleTimeSwitch: document.querySelector(".settings-toggle-button-one"),
   editModeSwitch: document.querySelector(".settings-toggle-button-two"),
