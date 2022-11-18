@@ -57,16 +57,25 @@ function saveGame() {
         localStorage.setItem('audioMuted', true)
     }
     
+    localStorage.setItem('questionLength', _dom.questionLength)
+    
     systemMessage("Game saved")
 }
 
 function loadSave() {
-
+    
     if(localStorage.length === 0) {
        systemMessage("No saved game found")
        screenShake()
        return
     }
+    _dom.questionLength = localStorage.getItem('questionLength')
+    let questionLengthText = localStorage.getItem('questionLength').toString()
+    if(_dom.questionLength >= 10000) {
+        _dom.question_length_text.innerHTML = ` ${questionLengthText.slice(0,2)}s `
+    } else {
+        _dom.question_length_text.innerHTML = ` ${questionLengthText[0]}s `
+    }   
 
     let q_row = document.querySelectorAll('th')
     q_row.forEach(function(cell) {
