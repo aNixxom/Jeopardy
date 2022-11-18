@@ -4,7 +4,6 @@ import { systemMessage } from '/Scripts/createNewPlayers.js'
 let isOpen = false
 let player_headers = document.getElementsByClassName('headers'), i;
 
-
 function openMenu() {
     if(isOpen == false && _dom.viewingQuestion == false) {
         _dom.main.style.display = "none"
@@ -55,13 +54,18 @@ _dom.doubleTimeSwitch.onclick = function toggle(event) {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-on-outline")
         _dom.doubleTimeCheatEnabled = true
         _dom.double_time_icon.style.display = "block"
+        _dom.double_time_icon.setAttribute("title", "Disable Double Time")
         systemMessage("Enabled Double Time")
         _dom.questionLength = 12000
+        let questionLengthText = _dom.questionLength.toString()
+        _dom.question_length_text.innerHTML = ` ${questionLengthText.slice(0,2)}s `
     } else if(_dom.doubleTimeCheatEnabled == true && clicked == "settings-toggle-button-one" ) {
         _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
         _dom.doubleTimeCheatEnabled = false
         _dom.questionLength = 6000
         _dom.double_time_icon.style.display = "none"
+        let questionLengthText = _dom.questionLength.toString()
+        _dom.question_length_text.innerHTML = ` ${questionLengthText[0]}s `
         systemMessage("Disabled Double Time")
     }
 }
@@ -158,6 +162,38 @@ _dom.double_points_icon.onclick = function toggleIcon() {
         _dom.double_points_icon.style.display = "none"
         systemMessage("Disabled Double Points")
     }
+}
+
+_dom.take_seconds.onclick = function takeSeconds() {
+    _dom.questionLength -= 1000
+    if(_dom.questionLength < 4000) {
+        _dom.questionLength += 1000
+        systemMessage("Viewing Time cannot be less than 4 seconds")
+        return
+    } else {
+        changeQuestionLengthText()
+    }  
+}
+
+_dom.add_seconds.onclick = function addSeconds() {
+    _dom.questionLength += 1000
+    if (_dom.questionLength > 60000) {
+        _dom.questionLength -= 1000
+        systemMessage("Viewing Time cannot be more than 60 seconds")
+        return
+    } else {
+       changeQuestionLengthText()
+    }  
+}
+
+function changeQuestionLengthText() {
+    let questionLengthText = _dom.questionLength.toString()
+    if(_dom.questionLength >= 10000) {
+        _dom.question_length_text.innerHTML = ` ${questionLengthText.slice(0,2)}s `
+    } else {
+        _dom.question_length_text.innerHTML = ` ${questionLengthText[0]}s `
+    }   
+    
 }
 
 function doublePointValue(rxcx) {
