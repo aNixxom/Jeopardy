@@ -165,11 +165,12 @@ ion-icon:hover {
     margin: auto;
     margin-left: 10%;
     margin-right: 10%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 p.settings-header {
     text-align: center;
-    padding-left:10px;
     font-size: 50px;
     color: var(--theme-blue-settings-header-color);
     font-family: 'Roboto', sans-serif;
@@ -177,6 +178,7 @@ p.settings-header {
     letter-spacing: 5px;
     text-transform: uppercase;
     user-select: none;
+    margin: 0px;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
@@ -187,6 +189,7 @@ div.settings-container {
     background-color: #010a78;
     user-select: none;
     color: #d7a04b;
+    width: 50%;
 }
 
 div.settings-container.top {

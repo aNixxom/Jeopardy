@@ -8,7 +8,7 @@ function openMenu() {
     if(isOpen == false && _dom.viewingQuestion == false) {
         _dom.main.style.display = "none"
         _dom.settings_menu.setAttribute('class', 'settings-menu animate__animated animate__zoomIn')
-        _dom.settings_menu.style.display = "block"
+        _dom.settings_menu.style.display = "flex"
         isOpen = true
     } else if(isOpen == true) {
         closeMenu()
