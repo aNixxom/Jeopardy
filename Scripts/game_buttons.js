@@ -1,18 +1,12 @@
 import {_dom} from '/Scripts/game_variables.js'
 
-let p1s = document.getElementById("player1_score")
-let p2s = document.getElementById("player2_score")
-let p3s = document.getElementById("player3_score")
-
 window.addEventListener('click', function(event) {
   let clicked_button = event.target.id
 
   try {
-    if(event.target.classList[1].includes('q')) {
-      _dom.default_point_value = event.target.classList[2]
-    }
+    if(event.target.classList[1].includes('q')) _dom.default_point_value = event.target.classList[2]
   } catch(error) {
-    // Do Nothing
+    // Do nothing
   }
   
   for(let i = 0; i < 8; i++) {

@@ -8,7 +8,7 @@
     --theme-blue-settings-header-color:white;
 
     /* Global Styling */
-    --global-box-font-size: 58px;
+    --global-box-font-size: 4vw;
     --global-box-borders: black solid 2px;
     --global-border-radius: 4px;  
 
@@ -32,7 +32,6 @@ input[type=text] {
 
 .context-menu{
     display: none;
-    user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     border-radius: 5px;
@@ -73,7 +72,6 @@ input[type=text] {
     margin-right: 10%;
     margin-top: 12%;
     visibility: hidden;
-    user-select: none;
     text-align: center;
 }
 
@@ -165,18 +163,19 @@ ion-icon:hover {
     margin: auto;
     margin-left: 10%;
     margin-right: 10%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 p.settings-header {
     text-align: center;
-    padding-left:10px;
     font-size: 50px;
     color: var(--theme-blue-settings-header-color);
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     letter-spacing: 5px;
     text-transform: uppercase;
-    user-select: none;
+    margin: 0px;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
@@ -185,8 +184,8 @@ div.settings-container {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     background-color: #010a78;
-    user-select: none;
     color: #d7a04b;
+    width: 50%;
 }
 
 div.settings-container.top {
@@ -309,11 +308,10 @@ table.player-info-table {
 .headers, .headers-category {
     text-transform: uppercase;
     letter-spacing: 5px;
-    font-size: 60px;
+    font-size: 3vw;
     border-radius: var(--global-border-radius);
     width: 25%;
     border: var(--global-box-borders);
-    user-select: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     text-align: center;
@@ -335,7 +333,6 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    user-select: none;
     font-family: 'Roboto', sans-serif;
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
@@ -352,7 +349,6 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    user-select: none;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     background-color: var(--theme-blue-box-background-color);
@@ -363,7 +359,6 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    user-select: none;
     font-family: var(--theme-blue-global-font);
     background-color: var(--theme-blue-box-background-color);
     color: var(--theme-blue-points-color);
@@ -385,7 +380,6 @@ tr.player_score_buttons {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     padding: 0 10px;
-    user-select: none;
     cursor: pointer;
 }
 
