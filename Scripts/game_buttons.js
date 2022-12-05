@@ -4,11 +4,9 @@ window.addEventListener('click', function(event) {
   let clicked_button = event.target.id
 
   try {
-    if(event.target.classList[1].includes('q')) {
-      _dom.default_point_value = event.target.classList[2]
-    }
+    if(event.target.classList[1].includes('q')) _dom.default_point_value = event.target.classList[2]
   } catch(error) {
-    // Do Nothing
+    // Do nothing
   }
   
   for(let i = 0; i < 8; i++) {
