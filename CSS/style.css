@@ -8,7 +8,7 @@
     --theme-blue-settings-header-color:white;
 
     /* Global Styling */
-    --global-box-font-size: 58px;
+    --global-box-font-size: 4vw;
     --global-box-borders: black solid 2px;
     --global-border-radius: 4px;  
 
@@ -308,7 +308,7 @@ table.player-info-table {
 .headers, .headers-category {
     text-transform: uppercase;
     letter-spacing: 5px;
-    font-size: 60px;
+    font-size: 3vw;
     border-radius: var(--global-border-radius);
     width: 25%;
     border: var(--global-box-borders);
