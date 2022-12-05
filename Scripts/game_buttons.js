@@ -1,9 +1,5 @@
 import {_dom} from '/Scripts/game_variables.js'
 
-let p1s = document.getElementById("player1_score")
-let p2s = document.getElementById("player2_score")
-let p3s = document.getElementById("player3_score")
-
 window.addEventListener('click', function(event) {
   let clicked_button = event.target.id
 
