@@ -186,22 +186,23 @@ _dom.take_seconds.onclick = function takeSeconds() {
     _dom.questionLength -= 1000
     if(_dom.questionLength < 4000) {
         _dom.questionLength += 1000
-        systemMessage("Viewing Time can't be less than 4 seconds")
+        systemMessage("Viewing time can't be less than 4 seconds")
         return
     } else {
-        _dom.question_length_text.innerHTML = `${_dom.questionLength / 1000}s `
+        _dom.question_length_text.innerHTML = ` ${_dom.questionLength / 1000}s `
+        _dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
     }  
 }
 
 _dom.add_seconds.onclick = function addSeconds() {
-    _dom.questionLength += 1000
+    _dom.questionLength = +_dom.questionLength + +1000
     if (_dom.questionLength > 60000) {
         _dom.questionLength -= 1000
-        systemMessage("Viewing Time can't be more than 60 seconds")
+        systemMessage("Viewing time can't be more than 60 seconds")
         return
     } else {
-        _dom.question_length_text.innerHTML = `${_dom.questionLength / 1000}s `
-        _dom.question_length_icon.innerHTML = `${_dom.questionLength / 1000}s `
+        _dom.question_length_text.innerHTML = ` ${_dom.questionLength / 1000}s `
+        _dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
     }  
 }
 

@@ -59,6 +59,8 @@ function saveGame() {
     if(_dom.is_muted == true) {
         localStorage.setItem('audioMuted', true)
     }
+
+    localStorage.setItem('questionLength', _dom.questionLength)
     
     systemMessage("Game saved")
 }
@@ -70,6 +72,10 @@ function loadSave() {
        screenShake()
        return
     }
+    
+    _dom.questionLength = localStorage.getItem('questionLength')
+    _dom.question_length_text.innerHTML = ` ${_dom.questionLength / 1000}s `
+    _dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
 
     let rows = document.querySelectorAll('td')
     rows.forEach(function(cell) {
