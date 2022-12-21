@@ -159,6 +159,16 @@ ion-icon:hover {
     cursor: pointer;
 }
 
+.text-icon {
+    font-size: 2.7rem;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    height: 48px;
+    width: 48px;
+    text-align: center;
+}
+
 .settings-menu {
     display: none;
     margin: auto;

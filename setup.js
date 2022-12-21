@@ -163,4 +163,6 @@ function getRandomOptionSlot(element, index, option, json) {
 
 function pickRadomElement(max) {
     return Math.floor(Math.random() * max)
-}   
+}  
+
+_dom.question_length_icon.innerHTML = `${_dom.questionLength / 1000}s `

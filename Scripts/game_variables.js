@@ -13,6 +13,7 @@ const _dom = {
   edit_mode_icon: document.getElementById("eidt-mode-icon"),
   double_points_icon: document.getElementById("double-points-icon"),
   double_time_icon: document.getElementById("double-time-icon"),
+  question_length_icon: document.querySelector("#question-length-icon"),
   countdown_music: new Audio('/assets/countdown.mp3'),
   times_up: new Audio('/assets/times-up.mp3'),
   corret_answer_sound: new Audio('/assets/correct.mp3'),
