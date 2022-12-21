@@ -119,14 +119,21 @@ _dom.edit_mode_icon.onclick = function toggleIcon(e) {
 
 _dom.doublePointsSwitch.onclick = function toggle(event) {
     let clicked = event.target.classList[0]
+    let cells = document.querySelectorAll('.boxes')
+
     if(_dom.doublePointToggled == false && clicked == "settings-toggle-button-three") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        for(i = 0; i < 5; i++) {
-            for(let j = 0; j < 4; j++) {
-                let rxcx = `r${i+1}c${j+1}`
-                doublePointValue(rxcx)
-            }  
-        }
+
+        fetch('./questions.json')
+        .then((response) => response.json())
+        .then((info) => {
+            cells.forEach((element, index) => {
+                if(element.innerHTML != "-") {
+                    element.childNodes[0].textContent = info['questions'][index].bonusValue
+                }
+            })
+        })
+
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
         _dom.double_points_icon.style.display = "block"
@@ -134,12 +141,17 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         
     } else if(_dom.doublePointToggled == true) {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
-        for(i = 0; i < 5; i++) {
-            for(let j = 0; j < 4; j++) {
-                let rxcx = `r${i+1}c${j+1}`
-                revertPointValue(rxcx)
-            }  
-        }
+
+        fetch('./questions.json')
+        .then((response) => response.json())
+        .then((info) => {
+            cells.forEach((element, index) => {
+                if(element.innerHTML != "-") {
+                    element.childNodes[0].textContent = info['questions'][index].value
+                }
+            })
+        })
+
         _dom.default_point_value = 200
         _dom.doublePointToggled = false
         _dom.double_points_icon.style.display = "none"
@@ -148,15 +160,21 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
 }
 
 _dom.double_points_icon.onclick = function toggleIcon() {
+    let cells = document.querySelectorAll('.boxes')
     if(_dom.viewingQuestion == true) {
         systemMessage("You can't disable this setting while viewing a question")
     } else {
-        for(i = 0; i < 5; i++) {
-            for(let j = 0; j < 4; j++) {
-                let rxcx = `r${i+1}c${j+1}`
-                revertPointValue(rxcx)
-            }  
-        }
+        _dom.doublePointsSwitch.setAttribute("name", "radio-button-off-outline")
+        fetch('./questions.json')
+        .then((response) => response.json())
+        .then((info) => {
+            cells.forEach((element, index) => {
+                if(element.innerHTML != "-") {
+                    element.childNodes[0].textContent = info['questions'][index].value
+                }
+            })
+        })
+
         _dom.default_point_value = 200
         _dom.doublePointToggled = false
         _dom.double_points_icon.style.display = "none"
@@ -168,7 +186,7 @@ _dom.take_seconds.onclick = function takeSeconds() {
     _dom.questionLength -= 1000
     if(_dom.questionLength < 4000) {
         _dom.questionLength += 1000
-        systemMessage("Viewing Time cannot be less than 4 seconds")
+        systemMessage("Viewing Time can't be less than 4 seconds")
         return
     } else {
         changeQuestionLengthText()
@@ -179,7 +197,7 @@ _dom.add_seconds.onclick = function addSeconds() {
     _dom.questionLength += 1000
     if (_dom.questionLength > 60000) {
         _dom.questionLength -= 1000
-        systemMessage("Viewing Time cannot be more than 60 seconds")
+        systemMessage("Viewing Time can't be more than 60 seconds")
         return
     } else {
        changeQuestionLengthText()
@@ -196,14 +214,4 @@ function changeQuestionLengthText() {
     
 }
 
-function doublePointValue(rxcx) {
-    let rxcxNode = _rows[rxcx].childNodes[0]
-    if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" + +_rows[rxcx].classList[2] * 2
-}
-
-function revertPointValue(rxcx) {
-    let rxcxNode = _rows[rxcx].childNodes[0]
-    if(rxcxNode.nodeValue != '-') rxcxNode.nodeValue = "$" +_rows[rxcx].classList[2]
-}
-
-export {closeMenu, changeAudio, doublePointValue}
+export {closeMenu, changeAudio}
