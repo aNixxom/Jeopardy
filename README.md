@@ -2,7 +2,7 @@
 
 **This has been my most active project over the past 2 years. Sean Scott helped immensely with the development/motovation of this project**
  
-![image](https://user-images.githubusercontent.com/91269723/200623888-5fed63be-6b7f-4334-a9cd-5a9e8922f834.png)
+![image](https://user-images.githubusercontent.com/91269723/208996717-23370d76-c633-4c08-8210-6eb2cd4e84a8.png)
 *Preview of the game board*
 
 
