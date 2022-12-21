@@ -62,11 +62,13 @@ function saveGame() {
 
     localStorage.setItem('questionLength', _dom.questionLength)
     
+    localStorage.setItem('questionLength', _dom.questionLength)
+    
     systemMessage("Game saved")
 }
 
 function loadSave() {
-
+    
     if(localStorage.length === 0) {
        systemMessage("No saved game found")
        screenShake()

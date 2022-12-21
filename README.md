@@ -6,5 +6,5 @@
 *Preview of the game board*
 
 
-![image](https://user-images.githubusercontent.com/91269723/160221985-61a29408-777b-4dce-a563-8103d48ccf1b.png)
+![image](https://user-images.githubusercontent.com/91269723/202751058-05baf3de-27e0-4893-b4b5-379ff45d2a1d.png)
 *Preview of the new settings menu*
