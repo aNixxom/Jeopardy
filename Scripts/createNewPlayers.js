@@ -107,72 +107,58 @@
         }
     }
 
-    function addSavedPlayer(savedPlayerName, savedPlayerScore) {
-        if(_pVars.total_players >= 7) {
-            screenShake()
-            systemMessage("You can't have more than 7 players")
-            return
-        } else {
-        }
-        
+    function addSavedPlayer(savedPlayerName, savedPlayerScore) {        
         const tr_player_names = document.getElementById('player_names')
         let th_player_name = document.createElement('th') // Creates player name
         let playerName = savedPlayerName
 
-        if(playerName == null || playerName == "" || playerName.length <= 10) { // If player does not enter a name, or they hit cancel return and break the function
-            screenShake()
-            systemMessage('Please enter a valid name')
-            return
-        } else if (playerName != null && playerName != "") {
 
-            _pVars.players_added += 1 // add 1 to player list
-            _pVars.total_players = _pVars.players_added + _pVars.starting_players // new player total 
-            let player_Number = _pVars.total_players.toString()
-            let number_of_players = (` ${player_Number} `)
+        _pVars.players_added += 1 // add 1 to player list
+        _pVars.total_players = _pVars.players_added + _pVars.starting_players // new player total 
+        let player_Number = _pVars.total_players.toString()
+        let number_of_players = (` ${player_Number} `)
 
-            let new_player_score = ("player" + player_Number + "_score")
-            let new_player_name = ("player" + player_Number + "_name")
-            let new_player_buttons = ("player" + player_Number + "_buttons")
-            player_buttons_list.push(new_player_buttons)
-            player_list.push(new_player_score)
-            player_name_list.push(new_player_name)
+        let new_player_score = ("player" + player_Number + "_score")
+        let new_player_name = ("player" + player_Number + "_name")
+        let new_player_buttons = ("player" + player_Number + "_buttons")
+        player_buttons_list.push(new_player_buttons)
+        player_list.push(new_player_score)
+        player_name_list.push(new_player_name)
 
-            current_player_count.innerText = number_of_players
+        current_player_count.innerText = number_of_players
 
-            th_player_name.setAttribute('class', "headers")
-            th_player_name.setAttribute('id', `player${player_Number}_name`)
-            th_player_name.innerText = playerName // sets player name to the table cell
-            tr_player_names.appendChild(th_player_name) // Appends player name to the player name table
+        th_player_name.setAttribute('class', "headers")
+        th_player_name.setAttribute('id', `player${player_Number}_name`)
+        th_player_name.innerText = playerName // sets player name to the table cell
+        tr_player_names.appendChild(th_player_name) // Appends player name to the player name table
 
-            const tr_player_score_text = document.getElementById('player_score_text')
-            let th_player_score_text = document.createElement('th') // Creates player score text (0)
+        const tr_player_score_text = document.getElementById('player_score_text')
+        let th_player_score_text = document.createElement('th') // Creates player score text (0)
 
 
-            th_player_score_text.setAttribute('class', "score_boxes ")
-            th_player_score_text.setAttribute('id', "player" + player_Number + "_score")
-            th_player_score_text.innerText = savedPlayerScore
-            tr_player_score_text.appendChild(th_player_score_text)
+        th_player_score_text.setAttribute('class', "score_boxes ")
+        th_player_score_text.setAttribute('id', "player" + player_Number + "_score")
+        th_player_score_text.innerText = savedPlayerScore
+        tr_player_score_text.appendChild(th_player_score_text)
 
-            const tr_player_score_buttons = document.getElementById('player_score_buttons')
-            let td_player_score_buttons = document.createElement('td')
-            let td_add_button = document.createElement('button') // Creates ADD button for player
-            let td_take_button = document.createElement('button') // Creates TAKE button for player
+        const tr_player_score_buttons = document.getElementById('player_score_buttons')
+        let td_player_score_buttons = document.createElement('td')
+        let td_add_button = document.createElement('button') // Creates ADD button for player
+        let td_take_button = document.createElement('button') // Creates TAKE button for player
 
-            td_add_button.innerText = "ADD"
-            td_add_button.setAttribute('id', `add_p${player_Number}`)
-            td_add_button.setAttribute('class', "points-button")
+        td_add_button.innerText = "ADD"
+        td_add_button.setAttribute('id', `add_p${player_Number}`)
+        td_add_button.setAttribute('class', "points-button")
 
-            td_take_button.innerText = "TAKE"
-            td_take_button.setAttribute('id', `take_p${player_Number}`)
-            td_take_button.setAttribute('class', "points-button")
+        td_take_button.innerText = "TAKE"
+        td_take_button.setAttribute('id', `take_p${player_Number}`)
+        td_take_button.setAttribute('class', "points-button")
 
-            td_player_score_buttons.setAttribute('id', `player${player_Number}_buttons`)
+        td_player_score_buttons.setAttribute('id', `player${player_Number}_buttons`)
 
-            td_player_score_buttons.appendChild(td_add_button) // Appends ADD button to new player
-            td_player_score_buttons.appendChild(td_take_button) // Appends TAKE button to new player
-            tr_player_score_buttons.appendChild(td_player_score_buttons) // Appends TAKE & ADD to MAIN table
-            closeMenu()
-        }
+        td_player_score_buttons.appendChild(td_add_button) // Appends ADD button to new player
+        td_player_score_buttons.appendChild(td_take_button) // Appends TAKE button to new player
+        tr_player_score_buttons.appendChild(td_player_score_buttons) // Appends TAKE & ADD to MAIN table
     }
 
     function takePlayer() {
