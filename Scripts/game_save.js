@@ -4,9 +4,10 @@ let deleteButton = document.getElementById('delete')
 let player_names_table = document.getElementById('player_names')
 let player_score_text = document.getElementById('player_score_text')
 let player_headers = document.getElementsByClassName('headers'), i;
+let cells = document.querySelectorAll('.boxes')
 
 
-import { closeMenu, doublePointValue} from '/Scripts/game_settings.js'
+import { closeMenu } from '/Scripts/game_settings.js'
 import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
 import {_dom, _rows} from '/Scripts/game_variables.js'
 import {_pVars} from '/Scripts/game_variables.js'
@@ -82,12 +83,16 @@ function loadSave() {
 
     if(localStorage.getItem('doublePointToggled') == "true") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        for(i = 0; i < 5; i++) {
-            for(let j = 0; j < 4; j++) {
-                let rxcx = `r${i+1}c${j+1}`
-                doublePointValue(rxcx)
-            }
-        }
+        fetch('./questions.json')
+        .then((response) => response.json())
+        .then((info) => {
+            cells.forEach((element, index) => {
+                if(element.innerHTML != "-") {
+                    element.childNodes[0].textContent = info['questions'][index].bonusValue
+                }
+            })
+        })
+
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
         _dom.double_points_icon.style.display = "block"
