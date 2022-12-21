@@ -3,11 +3,11 @@ let saveButton = document.getElementById('save')
 let deleteButton = document.getElementById('delete')
 let player_names_table = document.getElementById('player_names')
 let player_score_text = document.getElementById('player_score_text')
-let every_class = document.querySelectorAll('*[class]')
 let player_headers = document.getElementsByClassName('headers'), i;
+let cells = document.querySelectorAll('.boxes')
 
 
-import { closeMenu, doublePointValue} from '/Scripts/game_settings.js'
+import { closeMenu } from '/Scripts/game_settings.js'
 import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
 import {_dom, _rows} from '/Scripts/game_variables.js'
 import {_pVars} from '/Scripts/game_variables.js'
@@ -16,12 +16,14 @@ saveButton.addEventListener('click', saveGame)
 loadButton.addEventListener('click', loadSave)
 deleteButton.addEventListener('click', deleteLocalStorage)
 
-if(localStorage.length != 0) {
-    let loadRecentSave = confirm("Load recent save?")
-    if(loadRecentSave == true) {
-        loadSave()
+setTimeout(function() {
+    if(localStorage.length != 0) {
+        let loadRecentSave = confirm("Load recent save?")
+        if(loadRecentSave == true) {
+            loadSave()
+        }
     }
-}
+}, 100)
 
 function saveGame() {
     localStorage.clear()
@@ -33,11 +35,12 @@ function saveGame() {
         localStorage.setItem(player_score_text.children[i].id, player_score_text.children[i].innerHTML)
     }
 
-    for(let i = 0; i < every_class.length; i++) {
-        if(every_class[i].classList.contains('used')) {
-            let question_id = every_class[i].id
-            let question_class = every_class[i].className.slice(-4)
-            localStorage.setItem(question_id, question_class)
+    let used_questions = document.querySelectorAll("[data-used='true']")
+    for(let i = 0; i < used_questions.length; i++) {
+        if(used_questions[i].hasAttribute('data-used')) {
+            let question_id = used_questions[i].id
+            let attribute = used_questions[i].getAttribute('data-used')
+            localStorage.setItem(question_id, attribute)
         }
     }
  
@@ -56,6 +59,8 @@ function saveGame() {
     if(_dom.is_muted == true) {
         localStorage.setItem('audioMuted', true)
     }
+
+    localStorage.setItem('questionLength', _dom.questionLength)
     
     localStorage.setItem('questionLength', _dom.questionLength)
     
@@ -69,36 +74,33 @@ function loadSave() {
        screenShake()
        return
     }
+    
     _dom.questionLength = localStorage.getItem('questionLength')
-    let questionLengthText = localStorage.getItem('questionLength').toString()
-    if(_dom.questionLength >= 10000) {
-        _dom.question_length_text.innerHTML = ` ${questionLengthText.slice(0,2)}s `
-    } else {
-        _dom.question_length_text.innerHTML = ` ${questionLengthText[0]}s `
-    }   
+    _dom.question_length_text.innerHTML = ` ${_dom.questionLength / 1000}s `
+    _dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
 
-    let q_row = document.querySelectorAll('th')
-    q_row.forEach(function(cell) {
+    let rows = document.querySelectorAll('td')
+    rows.forEach(function(cell) {
        for(let i = 0; i < localStorage.length; i++) {
             if(cell.id == localStorage.key(i)) {
-                if(cell.className == 'headers') {
-                    return
-                } else {
-                    cell.style.pointerEvents = 'none'
-                    cell.innerHTML = '-'
-                }
+                cell.innerHTML = "-"
+                cell.setAttribute('data-used', 'true')
             }
        }
     })
 
     if(localStorage.getItem('doublePointToggled') == "true") {
         _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        for(i = 0; i < 5; i++) {
-            for(let j = 0; j < 4; j++) {
-                let rxcx = `r${i+1}c${j+1}`
-                doublePointValue(rxcx)
-            }
-        }
+        fetch('./questions.json')
+        .then((response) => response.json())
+        .then((info) => {
+            cells.forEach((element, index) => {
+                if(element.innerHTML != "-") {
+                    element.childNodes[0].textContent = info['questions'][index].bonusValue
+                }
+            })
+        })
+
         _dom.default_point_value = 400
         _dom.doublePointToggled = true
         _dom.double_points_icon.style.display = "block"
@@ -177,3 +179,5 @@ function deleteLocalStorage() {
             return
         }   
 }
+
+

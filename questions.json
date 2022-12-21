@@ -1,0 +1,169 @@
+{   
+    "headings": [
+        "acronyms",
+        "general it",
+        "windows",
+        "linux"
+    ],
+    "questions": [
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "What does <u>RAM</u> stand for",
+            "answer": "Random Access Memory",
+            "wrong_1": "Random Aquatic Memory",
+            "wrong_2": "Related Access Memory"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "How many <u>BITS</u> make one <u>BYTE</u>",
+            "answer": "8",
+            "wrong_1": "4",
+            "wrong_2": "6"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "What is <u>WINDOWS</u>",
+            "answer": "Operating System",
+            "wrong_1": "Something you look through",
+            "wrong_2": "A computer"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "What is <u>LINUX</u>",
+            "answer": "Operating System",
+            "wrong_1": "YouTuber",
+            "wrong_2": "Video game"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "What does <u>BIOS</u> stand for",
+            "answer": "Basic Input Output System",
+            "wrong_1": "Bold Input Output Server",
+            "wrong_2": "Based Input Output System"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "What is the <u>CLOUD</u>",
+            "answer": "Storage Over The Internet",
+            "wrong_1": "A Grabage Service",
+            "wrong_2": "A night club"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "What made <u>WINDOWS 8</u> so different from <u>WINDOWS 7</u>",
+            "answer": "Both answers",
+            "wrong_1": "Faster boot time",
+            "wrong_2": "Changed to the start menu"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "<u>LINUX</u> is open source",
+            "answer": "True",
+            "wrong_1": "False"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "What does <u>USB</u> stand for",
+            "answer": "Universal Serial Bus",
+            "wrong_1": "Universal Secure Bus",
+            "wrong_2": "Unique Serial Bus"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "A ______ is the registered name of a website",
+            "answer": "Domain",
+            "wrong_1": "URL",
+            "wrong_2": "Source"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "What is the file extension for a <u>Microsoft Word Document</u>",
+            "answer": ".docx",
+            "wrong_1": ".doc",
+            "wrong_2": ".dot"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "Pick one distribution of <u>Linux</u>",
+            "answer": "Both",
+            "wrong_1": "Ubuntu",
+            "wrong_2": "Kali Linux"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "What does <u>NIC</u> stand for",
+            "answer": "Network Interface Card",
+            "wrong_1": "Noise Input Card",
+            "wrong_2": "New Inpit Card"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "How does a <u>Fiber Optic Cable</u> transmit signals",
+            "answer": "Light",
+            "wrong_1": "Death Rays",
+            "wrong_2": "Copper Wires"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "What is one method to open <u>Task Manager</u>",
+            "answer": "CTRL + SHIFT + ESC",
+            "wrong_1": "WIN + TAB",
+            "wrong_2": "WIN + E"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",  
+            "question": "What Command is used to show your <u>IP</u>",
+            "answer": "ifconfig",
+            "wrong_1": "tree",
+            "wrong_2": "ipconfig"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "What does <u>NTFS</u> stand for",
+            "answer": "New Technology File System",
+            "wrong_1": "New Technology File Server",
+            "wrong_2": "New Technology Film Server"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "What type of printer uses <u>Fusing</u>",
+            "answer": "Laser Printer",
+            "wrong_1": "LED Printer",
+            "wrong_2": "InkJet Printer"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "What <u>command-line command</u> clears the console",
+            "answer": "CLS",
+            "wrong_1": "Clear",
+            "wrong_2": "Clean"
+        },
+        {
+            "value": "1000",
+            "bonusValue": "$2000",
+            "question": "Who created <u>Linux</u>",
+            "answer": "Linus Torvalds",
+            "wrong_1": "Bill Gates",
+            "wrong_2": "Linus Sebastian"
+        }
+    ]
+}

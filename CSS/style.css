@@ -158,6 +158,16 @@ ion-icon:hover {
     cursor: pointer;
 }
 
+.text-icon {
+    font-size: 2.7rem;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    height: 48px;
+    width: 48px;
+    text-align: center;
+}
+
 .settings-menu {
     display: none;
     margin: auto;
@@ -311,21 +321,21 @@ table.player-info-table {
     font-size: 3vw;
     border-radius: var(--global-border-radius);
     width: 25%;
-    border: var(--global-box-borders);
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     text-align: center;
     background-color: var(--theme-blue-box-background-color);
     color: white;
     padding: 5px;
+    border: var(--global-box-borders)
 }
 
 .headers-edit:hover{ 
     border: solid red 2px;
 }
 
-.headers > th {
-    border: var(--global-box-borders);
+.headers > td {
+    border: var(--global-box-borders)
 }
 
 .boxes {
@@ -338,6 +348,7 @@ table.player-info-table {
     color: var(--theme-blue-points-color);
     cursor: pointer;
     transition: transform 2s;
+    text-align: center;
 }
 
 .boxes:hover {
