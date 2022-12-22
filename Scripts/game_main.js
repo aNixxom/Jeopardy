@@ -1,120 +1,159 @@
 import {_dom} from '/Scripts/game_variables.js'
 
-let every_id = document.querySelectorAll('*[id]')
+let cell
 
-const stopAnimation = () => { // Progress Bar animation event (end)
-    const progressBar = document.querySelectorAll(".timer-bar")
-    for (let i = 0; i < progressBar.length;  i++) {
-        progressBar[i].removeAttribute("id", 'play-timer-animation');
-        _dom.main.style.visibility = "visible"
-        _dom.viewingQuestion = false
-        stopMusic(_dom.countdown_music)
-        if(_dom.correct_answer == true && _dom.answered_question == true) {
-            _dom.corret_answer_sound.play() 
-        } else if(_dom.correct_answer != true) {
-            _dom.times_up.play()
-        }
-    }
-}
+const game_table = document.createElement('table')
+game_table.setAttribute('id', 'main_table')
+game_table.setAttribute('class', 'main_table')
+game_table.addEventListener('click', function(event) {
+    let clicked_box = event.target
+    if(event.target.hasAttribute('data-question')) {
+        _dom.viewingQuestion = true
+        _dom.answered_question = false
 
-const playAnimation = ()  => { // Progress Bar animation event (start)
-    const progressBar = document.querySelectorAll(".timer-bar") // Gets all the questions with ".timer-bar"
-    for (var i = 0; i < progressBar.length;  i++) {
-        if(_dom.doubleTimeCheatEnabled == true) {
-            _dom.countdown_music.play()
-            progressBar[i].setAttribute("id", 'play-timer-animation-double');
-        } else if(_dom.doubleTimeCheatEnabled == false) {
-            _dom.countdown_music.play()
-            progressBar[i].removeAttribute("id", 'play-timer-animation-double')
-            progressBar[i].setAttribute("id", 'play-timer-animation');
-        }
-    }
-}
-
-window.addEventListener('click', function(event){
-    const clicked_element = document.getElementById(event.target.id) // $
-
-    for (let i = 0; i < every_id.length; i++) {
-        try {
-            if(clicked_element.classList[1] == every_id[i].id) {
-                const question_id = clicked_element.classList[1]
-                const question = document.getElementById(question_id)
-                let choices = question.children[1]
-                
-                question.setAttribute('class', 'questions animate__animated animate__zoomIn')
-
-                _dom.viewingQuestion = true
-                _dom.main.style.visibility = "hidden"
-                question.style.visibility = "visible"
-                question.style.top = "0px"
-                question.style.right = "0px"
-
-                if(_dom.viewingQuestion == true) {
-                    _dom.double_time_icon.style.cursor = "not-allowed"
-                    _dom.edit_mode_icon.style.cursor = "not-allowed"
-                    _dom.double_points_icon.style.cursor = "not-allowed"
-                    _dom.menu_button.style.cursor = "not-allowed"
-                }
-
-                choices.addEventListener('click', function(event) {
-                    let clicked_answer = event.target
-                    if(_dom.viewingQuestion == true && question_id) {
-                        if(clicked_answer.id.includes(question_id)) {
-                            _dom.correct_answer = true
-                            _dom.answered_question = true
-
-                            exitQuestion()
-
-                            _dom.correct_answer = false //reset for next question
-                        } else if(!clicked_answer.id.includes(question_id)) { //if user did not  select right answer 
-                            _dom.correct_answer = false // set to false to the times_up.mp3 will not play
-                            _dom.answered_question = true // set to true to prevent animations from running more than once
-                            exitQuestion()
-                            _dom.correct_answer = false // reset for next question
-                        } else {
-                            console.log("What the fuck")
-                        }
-                    }
-                })
-
-                setTimeout(playAnimation())
-                setTimeout(showQuestion, _dom.questionLength)
-
-                function showQuestion() {
-                    if(_dom.answered_question == true) {
-                       return
-                    } else if(_dom.answered_question != true) {
-                        exitQuestion()
-                    }
-                }
-
-                function exitQuestion() {
-                    let question_number = clicked_element.classList[1]
-                    let question_value = clicked_element.classList[2]
-                    
-                    stopAnimation()
-                    question.style.visibility = "hidden"
-                    clicked_element.innerText = "-"
-                    clicked_element.style.pointerEvents = "none"
-                    clicked_element.setAttribute('class', `boxes ${question_number} ${question_value} used`)
+        let clicked_question = event.target.children[0]
+        let question_timer = clicked_question.children[2].children[0]
+        let choices = clicked_question.children[1]
         
-                    _dom.viewingQuestion = false
-                    _dom.menu_button.style.cursor = "pointer"
-                    _dom.double_time_icon.style.cursor = "pointer"
-                    _dom.edit_mode_icon.style.cursor = "pointer"
-                    _dom.double_points_icon.style.cursor = "pointer"
-                }
-          }
-        } catch(error) {
+        question_timer.setAttribute('id', "play-timer-animation")
+        document.getElementById('play-timer-animation').style.animationDuration = _dom.questionLength/ 1000 + "s"
 
+        _dom.main.style.visibility = "hidden"
+        clicked_question.style.visibility = "visible"
+        clicked_question.style.right = "0px"
+        clicked_question.style.left = "0px"
+        clicked_question.style.top = "0px"
+
+        _dom.double_time_icon.style.cursor = "not-allowed"
+        _dom.edit_mode_icon.style.cursor = "not-allowed"
+        _dom.double_points_icon.style.cursor = "not-allowed"
+        _dom.menu_button.style.cursor = "not-allowed"
+
+        choices.addEventListener('click', function(event) {
+            let clicked_answer = event.target
+            if(clicked_answer.getAttribute('data-choices') === 'answer' && _dom.viewingQuestion === true) {
+                _dom.answered_question = true
+                _dom.corret_answer_sound.play() 
+                exitQuestion()
+            } else if(clicked_answer.getAttribute('data-choice') != 'answer') {
+                _dom.answered_question = true
+                _dom.times_up.play()
+                exitQuestion()
+            }
+        })
+
+        document.getElementById("play-timer-animation").addEventListener("animationend", function(event) {
+            if(_dom.answered_question == false) {
+                _dom.times_up.play()
+                exitQuestion()
+            }
+        })
+        function exitQuestion() {
+            clicked_box.innerHTML = "-"
+            clicked_box.pointerEvents = "none"
+            _dom.main.style.visibility = "visible"
+
+            _dom.viewingQuestion = false
+            clicked_question.style.visibility 
+            _dom.double_time_icon.style.cursor = "pointer"
+            _dom.edit_mode_icon.style.cursor = "pointer"
+            _dom.double_points_icon.style.cursor = "pointer"
+            _dom.menu_button.style.cursor = "pointer"
         }
-  }
-});
+    }
+})
 
-function stopMusic(sound) {
-    sound.pause()
-    sound.currentTime = 0
+for (let i = 0; i < 5; i++) {
+    let rows = game_table.insertRow(i)
+    rows.id = `${i + 1}r${i + 1}c`
+    
+    for(let y = 0; y < 4; y++) {
+
+        cell = rows.insertCell(y)
+        cell.id = `r${i + 1}c${y + 1}`
+        cell.innerText = cell.id 
+        cell.setAttribute('class', 'boxes')
+        cell.setAttribute('data-question', 'box')
+
+        const question = document.createElement('div')
+        const question_p = document.createElement('p')
+        const choices = document.createElement('div')
+        const timer_container = document.createElement('div')
+        const timer_bar = document.createElement('div')
+
+        for(let k = 0; k < 3; k++) {
+            const choices_option = document.createElement('p')
+            choices_option.innerHTML = `${k}`   
+            choices.setAttribute('data-choice', 'choice')
+            choices.appendChild(choices_option)
+        }
+
+        timer_bar.setAttribute('class', "timer-bar")
+        timer_container.setAttribute('class', "timer-container")
+        choices.setAttribute('class', "choices")
+        question_p.setAttribute('class', "question-color")
+        question.setAttribute('class', "questions")
+
+        timer_container.appendChild(timer_bar)
+        question.appendChild(question_p)    
+        question.appendChild(choices)
+        question.appendChild(timer_container)
+        cell.appendChild(question)
+
+    }
+} _dom.main.insertBefore(game_table, document.getElementById('player-info-table'))
+
+let headers = game_table.insertRow(0)
+headers.setAttribute('class', 'headers')
+for(let i = 0; i < 4; i++) {
+    headers.insertCell()
 }
 
+let choices = document.querySelectorAll('[data-choice="choice"]')
+let cells = document.querySelectorAll('.boxes')
+let questions = document.querySelectorAll('.questions')
 
-export{stopAnimation}
+questions.forEach((element, index) => {
+    element.id = `q${index + 1}`
+})
+
+fetch('./questions.json')
+    .then((response) => response.json())
+    .then((info) => {
+        for(let i = 0; i < info['headings'].length; i++) {
+            headers.children[i].innerHTML = info['headings'][i]
+        }
+
+        cells.forEach((element, index) => {
+            element.childNodes[0].textContent = info['questions'][index].value
+            element.childNodes[1].children[0].innerHTML = info['questions'][index]['question']
+        })
+        choices.forEach((element, index) => {
+            getRandomOptionSlot(element, index, 'answer', info)
+            getRandomOptionSlot(element, index, 'wrong_1', info)
+            getRandomOptionSlot(element, index, 'wrong_2', info)
+        })
+    })
+
+function getRandomOptionSlot(element, index, option, json) {
+    let pickedSlot = element.children[pickRadomElement(3)]
+    let pickedValidSlot = false
+    do {
+        if(pickedSlot.hasAttribute('data-choices', 'correct') || pickedSlot.hasAttribute('data-choices', 'wrong_1')) {
+            pickedSlot = element.children[pickRadomElement(3)]
+        } else {
+            pickedValidSlot = true
+            pickedSlot.innerHTML = json['questions'][index][`${option}`]
+            if(pickedSlot.innerHTML === "undefined") {
+                pickedSlot.remove()
+            }
+            pickedSlot.setAttribute('data-choices', `${option}`)
+        }
+    }
+    while (pickedValidSlot == false)
+}
+
+function pickRadomElement(max) {
+    return Math.floor(Math.random() * max)
+}  
+_dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
