@@ -9,6 +9,7 @@ game_table.addEventListener('click', function(event) {
     let clicked_box = event.target
     if(event.target.hasAttribute('data-question')) {
         _dom.viewingQuestion = true
+        _dom.answered_question = false
 
         let clicked_question = event.target.children[0]
         let question_timer = clicked_question.children[2].children[0]
@@ -30,39 +31,30 @@ game_table.addEventListener('click', function(event) {
 
         choices.addEventListener('click', function(event) {
             let clicked_answer = event.target
-            if(clicked_answer.getAttribute('data-choices') === 'answer') {
-                _dom.correct_answer = true
+            if(clicked_answer.getAttribute('data-choices') === 'answer' && _dom.viewingQuestion === true) {
                 _dom.answered_question = true
                 _dom.corret_answer_sound.play() 
-
                 exitQuestion()
-                _dom.answered_question = false
             } else if(clicked_answer.getAttribute('data-choice') != 'answer') {
-                _dom.correct_answer = false
                 _dom.answered_question = true
                 _dom.times_up.play()
-
                 exitQuestion()
             }
         })
 
-        setTimeout(function() {
-            if(_dom.answered_question == true ) {
-                _dom.answered_question = false
-                return
-            } else {
+        document.getElementById("play-timer-animation").addEventListener("animationend", function(event) {
+            if(_dom.answered_question == false) {
+                _dom.times_up.play()
                 exitQuestion()
             }
-
-        }, _dom.questionLength)
-
+        })
         function exitQuestion() {
             clicked_box.innerHTML = "-"
             clicked_box.pointerEvents = "none"
             _dom.main.style.visibility = "visible"
 
-            clicked_question.style.visibility 
             _dom.viewingQuestion = false
+            clicked_question.style.visibility 
             _dom.double_time_icon.style.cursor = "pointer"
             _dom.edit_mode_icon.style.cursor = "pointer"
             _dom.double_points_icon.style.cursor = "pointer"
