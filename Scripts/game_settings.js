@@ -48,40 +48,6 @@ _dom.mute_button.onclick = function () { changeAudio() }
 _dom.unmute_button.onclick = function () { changeAudio() }
 _dom.menu_button.onclick = function () { openMenu() }
 
-_dom.doubleTimeSwitch.onclick = function toggle(event) {
-    let clicked = event.target.classList[0]
-    if(_dom.doubleTimeCheatEnabled == false && clicked == "settings-toggle-button-one") {
-        _dom.doubleTimeSwitch.setAttribute("name", "radio-button-on-outline")
-        _dom.doubleTimeCheatEnabled = true
-        _dom.double_time_icon.style.display = "block"
-        _dom.double_time_icon.setAttribute("title", "Disable Double Time")
-        systemMessage("Enabled Double Time")
-        _dom.questionLength = 12000
-        let questionLengthText = _dom.questionLength.toString()
-        _dom.question_length_text.innerHTML = ` ${questionLengthText.slice(0,2)}s `
-    } else if(_dom.doubleTimeCheatEnabled == true && clicked == "settings-toggle-button-one" ) {
-        _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
-        _dom.doubleTimeCheatEnabled = false
-        _dom.questionLength = 6000
-        _dom.double_time_icon.style.display = "none"
-        let questionLengthText = _dom.questionLength.toString()
-        _dom.question_length_text.innerHTML = ` ${questionLengthText[0]}s `
-        systemMessage("Disabled Double Time")
-    }
-}
-
-_dom.double_time_icon.onclick = function toggleIcon(e) {
-    if(_dom.viewingQuestion == true) {
-        systemMessage("You can't disable this setting while viewing a question")
-    } else {
-        _dom.doubleTimeSwitch.setAttribute("name", "radio-button-off-outline")
-        _dom.doubleTimeCheatEnabled = false
-        _dom.questionLength = 6000
-        _dom.double_time_icon.style.display = "none"
-        systemMessage("Disabled Double Time")
-    }
-}
-
 _dom.editModeSwitch.onclick = function toggle(event) {
     let clicked = event.target.classList[0]
     if(_dom.editModeToggled == false && clicked == "settings-toggle-button-two") {
