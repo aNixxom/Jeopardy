@@ -167,6 +167,8 @@ ion-icon:hover {
     margin-right: 10%;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    margin: 0;
 }
 
 p.settings-header {
@@ -187,7 +189,7 @@ div.settings-container {
     letter-spacing: 1px;
     background-color: #010a78;
     color: #d7a04b;
-    width: 50%;
+    width: 100%;
 }
 
 div.settings-container.top {
