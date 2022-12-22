@@ -73,6 +73,7 @@ input[type=text] {
     visibility: hidden;
     text-align: center;
     border: 2px solid #d7a04b;
+    border-radius: 4px;
 }
 
   
