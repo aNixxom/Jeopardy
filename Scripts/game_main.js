@@ -33,10 +33,12 @@ game_table.addEventListener('click', function(event) {
             let clicked_answer = event.target
             if(clicked_answer.getAttribute('data-choices') === 'answer' && _dom.viewingQuestion === true) {
                 _dom.answered_question = true
-                _dom.corret_answer_sound.play() 
+                stopAudio(_dom.corret_answer_sound)
+                _dom.corret_answer_sound.play()
                 exitQuestion()
             } else if(clicked_answer.getAttribute('data-choice') != 'answer') {
                 _dom.answered_question = true
+                stopAudio(_dom.times_up)
                 _dom.times_up.play()
                 exitQuestion()
             }
@@ -155,5 +157,10 @@ function getRandomOptionSlot(element, index, option, json) {
 
 function pickRadomElement(max) {
     return Math.floor(Math.random() * max)
-}  
+}
+
+function stopAudio(audio) {
+    audio.pause()
+    audio.currentTime = 0
+}
 _dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
