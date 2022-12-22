@@ -16,7 +16,7 @@ game_table.addEventListener('click', function(event) {
         let choices = clicked_question.children[1]
         
         question_timer.setAttribute('id', "play-timer-animation")
-        document.getElementById('play-timer-animation').style.animationDuration = _dom.questionLength/ 1000 + "s"
+        question_timer.style.animationDuration = _dom.questionLength/ 1000 + "s"
 
         _dom.main.style.visibility = "hidden"
         clicked_question.style.visibility = "visible"
@@ -44,7 +44,7 @@ game_table.addEventListener('click', function(event) {
             }
         })
 
-        document.getElementById("play-timer-animation").addEventListener("animationend", function(event) {
+        question_timer.addEventListener("animationend", function(event) {
             if(_dom.answered_question == false) {
                 _dom.times_up.play()
                 exitQuestion()
