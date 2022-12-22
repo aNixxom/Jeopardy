@@ -18,9 +18,9 @@
             "value": "$200",
             "bonusValue": "$400",
             "question": "How many <u>BITS</u> make one <u>BYTE</u>",
-            "answer": "8",
-            "wrong_1": "4",
-            "wrong_2": "6"
+            "answer": "8 bytes",
+            "wrong_1": "4 bytes",
+            "wrong_2": "6 bytes"
         },
         {
             "value": "$200",

@@ -91,21 +91,12 @@ input[type=text] {
 }
   
 #play-timer-animation {
-    animation: timer-bar-animation 6s  1;
+    animation: timer-bar-animation 6s  1 linear;
 }
 
-#play-timer-animation-double {
-    animation: timer-bar-animation-double 12s 1;
-}
-  
 @keyframes timer-bar-animation {
     0% {width: 0%}
     100% {width: 100%}
-}
-
-@keyframes timer-bar-animation-double {
-    0% {width: 0%;}
-    100% {width: 100%;}
 }
 
 .choices {
