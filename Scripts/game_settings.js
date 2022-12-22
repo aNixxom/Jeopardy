@@ -200,7 +200,7 @@ _dom.add_seconds.onclick = function addSeconds() {
     if (_dom.questionLength > 60000) {
         _dom.questionLength -= 1000
         systemMessage("Viewing time can't be more than 60 seconds")
-        screenShake()
+        screenShake() 
         return
     } else {
         _dom.question_length_text.innerHTML = ` ${_dom.questionLength / 1000}s `
