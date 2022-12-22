@@ -25,10 +25,10 @@
         {
             "value": "$200",
             "bonusValue": "$400",
-            "question": "What is <u>WINDOWS</u>",
-            "answer": "Operating System",
-            "wrong_1": "Something you look through",
-            "wrong_2": "A computer"
+            "question": "This company created the <u>Windows <br> operating system</u>",
+            "answer": "Microsoft",
+            "wrong_1": "Apple",
+            "wrong_2": "Intel"
         },
         {
             "value": "$200",
