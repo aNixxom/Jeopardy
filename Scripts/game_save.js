@@ -60,9 +60,7 @@ function saveGame() {
         localStorage.setItem('audioMuted', true)
     }
 
-    localStorage.setItem('questionLength', _dom.questionLength)
-    
-    localStorage.setItem('questionLength', _dom.questionLength)
+    localStorage.setItem('questionLength', _dom.questionLength)   
     
     systemMessage("Game saved")
 }
