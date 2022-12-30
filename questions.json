@@ -158,7 +158,7 @@
             "wrong_2": "Clean"
         },
         {
-            "value": "1000",
+            "value": "$1000",
             "bonusValue": "$2000",
             "question": "Who created <u>Linux</u>",
             "answer": "Linus Torvalds",
