@@ -24,7 +24,6 @@ game_table.addEventListener('click', function(event) {
         clicked_question.style.left = "0px"
         clicked_question.style.top = "0px"
 
-        _dom.double_time_icon.style.cursor = "not-allowed"
         _dom.edit_mode_icon.style.cursor = "not-allowed"
         _dom.double_points_icon.style.cursor = "not-allowed"
         _dom.menu_button.style.cursor = "not-allowed"
@@ -57,7 +56,6 @@ game_table.addEventListener('click', function(event) {
 
             _dom.viewingQuestion = false
             clicked_question.style.visibility 
-            _dom.double_time_icon.style.cursor = "pointer"
             _dom.edit_mode_icon.style.cursor = "pointer"
             _dom.double_points_icon.style.cursor = "pointer"
             _dom.menu_button.style.cursor = "pointer"
