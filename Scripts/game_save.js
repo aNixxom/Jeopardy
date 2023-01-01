@@ -148,14 +148,9 @@ function loadSave() {
         document.getElementById(player_score_text.children[i].id).innerText = localStorage.getItem(player_score_text.children[i].id)
     }
 
-    _dom.p1_score = localStorage.getItem('player1_score')
-    _dom.p2_score = localStorage.getItem('player2_score')
-    _dom.p3_score = localStorage.getItem('player3_score')
-    _dom.p4_score = localStorage.getItem('player4_score')
-    _dom.p5_score = localStorage.getItem('player5_score')
-    _dom.p6_score = localStorage.getItem('player6_score')
-    _dom.p7_score = localStorage.getItem('player7_score')
-
+    for(let i=0; i < 7; i++) {
+        _dom[`p${i + 1}_score`] = localStorage.getItem(`player${i}_score`)
+    }
      _dom.loadedGame = true
 
     systemMessage("Loaded Save")
