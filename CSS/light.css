@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
 
     /*Gray Theme*/
@@ -6,108 +9,94 @@
     --theme-gray-points-color: white;
     --theme-gray-text-color: white;
     --theme-gray-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    --theme-gray-white: white;
+    --theme-gray-gray: #808080;
+    --theme-gray-outline: 2px solid white;
+    --theme-gray-border: 2px solid white;
+    --theme-gray-button-active: #9C9999;
 
     /* Global Styling */
-    --global-box-font-size: 58px;
-    --global-box-borders: black solid 2px;
+    --global-box-font-size: 4vw;
+    --global-box-borders: black solid 3px;
     --global-border-radius: 4px;
+
+    user-select: none;
+    overflow: hidden;
 }
 
-.notifications {
-    background-color: orangered;
-    text-align: center;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 25px;
-    border-radius: 5px;
-    user-select: none;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+.input-menu {
     display: none;
-    font-weight: bolder;
-  }
+}
 
-
-
-  .input-menu {
-    display: none;
-  }
-
-  input[type=text] {
-
+input[type=text] {
     text-align: center;
     outline: none;
     border-color: black;
-    width: 20%;
     padding-top: 0em;
-    margin-left: 40%;
-    margin-right: 40%;
     font-size: 30px;
     border-radius: 4px;
-  }
+}
 
-  .context-menu{
+.context-menu{
     display: none;
-    user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     border-radius: 5px;
     width:150px;
-    background: white;
+    background: var(--theme-gray-gray);
+    border: var(--theme-gray-border);
+    color: white;
     padding:5px;
     opacity :0;
-    }
-  .context-menu div{
+}
+.context-menu div{
     border-radius: 4px;
+    border: solid transparent 2px;
     padding: 2px;
     background-color: gay;
-    }
+}
 
-    .context-menu div.top-context-menu {
-      border-bottom-color: red;
-    }
 
-  .context-menu div:hover{
-    background:#B7B3B3;
-    cursor:pointer;
-  }
+.context-menu div:hover{
+    border: var(--theme-gray-border);
+    cursor:pointer;  
+}
 
   /* GAME QUESTION */
 
 .questions {
+    text-shadow:2px 2px black;
     font-size: 58px;
     position: absolute;
-    background-color: #808080;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    border-radius: 4px;
-    color:var(--theme-gray-font);
+    background-color: var(--theme-gray-gray);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--theme-gray-white);
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 12%;
     visibility: hidden;
-    user-select: none;
     text-align: center;
+    border: var(--theme-gray-border);
+    border-radius: 4px;
 }
 
-.question-color {
-    color: white
-}
+  
 .timer-container {
     height: 25px;
-    background-color:#808080;
     position: relative;
 }
-
+  
 .timer-container .timer-bar {
     position: absolute;
     height: 100%;
-    background-color: var(--theme-gray-text-color);
+    background-color: var(--theme-gray-white);
+    
 }
-
+  
 #play-timer-animation {
-    animation: timer-bar-animation 6s  1;
+    animation: timer-bar-animation 6s  1 linear;
 }
 
 @keyframes timer-bar-animation {
@@ -115,6 +104,26 @@
     100% {width: 100%}
 }
 
+.choices {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.choices > p {
+    margin: 0;
+    margin-bottom: 10px;    
+    outline: var(--theme-gray-outline);
+    border-radius: 4px;
+    margin: 10px;
+    padding: 0.5em;
+}
+
+.choices >p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 /* GAME SETTINGS */
 
@@ -130,7 +139,30 @@
 
 ion-icon {
     color: white;
-    font-size: 50px;
+    font-size: 50px
+}
+
+ion-icon:hover {
+  cursor: pointer;
+}
+
+.icon {
+    text-align: right;
+    margin-right: 10px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.text-icon {
+    font-size: 2.7rem;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    height: 48px;
+    width: 48px;
+    text-align: center;
 }
 
 .settings-menu {
@@ -138,24 +170,31 @@ ion-icon {
     margin: auto;
     margin-left: 10%;
     margin-right: 10%;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
 }
 
 p.settings-header {
     text-align: center;
-    padding-left:10px;
     font-size: 50px;
     color: var(--theme-gray-settings-header-color);
-    font-family: var(--theme-gray-font);
-    user-select: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0px;
 }
 div.settings-container {
     border-radius: var(--global-border-radius);
     margin-left: 25%;
     margin-right: 25%;
-    font-family: var(--theme-gray-font);
-    background-color: #808080;
-    user-select: none;
-    color: var(--theme-gray-text-color);
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    background-color: var(--theme-gray-gray);
+    color: var(--theme-gray-white);
+    width: 100%;
 }
 
 div.settings-container.top {
@@ -168,17 +207,25 @@ div.settings-container.top {
 }
 
 .player-number-counter {
-    color:var(--theme-gray-text-color);
+    color: var(--theme-gray-points-color);
     cursor: default;
-    text-decoration: none;
 }
 
 .settings-container.bottom {
     border-radius: 0;
 }
 
+#current-theme {
+    text-transform: capitalize;
+}
+
 .flex-container {
+    justify-content: center;
     display: flex;
+}
+
+.flex-container > button {
+    border-spacing: 10px;
 }
 
 .settings-option {
@@ -188,6 +235,11 @@ div.settings-container.top {
     padding-bottom: 3%;
     font-size: 50px;
 }
+
+.settings-center {
+    text-align: center;
+}
+
 
 .toggle-button {
     position: relative;
@@ -201,6 +253,10 @@ div.settings-container.top {
     color: white;
     cursor: pointer;
 }
+
+/* .toggle-button > ion-icon.settings-toggle-button-four:active {
+    display: none;
+} */
 
 .dropdown {
     position: relative;
@@ -235,14 +291,15 @@ div.settings-container.top {
 
 body {
     background-color: black;
-    overflow: hidden;
-  }
-
-#main {
-    visibility: visible;
+    border: 2px transparent solid;
+    margin: auto;
+    height: 99.5vh;
 }
 
-
+#main {
+    animation: fadein 0.5s;
+    visibility: visible;
+}
 
 .main_table {
     table-layout: fixed;
@@ -253,7 +310,7 @@ body {
     background-color: black;
     border-radius: 5px;
 }
-
+  
 table.player-info-table {
     table-layout: fixed;
     width: 100%;
@@ -261,28 +318,44 @@ table.player-info-table {
 }
 
 
-.headers {
-    font-size: 60px;
+.headers, .headers-category {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 3vw;
     border-radius: var(--global-border-radius);
     width: 25%;
-    border: var(--global-box-borders);
-    user-select: none;
-    font-family: var(--theme-gray-font);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     text-align: center;
     background-color: var(--theme-gray-box-background-color);
     color: white;
     padding: 5px;
+    border: var(--global-box-borders)
+}
+
+.headers-edit:hover{ 
+    border: solid red 2px;
+}
+
+.headers > td {
+    border: var(--global-box-borders)
 }
 
 .boxes {
+    letter-spacing: 1px;
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    user-select: none;
-    font-family: var(--theme-gray-font);
+    font-family: 'Roboto', sans-serif;
     background-color: var(--theme-gray-box-background-color);
     color: var(--theme-gray-points-color);
     cursor: pointer;
+    transition: transform 2s;
+    text-align: center;
+}
+
+.boxes:hover {
+    border-color: var(--theme-gray-white);
 }
 
 .score_boxes {
@@ -290,8 +363,8 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    user-select: none;
-    font-family: var(--theme-gray-font);
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
     background-color: var(--theme-gray-box-background-color);
     color: var(--theme-gray-points-color);
 }
@@ -300,29 +373,78 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    user-select: none;
     font-family: var(--theme-gray-global-font);
     background-color: var(--theme-gray-box-background-color);
-    color: var(--theme-gray-gray-color);
+    color: var(--theme-gray-points-color);
 }
-
 
 tr.player_score_buttons {
     text-align: center;
 }
 
-button {
+.points-button,.data-button{
+    margin: 2px;
+    text-transform: uppercase;
     background-color: var(--theme-gray-box-background-color);
-    border: none;
-    outline: none;
+    border: 2px solid transparent;
+    box-sizing: border-box;
     color: var(--theme-gray-points-color);
     font-size: 20px;
     border-radius: 2px;
-    font-family: var(--theme-gray-font);
-    padding-left: 10px;
-    padding-right: 10px;
-    user-select: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding: 0 10px;
     cursor: pointer;
 }
 
+button:hover {
+    border-color: var(--theme-gray-white);
+}
 
+button:active {
+    background-color: var(--theme-gray-button-active);
+}
+
+button#load, button#save, button#delete{
+    margin-top: 4px;
+    margin-left: 3px;
+}
+
+button#delete:hover {
+    color: red;
+    border: red solid 2px;
+    transform: scale(1);
+}
+
+#popup {
+    background-color: var(--theme-gray-box-background-color);
+    border: var(--theme-gray-border);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    display: none;
+    min-width: 250px;
+    margin-left: -125px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#popup.show {
+    display: block;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+  
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

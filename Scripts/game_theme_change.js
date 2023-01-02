@@ -1,45 +1,33 @@
-import {_dom} from '/Scripts/game_variables.js'
+import {_dom, _themes} from '/Scripts/game_variables.js'
 
-let current_theme = document.getElementById('current-theme')
 let stylesheet = document.getElementById('stylesheet')
-let themes = [
-    "light-theme-option",
-    "dark-theme-option",
-    "default-theme-option"
-]
+let previous_theme_button = document.getElementById('previous-theme')
+let next_theme_button = document.getElementById('next-theme')
+let current_theme = document.getElementById('current-theme')
 
+next_theme_button.addEventListener('click', nextTheme)
+previous_theme_button.addEventListener('click', previousTheme)
 
-
-window.addEventListener('click', changeTheme)
-current_theme.addEventListener('mouseover', showThemeMenu)
-
-function changeTheme(e) {
-    //console.log(e.target.id);
-
-    for(let i = 0; i < themes.length; i++) {
-        if (e.target.id == themes[i]) { // If clicked element is a valid theme 
-            if(e.target.id == themes[0]) {
-                setStyleSheet('CSS/light.css')
-                _dom.colorTheme = "Light"
-                document.getElementById('current-theme').innerText = _dom.colorTheme
-                hideThemeMenu()
-            } else if(e.target.id = themes[1]) {
-                setStyleSheet('CSS/style.css')
-                _dom.colorTheme = "Default"
-                document.getElementById('current-theme').innerText = _dom.colorTheme
-            }
-        }
+function nextTheme() {
+    if(_dom.current_stylesheet + 1 >= _themes.length) {
+        return
+    } else if (_dom.current_stylesheet < _themes.length) {
+        _dom.current_stylesheet += 1
     }
+    setStyleSheet(_themes[_dom.current_stylesheet])
 }
 
-function showThemeMenu() {
-    theme_list.style.display = "block"
+function previousTheme() {
+    if(_dom.current_stylesheet < _themes.length && _dom.current_stylesheet - 1 != -1) {
+        _dom.current_stylesheet -= 1
+    }
+    setStyleSheet(_themes[_dom.current_stylesheet])
 }
-
-function hideThemeMenu() {
-    theme_list.style.display = "none"
-}   
 
 function setStyleSheet(url) {
   stylesheet.setAttribute('href', url)
+  let themeText = _themes[_dom.current_stylesheet].split(/[/.]/)
+  _dom.current_theme.innerText = ` ${themeText[1]} `
 }
+
+ export {setStyleSheet}

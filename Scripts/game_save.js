@@ -11,6 +11,8 @@ import { closeMenu } from '/Scripts/game_settings.js'
 import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
 import {_dom, _rows} from '/Scripts/game_variables.js'
 import {_pVars} from '/Scripts/game_variables.js'
+import { _themes } from '/Scripts/game_variables.js'
+import { setStyleSheet } from '/Scripts/game_theme_change.js'
 
 saveButton.addEventListener('click', saveGame)
 loadButton.addEventListener('click', loadSave)
@@ -43,11 +45,7 @@ function saveGame() {
             localStorage.setItem(question_id, attribute)
         }
     }
- 
-    if(_dom.doubleTimeCheatEnabled == true) {
-        localStorage.setItem('doubleTimeCheatEnabled', true)
-    }
-
+    
     if(_dom.editModeToggled == true ) {
         localStorage.setItem('editModeToggled', true)
     }
@@ -61,6 +59,8 @@ function saveGame() {
     }
 
     localStorage.setItem('questionLength', _dom.questionLength)   
+    localStorage.setItem('theme', _themes[_dom.current_stylesheet])
+    localStorage.setItem('currentStyleSheet', _dom.current_stylesheet)
     
     systemMessage("Game saved")
 }
@@ -104,13 +104,6 @@ function loadSave() {
         _dom.double_points_icon.style.display = "block"
     }
 
-    if(localStorage.getItem('doubleTimeCheatEnabled') == "true") {
-        _dom.doubleTimeSwitch.setAttribute("name", "radio-button-on-outline")
-        _dom.doubleTimeCheatEnabled = true
-        _dom.double_time_icon.style.display = "block"
-            
-        _dom.questionLength = 12000
-    }
 
     if(localStorage.getItem('editModeToggled') == "true") {
         _dom.editModeSwitch.setAttribute("name", "radio-button-on-outline")
@@ -149,9 +142,14 @@ function loadSave() {
     }
 
     for(let i=0; i < 7; i++) {
-        _dom[`p${i + 1}_score`] = localStorage.getItem(`player${i}_score`)
+        _dom[`p${i + 1}_score`] = localStorage.getItem(`player${i + 1}_score`)
     }
-     _dom.loadedGame = true
+
+    setStyleSheet(localStorage.getItem('theme'))
+    let themeText = _themes[localStorage.getItem('currentStyleSheet')].split(/[/.]/)
+    _dom.current_theme.innerText = ` ${themeText[1]} `
+
+    _dom.loadedGame = true
 
     systemMessage("Loaded Save")
     closeMenu()

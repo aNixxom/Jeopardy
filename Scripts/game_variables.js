@@ -37,6 +37,8 @@ const _dom = {
   isOpen: false, // Default false
   inputMenuOpen: false, // Default false
   double_time_cheat: document.getElementById("double-time-cheat"),
+  current_stylesheet: 0,
+  current_theme: document.getElementById("current-theme"),
   // Questions --------------------
   viewingQuestion: false, // Default false
   q1: document.getElementById("q1"),
@@ -140,4 +142,9 @@ const _rows = {
   r5c4: document.getElementById("r5c4"),
 }
 
-export { _dom, _pVars, _rows}
+let _themes = [
+  "CSS/default.css",
+  "CSS/light.css"
+]
+
+export { _dom, _pVars, _rows, _themes}
