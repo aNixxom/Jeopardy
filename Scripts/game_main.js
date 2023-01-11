@@ -51,7 +51,6 @@ game_table.addEventListener('click', function(event) {
         })
         function exitQuestion() {
             clicked_box.innerHTML = "-"
-            clicked_box.pointerEvents = "none"
             _dom.main.style.visibility = "visible"
             clicked_box.setAttribute('data-used', 'true')
 

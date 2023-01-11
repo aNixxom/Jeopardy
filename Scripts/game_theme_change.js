@@ -39,6 +39,19 @@ function changeTheme(theme) {
             root.style.setProperty('--theme-boxes-border-color', 'white')
             _dom.current_theme.innerText = ` ${_themes[_dom.current_stylesheet]} `
             break;
+        case 'purple':
+            root.style.setProperty('--theme-point-color', 'white')
+            root.style.setProperty('--theme-box-background-color', '#6b1195')
+            root.style.setProperty('--theme-background', '#6b1195')
+            root.style.setProperty('--theme-points-color', 'white')
+            root.style.setProperty('--theme-timer-color', 'white')
+            root.style.setProperty('--theme-text-color', 'white')
+            root.style.setProperty('--theme-border', '2px solid white')
+            root.style.setProperty('--theme-outline', '2px solid white')
+            root.style.setProperty('--theme-button-active', '#510872')
+            root.style.setProperty('--theme-boxes-border-color', 'white')
+            _dom.current_theme.innerText = ` ${_themes[_dom.current_stylesheet]} `
+            break;
         case 'default': 
             root.style.setProperty('--theme-point-color', '#d7a04b')
             root.style.setProperty('--theme-box-background-color', '#010a78')

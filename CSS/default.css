@@ -25,8 +25,6 @@
 }
 
 
-
-
 .input-menu {
     display: none;
 }
@@ -383,6 +381,10 @@ table.player-info-table {
 
 .boxes:hover {
     border-color: var(--theme-boxes-border-color);
+}
+
+[data-used="true"] {
+    pointer-events: none;
 }
 
 .score_boxes {
