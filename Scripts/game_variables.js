@@ -143,8 +143,8 @@ const _rows = {
 }
 
 let _themes = [
-  "CSS/default.css",
-  "CSS/light.css"
+  "default",
+  "light"
 ]
 
 export { _dom, _pVars, _rows, _themes}

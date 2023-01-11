@@ -1,3 +1,10 @@
+import { closeMenu } from '/Scripts/game_settings.js'
+import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
+import {_dom, _rows} from '/Scripts/game_variables.js'
+import {_pVars} from '/Scripts/game_variables.js'
+import { _themes } from '/Scripts/game_variables.js'
+import { changeTheme } from '/Scripts/game_theme_change.js'
+
 let loadButton = document.getElementById('load')
 let saveButton = document.getElementById('save')
 let deleteButton = document.getElementById('delete')
@@ -5,14 +12,6 @@ let player_names_table = document.getElementById('player_names')
 let player_score_text = document.getElementById('player_score_text')
 let player_headers = document.getElementsByClassName('headers'), i;
 let cells = document.querySelectorAll('.boxes')
-
-
-import { closeMenu } from '/Scripts/game_settings.js'
-import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
-import {_dom, _rows} from '/Scripts/game_variables.js'
-import {_pVars} from '/Scripts/game_variables.js'
-import { _themes } from '/Scripts/game_variables.js'
-import { setStyleSheet } from '/Scripts/game_theme_change.js'
 
 saveButton.addEventListener('click', saveGame)
 loadButton.addEventListener('click', loadSave)
@@ -145,9 +144,8 @@ function loadSave() {
         _dom[`p${i + 1}_score`] = localStorage.getItem(`player${i + 1}_score`)
     }
 
-    setStyleSheet(localStorage.getItem('theme'))
-    let themeText = _themes[localStorage.getItem('currentStyleSheet')].split(/[/.]/)
-    _dom.current_theme.innerText = ` ${themeText[1]} `
+    changeTheme(localStorage.getItem('theme'))
+    _dom.current_theme.innerText = ` ${localStorage.getItem('theme')} `
 
     _dom.loadedGame = true
 

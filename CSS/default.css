@@ -3,15 +3,17 @@
 
 :root {
     /* Blue Theme  (default)*/
-    --theme-blue-points-color: #d7a04b;
-    --theme-blue-box-background-color: #010a78;
-    --theme-blue-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    --theme-blue-settings-header-color:white;
-    --theme-blue-blue: #010a78;
-    --theme-blue-yellow: #d7a04b;
-    --theme-blue-border: 2px solid var(--theme-blue-yellow);
-    --theme-blue-outline: 2px solid var(--theme-blue-yellow);
-    --theme-blue-button-active: #0614c1;
+    --theme-points-color: #d7a04b;
+    --theme-box-background-color: #010a78;
+    --theme-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    --theme-settings-header-color:white;
+    --theme-background: #010a78;
+    --theme-text-color: #d7a04b;
+    --theme-border: 2px solid #d7a04b;
+    --theme-outline: 2px solid #d7a04b;
+    --theme-button-active: #0614c1;
+    --theme-timer-color: #d7a04b;
+    --theme-boxes-border-color: #d7a04b;
 
     /* Global Styling */
     --global-box-font-size: 4vw;
@@ -21,6 +23,8 @@
     user-select: none;
     overflow: hidden;
 }
+
+
 
 
 .input-menu {
@@ -42,8 +46,8 @@ input[type=text] {
     text-align: center;
     border-radius: 5px;
     width:150px;
-    background: var(--theme-blue-blue);
-    border: var(--theme-blue-border);
+    background: var(--theme-background);
+    border: var(--theme-border);
     color: white;
     padding:5px;
     opacity :0;
@@ -57,9 +61,10 @@ input[type=text] {
 
 
 .context-menu div:hover{
-    border: var(--theme-blue-border);
+    border: var(--theme-border);
     cursor:pointer;  
 }
+
 
   /* GAME QUESTION */
 
@@ -67,31 +72,49 @@ input[type=text] {
     text-shadow:2px 2px black;
     font-size: 58px;
     position: absolute;
-    background-color: var(--theme-blue-blue);
+    background-color: var(--theme-background);
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    color: var(--theme-blue-yellow);
+    color: var(--theme-yellow);
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 12%;
     visibility: hidden;
     text-align: center;
-    border: var(--theme-blue-border);
+    border: var(--theme-border);
+    border-radius: 4px;
+}
+
+.theme-gray-questions {
+    text-shadow:2px 2px black;
+    font-size: 58px;
+    position: absolute;
+    background-color: var(--theme-gray-gray);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--theme-gray-white);
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 12%;
+    visibility: hidden;
+    text-align: center;
+    border: var(--theme-gray-border);
     border-radius: 4px;
 }
 
   
 .timer-container {
     height: 25px;
-    background-color: var(--theme-blue-blue);
+    background-color: var(--theme-background);
     position: relative;
 }
   
 .timer-container .timer-bar {
     position: absolute;
     height: 100%;
-    background-color: var(--theme-blue-yellow);
+    background-color: var(--theme-timer-color);
     
 }
   
@@ -114,7 +137,7 @@ input[type=text] {
 .choices > p {
     margin: 0;
     margin-bottom: 10px;    
-    outline: var(--theme-blue-outline);
+    outline: var(--theme-outline);
     border-radius: 4px;
     margin: 10px;
     padding: 0.5em;
@@ -128,8 +151,10 @@ input[type=text] {
 /* GAME SETTINGS */
 
 .bar-menu {
+    position: relative;
     display:flex;
     align-items: center;
+    z-index: 1;
 }
 
 #player_count {
@@ -174,12 +199,14 @@ ion-icon:hover {
     justify-content: center;
     width: 100%;
     margin: 0;
+    position: absolute;
+    top: 5px;
 }
 
 p.settings-header {
     text-align: center;
     font-size: 50px;
-    color: var(--theme-blue-settings-header-color);
+    color: var(--theme-settings-header-color);
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     letter-spacing: 5px;
@@ -192,8 +219,8 @@ div.settings-container {
     margin-right: 25%;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
-    background-color: var(--theme-blue-blue);
-    color: var(--theme-blue-yellow);
+    background-color: var(--theme-background);
+    color: var(--theme-text-color);
     width: 100%;
 }
 
@@ -207,7 +234,7 @@ div.settings-container.top {
 }
 
 .player-number-counter {
-    color: var(--theme-blue-points-color);
+    color: var(--theme-points-color);
     cursor: default;
 }
 
@@ -268,8 +295,8 @@ div.settings-container.top {
     position: absolute;
     width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    color: var(--theme-blue-yellow);
-    background-color: var(--theme-blue-blue);
+    color: var(--theme-yellow);
+    background-color: var(--theme-background);
     border-radius: var(--global-border-radius);
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -283,7 +310,7 @@ div.settings-container.top {
 
 .theme-option:hover {
     cursor: pointer;
-    outline: var(--theme-blue-border);
+    outline: var(--theme-border);
     border-radius: var(--global-border-radius);
 }
 
@@ -327,7 +354,7 @@ table.player-info-table {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     text-align: center;
-    background-color: var(--theme-blue-box-background-color);
+    background-color: var(--theme-box-background-color);
     color: white;
     padding: 5px;
     border: var(--global-box-borders)
@@ -347,15 +374,15 @@ table.player-info-table {
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
     font-family: 'Roboto', sans-serif;
-    background-color: var(--theme-blue-box-background-color);
-    color: var(--theme-blue-points-color);
+    background-color: var(--theme-box-background-color);
+    color: var(--theme-points-color);
     cursor: pointer;
     transition: transform 2s;
     text-align: center;
 }
 
 .boxes:hover {
-    border-color: var(--theme-blue-yellow);
+    border-color: var(--theme-boxes-border-color);
 }
 
 .score_boxes {
@@ -365,17 +392,17 @@ table.player-info-table {
     border: var(--global-box-borders);
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
-    background-color: var(--theme-blue-box-background-color);
-    color: var(--theme-blue-points-color);
+    background-color: var(--theme-box-background-color);
+    color: var(--theme-points-color);
 }
 
 .player_boxes {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    font-family: var(--theme-blue-global-font);
-    background-color: var(--theme-blue-box-background-color);
-    color: var(--theme-blue-points-color);
+    font-family: var(--theme-global-font);
+    background-color: var(--theme-box-background-color);
+    color: var(--theme-points-color);
 }
 
 tr.player_score_buttons {
@@ -385,10 +412,10 @@ tr.player_score_buttons {
 .points-button,.data-button{
     margin: 2px;
     text-transform: uppercase;
-    background-color: var(--theme-blue-box-background-color);
+    background-color: var(--theme-box-background-color);
     border: 2px solid transparent;
     box-sizing: border-box;
-    color: var(--theme-blue-points-color);
+    color: var(--theme-points-color);
     font-size: 20px;
     border-radius: 2px;
     font-family: 'Roboto', sans-serif;
@@ -398,11 +425,11 @@ tr.player_score_buttons {
 }
 
 button:hover {
-    border-color: #d7a04b;
+    border-color: var(--theme-border);
 }
 
 button:active {
-    background-color: var(--theme-blue-button-active);
+    background-color: var(--theme-button-active);
 }
 
 button#load, button#save, button#delete{
@@ -417,8 +444,8 @@ button#delete:hover {
 }
 
 #popup {
-    background-color: var(--theme-blue-blue);
-    border: var(--theme-blue-border);
+    background-color: var(--theme-background);
+    border: var(--theme-border);
     font-family: 'Roboto', sans-serif;
     color: white;
     display: none;
