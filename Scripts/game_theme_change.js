@@ -26,6 +26,19 @@ function previousTheme() {
 function changeTheme(theme) {
     let root = document.querySelector(':root');
     switch (theme) {
+        case 'default': 
+            root.style.setProperty('--theme-point-color', '#d7a04b')
+            root.style.setProperty('--theme-box-background-color', '#010a78')
+            root.style.setProperty('--theme-background', '#010a78')
+            root.style.setProperty('--theme-points-color', '#d7a04b')
+            root.style.setProperty('--theme-timer-color', '#d7a04b')
+            root.style.setProperty('--theme-text-color', '#d7a04b')
+            root.style.setProperty('--theme-border', '2px solid #d7a04b')
+            root.style.setProperty('--theme-outline', '2px solid #d7a04b')
+            root.style.setProperty('--theme-button-active', '#0614c1')
+            root.style.setProperty('--theme-boxes-border-color', '#d7a04b')
+            _dom.current_theme.innerText = ` ${_themes[_dom.current_stylesheet]} `
+            break;
         case 'light':
             root.style.setProperty('--theme-point-color', 'white')
             root.style.setProperty('--theme-box-background-color', '#808080')
@@ -50,19 +63,6 @@ function changeTheme(theme) {
             root.style.setProperty('--theme-outline', '2px solid white')
             root.style.setProperty('--theme-button-active', '#510872')
             root.style.setProperty('--theme-boxes-border-color', 'white')
-            _dom.current_theme.innerText = ` ${_themes[_dom.current_stylesheet]} `
-            break;
-        case 'default': 
-            root.style.setProperty('--theme-point-color', '#d7a04b')
-            root.style.setProperty('--theme-box-background-color', '#010a78')
-            root.style.setProperty('--theme-background', '#010a78')
-            root.style.setProperty('--theme-points-color', '#d7a04b')
-            root.style.setProperty('--theme-timer-color', '#d7a04b')
-            root.style.setProperty('--theme-text-color', '#d7a04b')
-            root.style.setProperty('--theme-border', '2px solid #d7a04b')
-            root.style.setProperty('--theme-outline', '2px solid #d7a04b')
-            root.style.setProperty('--theme-button-actuve', '#0614c1')
-            root.style.setProperty('--theme-boxes-border-color', '#d7a04b')
             _dom.current_theme.innerText = ` ${_themes[_dom.current_stylesheet]} `
             break;
         default:
