@@ -156,10 +156,10 @@ function loadSave() {
 function deleteLocalStorage() {
     if(localStorage.length === 0) {
         systemMessage("No game data found")
-        screenShake()
+        //screenShake()
         return
      }
-    let confirmDelete = confirm("Delete saved game?")
+    let confirmDelete = confirm("Delete saved game? This will remove all player data, the currently selected theme, reset the game board and revert all settings.")
         if(confirmDelete != false) {
             localStorage.clear()
             systemMessage("Deleted saved games")

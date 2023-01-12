@@ -36,7 +36,7 @@
 
     function addPlayer() {
         if(_pVars.total_players >= 7) {
-            screenShake()
+            //screenShake()
             systemMessage("You can't have more than 7 players")
             return
         } else {
@@ -47,7 +47,7 @@
         let playerName = prompt("Enter Name")
 
         if(playerName == null || playerName.length > 8 || playerName.length == 0) { // If player does not enter a name, or they hit cancel return and break the function
-            screenShake()
+            //screenShake()
             systemMessage('Please enter a valid name')
             return
         } else if (playerName != null && playerName != "") {
@@ -165,7 +165,7 @@
 
         if(_pVars.total_players <= 3) {
             systemMessage("You can't have less than 3 players")
-            screenShake()
+            //screenShake()
             return
         }
 

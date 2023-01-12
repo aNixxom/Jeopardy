@@ -35,7 +35,7 @@ function changeTheme(theme) {
             root.style.setProperty('--theme-text-color', '#d7a04b')
             root.style.setProperty('--theme-border', '2px solid #d7a04b')
             root.style.setProperty('--theme-outline', '2px solid #d7a04b')
-            root.style.setProperty('--theme-button-active', '#0614c1')
+            root.style.setProperty('--theme-button-active', '#030a58')
             root.style.setProperty('--theme-boxes-border-color', '#d7a04b')
             _dom.current_theme.innerText = ` ${_themes[_dom.current_stylesheet]} `
             break;
