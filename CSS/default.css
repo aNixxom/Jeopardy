@@ -237,7 +237,7 @@ div.settings-container.top {
 }
 
 .settings-container.bottom {
-    border-radius: 0;
+    border-radius: 0 0 var(--global-border-radius) var(--global-border-radius);
 }
 
 #current-theme {
