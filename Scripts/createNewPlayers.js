@@ -35,9 +35,9 @@
     }
 
     function addPlayer() {
-        if(_pVars.total_players >= 7) {
+        if(_pVars.total_players >= 5) {
             //screenShake()
-            systemMessage("You can't have more than 7 players")
+            systemMessage("You can't have more than 5 players")
             return
         } else {
         }
