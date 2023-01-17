@@ -6,5 +6,6 @@
 *Preview of the game board*
 
 
-![image](https://user-images.githubusercontent.com/91269723/202751058-05baf3de-27e0-4893-b4b5-379ff45d2a1d.png)
+<img width="960" alt="Screenshot 2023-01-17 at 10 18 07 AM" src="https://user-images.githubusercontent.com/91269723/212937846-4b5a5ec7-9a17-4a6c-8cfd-0dd0e7a1a102.png">
+
 *Preview of the new settings menu*
