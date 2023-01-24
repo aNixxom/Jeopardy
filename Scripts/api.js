@@ -108,7 +108,7 @@ function pickRandomCategory(col) {
 function fillQuestions(x, y, json) {
   for(let i = 0, j = x; j < y; i++, j++) {
     let element = document.getElementById(cellIds[j])
-    element.childNodes[1].children[0].innerHTML = json[i].question + json[i].category
+    element.childNodes[1].children[0].innerHTML = json[i].question
   }
 }
 

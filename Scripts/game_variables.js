@@ -1,5 +1,5 @@
 const _dom = {
-  questionLength: 6000, //Default 6000
+  questionLength: 15000, //Default 6000
   //  Settings --------------------
   colorTheme: "default", // Default color (light, dark)
   loadedGame: false, // Defult false
