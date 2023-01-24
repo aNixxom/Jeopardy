@@ -111,50 +111,28 @@ for(let i = 0; i < 5; i++) {
 }
 
 let questions = document.querySelectorAll('.questions')
+let choices = document.querySelectorAll('.boxes')
 
 questions.forEach((element, index) => {
     element.id = `q${index + 1}`
 })
 
-// fetch('./questions.json')
-//     .then((response) => response.json())
-//     .then((info) => {
-//         for(let i = 0; i < info['headings'].length; i++) {
-//             headers.children[i].innerHTML = info['headings'][i]
-//         }
-
-//         cells.forEach((element, index) => {
-//             element.childNodes[0].textContent = info['questions'][index].value
-//             element.childNodes[1].children[0].innerHTML = info['questions'][index]['question']
-//         })
-//         choices.forEach((element, index) => {
-//             getRandomOptionSlot(element, index, 'answer', info)
-//             getRandomOptionSlot(element, index, 'wrong_1', info)
-//             getRandomOptionSlot(element, index, 'wrong_2', info)
-//         })
-//     })
-
-function getRandomOptionSlot(element, index, option, json) {
-    let pickedSlot = element.children[pickRadomElement(3)]
-    let pickedValidSlot = false
-    do {
-        if(pickedSlot.hasAttribute('data-choices', 'correct') || pickedSlot.hasAttribute('data-choices', 'wrong_1')) {
-            pickedSlot = element.children[pickRadomElement(3)]
-        } else {
-            pickedValidSlot = true
-            pickedSlot.innerHTML = json['questions'][index][`${option}`]
-            if(pickedSlot.innerHTML === "undefined") {
-                pickedSlot.remove()
-            }
-            pickedSlot.setAttribute('data-choices', `${option}`)
-        }
+//TODO: use for loop to make this run faster
+choices.forEach((element, index) => {
+    if(element.id.includes('r0')) {
+        element.childNodes[0].textContent = '$200'
+    } else if(element.id.includes('r1')) {
+        element.childNodes[0].textContent = '$400'
+    } else if(element.id.includes('r2')) {
+        element.childNodes[0].textContent = '$600'
+    } else if(element.id.includes('r3')) {
+        element.childNodes[0].textContent = '$800'
+    } else if(element.id.includes('r4')) {
+        element.childNodes[0].textContent = '$1000'
     }
-    while (pickedValidSlot == false)
-}
+})
 
-function pickRadomElement(max) {
-    return Math.floor(Math.random() * max)
-}
+
 
 function stopAudio(audio) {
     audio.pause()
