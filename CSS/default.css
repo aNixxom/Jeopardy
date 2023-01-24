@@ -84,25 +84,6 @@ input[type=text] {
     border-radius: 4px;
 }
 
-.theme-gray-questions {
-    text-shadow:2px 2px black;
-    font-size: 58px;
-    position: absolute;
-    background-color: var(--theme-gray-gray);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color: var(--theme-gray-white);
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 12%;
-    visibility: hidden;
-    text-align: center;
-    border: var(--theme-gray-border);
-    border-radius: 4px;
-}
-
-  
 .timer-container {
     height: 25px;
     background-color: var(--theme-background);
@@ -346,7 +327,7 @@ table.player-info-table {
 .headers, .headers-category {
     text-transform: uppercase;
     letter-spacing: 5px;
-    font-size: 3vw;
+    font-size: 2vw;
     border-radius: var(--global-border-radius);
     width: 25%;
     font-family: 'Roboto', sans-serif;
@@ -355,7 +336,7 @@ table.player-info-table {
     background-color: var(--theme-box-background-color);
     color: white;
     padding: 5px;
-    border: var(--global-box-borders)
+    border: var(--global-box-borders);
 }
 
 .headers-edit:hover{ 
