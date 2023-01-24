@@ -61,8 +61,8 @@ function test(x, y) {
   }
 }
 
-for(let col = 0; col <= 5; col++) {
-  pickRandomCategory(col)
+for(let column = 0; column <= 5; column++) {
+  fillCategories(column)
 }
 console.table(used_categories)
 
@@ -72,7 +72,7 @@ for(let column = 0, pos1 = 0, pos2  = 5;  column < 5; pos1 += 5, pos2 += 5, colu
 
 function fillTable(cat, pos1, pos2) {
   setTimeout(() => {
-    fetch(`https://the-trivia-api.com/api/questions?categories=${used_categories[cat]}&limit=5&difficulty=easy`, {
+    fetch(`https://the-trivia-api.com/api/questions?categories=${used_categories[cat]}&limit=5&difficulty=medium`, {
       headers: {
           'Content-Type': 'application/json'
         },
@@ -85,7 +85,7 @@ function fillTable(cat, pos1, pos2) {
   }, 500)
 }
 
-function pickRandomCategory(col) {
+function fillCategories(col) {
   let catLength = categories.length
   let pickedCategory = categories[pickRandomNumber(catLength)]
 
