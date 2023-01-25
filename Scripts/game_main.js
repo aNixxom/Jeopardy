@@ -104,10 +104,11 @@ for (let i = 0; i < 5; i++) {
 } _dom.main.insertBefore(game_table, document.getElementById('player-info-table'))
 
 let headers = game_table.insertRow(0)
-headers.setAttribute('class', 'headers')
+headers.setAttribute('class', 'headers-category')
 headers.id = "headers"
 for(let i = 0; i < 5; i++) {
     headers.insertCell()
+    headers.children[i].setAttribute('class', 'headers-category')
 }
 
 let questions = document.querySelectorAll('.questions')

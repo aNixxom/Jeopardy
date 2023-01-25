@@ -18,10 +18,14 @@
     /* Global Styling */
     --global-box-font-size: 4vw;
     --global-box-borders: black solid 3px;
-    --global-border-radius: 4px;  
+    --global-border-radius: 10px;  
 
     user-select: none;
     overflow: hidden;
+}
+
+.test {
+    
 }
 
 
@@ -230,6 +234,28 @@ div.settings-container.top {
     display: flex;
 }
 
+.flex-bottom {
+    border-left: var(--theme-border);
+    border-bottom-left-radius: var(--global-border-radius);
+    border-bottom: var(--theme-border);
+    border-right: var(--theme-border);
+    border-bottom-right-radius: var(--global-border-radius);
+}
+
+.flex-top {
+    border-left: var(--theme-border);
+    border-top-left-radius: var(--global-border-radius);
+    border-top: var(--theme-border);
+    border-right: var(--theme-border);
+    border-top-right-radius: var(--global-border-radius);
+}
+
+
+.flex-middle {
+    border-left: var(--theme-border);
+    border-right: var(--theme-border);
+}
+
 .flex-container > button {
     border-spacing: 10px;
 }
@@ -324,7 +350,7 @@ table.player-info-table {
 }
 
 
-.headers, .headers-category {
+.headers {
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 2vw;
@@ -337,6 +363,29 @@ table.player-info-table {
     color: white;
     padding: 5px;
     border: var(--global-box-borders);
+    border-radius: var(--global-border-radius);
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-color: var(--theme-boxes-border-color);
+}
+
+.headers-category {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 2vw;
+    border-radius: var(--global-border-radius);
+    width: 25%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    background-color: var(--theme-box-background-color);
+    color: white;
+    padding: 5px;
+    border: var(--global-box-borders);
+    border-radius: var(--global-border-radius);
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-color: var(--theme-boxes-border-color);
 }
 
 .headers-edit:hover{ 
@@ -358,6 +407,7 @@ table.player-info-table {
     cursor: pointer;
     transition: transform 2s;
     text-align: center;
+    
 }
 
 .boxes:hover {
