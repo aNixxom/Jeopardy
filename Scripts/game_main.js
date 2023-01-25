@@ -118,6 +118,8 @@ questions.forEach((element, index) => {
 })
 
 //TODO: use for loop to make this run faster
+
+
 choices.forEach((element, index) => {
     if(element.id.includes('r0')) {
         element.childNodes[0].textContent = '$200'

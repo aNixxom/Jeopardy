@@ -1,7 +1,8 @@
 import {_dom} from '/Scripts/game_variables.js'
 
 let headers = document.getElementById('headers')
-console.log(headers)
+const fs = require('fs')
+
 
 let used_categories = []
 let categories = [
@@ -79,6 +80,11 @@ function fillTable(cat, pos1, pos2) {
       })
       .then((response) => response.json())
       .then((info) => {
+        const prettyInfo = JSON.stringify(info, 0, 4)
+        fs.appendFile('/response.json', prettyInfo, error => {
+          if(error) console.log(error)
+        })
+        console.log(JSON.stringify(info, 0, 4))
         fillQuestions(pos1, pos2, info)
         fillAnswers(pos1, pos2, info)
       })
