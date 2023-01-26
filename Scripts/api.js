@@ -61,7 +61,7 @@ function test(x, y) {
   }
 }
 
-for(let column = 0; column <= 5; column++) {
+for(let column = 0; column <= 4; column++) {
   fillCategories(column)
 }
 console.table(used_categories)
