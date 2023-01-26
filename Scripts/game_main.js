@@ -1,4 +1,5 @@
 import {_dom} from '/Scripts/game_variables.js'
+import { systemMessage} from '/Scripts/createNewPlayers.js'
 
 let cell
 const game_table = document.createElement('table')
@@ -28,6 +29,7 @@ game_table.addEventListener('click', function(event) {
         _dom.menu_button.style.cursor = "not-allowed"
 
         choices.addEventListener('click', function(event) {
+            let correctAnswer = document.getElementById(`${choices.id}-correct`).innerHTML
             let clicked_answer = event.target
             if(clicked_answer.getAttribute('data-choices') === 'correct' && _dom.viewingQuestion === true) {
                 _dom.answered_question = true
@@ -35,6 +37,7 @@ game_table.addEventListener('click', function(event) {
                 _dom.corret_answer_sound.play()
                 exitQuestion()
             } else if(clicked_answer.getAttribute('data-choice') != 'correct') {
+                systemMessage(`The answer was: ${correctAnswer}`)
                 _dom.answered_question = true
                 stopAudio(_dom.times_up)
                 _dom.times_up.play()

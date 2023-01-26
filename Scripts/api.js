@@ -1,7 +1,6 @@
 import {_dom} from '/Scripts/game_variables.js'
 
 let headers = document.getElementById('headers')
-console.log(headers)
 
 let used_categories = []
 let categories = [
@@ -136,6 +135,7 @@ function getRandomOptionSlot(element, option, json) {
         pickedSlot.remove()
       }
       pickedSlot.setAttribute('data-choices', `${option}`)
+      pickedSlot.setAttribute('id', `${element.id}-${option}`)
       }
   }
   while (pickedValidSlot == false)
