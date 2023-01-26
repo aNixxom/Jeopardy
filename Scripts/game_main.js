@@ -109,6 +109,7 @@ headers.id = "headers"
 for(let i = 0; i < 5; i++) {
     headers.insertCell()
     headers.children[i].setAttribute('class', 'headers-category')
+    headers.children[i].setAttribute('class', 'headers')
 }
 
 let questions = document.querySelectorAll('.questions')
