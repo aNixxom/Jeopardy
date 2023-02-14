@@ -32,6 +32,7 @@ game_table.addEventListener('click', function(event) {
             let correctAnswer = document.getElementById(`${choices.id}-correct`).innerHTML
             let clicked_answer = event.target
             if(clicked_answer.getAttribute('data-choices') === 'correct' && _dom.viewingQuestion === true) {
+                systemMessage(`Correct!`)
                 _dom.answered_question = true
                 stopAudio(_dom.corret_answer_sound)
                 _dom.corret_answer_sound.play()
