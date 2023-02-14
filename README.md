@@ -11,7 +11,7 @@
 
 __To Do__
 
-- [ ] Fixed scaling issues across different browsers and devices 
+- [x] Fixed scaling issues across different browsers and devices 
 - [ ] Make different font themes 
 - [ ] Add more color themes 
 - [ ] Fix saving issues 
