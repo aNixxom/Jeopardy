@@ -94,8 +94,16 @@ _dom.doublePointsSwitch.onclick = function toggle(event) {
         .then((response) => response.json())
         .then((info) => {
             cells.forEach((element, index) => {
-                if(element.innerHTML != "-") {
-                    element.childNodes[0].textContent = info['questions'][index].bonusValue
+                if(element.id.includes('r0')) {
+                    element.childNodes[0].textContent = '$400'
+                } else if(element.id.includes('r1')) {
+                    element.childNodes[0].textContent = '$800'
+                } else if(element.id.includes('r2')) {
+                    element.childNodes[0].textContent = '$1200'
+                } else if(element.id.includes('r3')) {
+                    element.childNodes[0].textContent = '$1600'
+                } else if(element.id.includes('r4')) {
+                    element.childNodes[0].textContent = '$2000'
                 }
             })
         })
