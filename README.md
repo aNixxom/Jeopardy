@@ -12,6 +12,7 @@
 __To Do__
 
 - [x] Fixed scaling issues across different browsers and devices 
+- [ ] Autofocus "name-input" menu when you click to edit a player name
 - [ ] Make different font themes 
 - [ ] Add more color themes 
 - [ ] Fix saving issues 
