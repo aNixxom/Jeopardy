@@ -8,3 +8,10 @@
 ![image](https://user-images.githubusercontent.com/91269723/218571402-ec7ccf7f-1579-4866-a6d2-cfd3be2fbc0c.png)
 
 *Preview of the new settings menu*
+
+__To Do__
+
+- [ ] Fixed scaling issues across different browsers and devices 
+- [ ] Make different font themes 
+- [ ] Add more color themes 
+- [ ] Fix saving issues 
