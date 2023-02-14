@@ -140,8 +140,6 @@ choices.forEach((element, index) => {
     }
 })
 
-
-
 function stopAudio(audio) {
     audio.pause()
     audio.currentTime = 0
