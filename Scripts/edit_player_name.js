@@ -72,7 +72,7 @@ function userPressEnter(input) {
     if(input.key === 'Enter') {
         let inputMenuValue = document.getElementById('name-input')
         if(inputMenuValue.value.length == 0) {
-            alert("This  field cannot be empty")
+            alert("You must enter a valid player name!")
         } else {
            for(let i = 0; i < player_name_list.length; i++) {
                if(validId == player_name_list[i]) {
