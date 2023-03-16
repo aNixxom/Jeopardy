@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
 @font-face {
     font-family: Jeopardy;
     src: url(/assets/Korinna-Regular.otf);
 }
 
+@font-face {
+    font-family: 'Hand Written';
+    font-size: 23px;
+    src: url(/assets/ShadowsIntoLight-Regular.ttf);
+}
+
+
 :root {
+    --sys-ui-font : system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* Blue Theme  (default)*/
     --theme-points-color: #d7a04b;
     --theme-box-background-color: #010a78;
@@ -270,7 +279,7 @@ div.settings-container.top {
     padding-top: 3%;
     padding-left: 3%;
     padding-bottom: 3%;
-    font-size: 50px;
+    font-size: 2rem;
 }
 
 .settings-center {
@@ -382,7 +391,7 @@ table.player-info-table {
 }
 
 .headers-edit:hover{ 
-    border: solid red 2px;
+    border-top-color: red;
 }
 
 .headers > td {
