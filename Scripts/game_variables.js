@@ -95,7 +95,8 @@ const _rows = {
 let _themes = [
   "default",
   "light",
-  "purple"
+  "purple",
+  "handwritten"
 ]
 
 export { _dom, _pVars, _rows, _themes}
