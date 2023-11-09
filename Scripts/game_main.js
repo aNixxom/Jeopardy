@@ -1,7 +1,7 @@
 import {_dom} from '/Scripts/game_variables.js'
+import { systemMessage} from '/Scripts/createNewPlayers.js'
 
 let cell
-
 const game_table = document.createElement('table')
 game_table.setAttribute('id', 'main_table')
 game_table.setAttribute('class', 'main_table')
@@ -29,13 +29,16 @@ game_table.addEventListener('click', function(event) {
         _dom.menu_button.style.cursor = "not-allowed"
 
         choices.addEventListener('click', function(event) {
+            let correctAnswer = document.getElementById(`${choices.id}-correct`).innerHTML
             let clicked_answer = event.target
-            if(clicked_answer.getAttribute('data-choices') === 'answer' && _dom.viewingQuestion === true) {
+            if(clicked_answer.getAttribute('data-choices') === 'correct' && _dom.viewingQuestion === true) {
+                systemMessage("Correct!")
                 _dom.answered_question = true
                 stopAudio(_dom.corret_answer_sound)
                 _dom.corret_answer_sound.play()
                 exitQuestion()
-            } else if(clicked_answer.getAttribute('data-choice') != 'answer') {
+            } else if(clicked_answer.getAttribute('data-choice') != 'correct') {
+                systemMessage(`The answer was: ${correctAnswer}`)
                 _dom.answered_question = true
                 stopAudio(_dom.times_up)
                 _dom.times_up.play()
@@ -65,12 +68,12 @@ game_table.addEventListener('click', function(event) {
 
 for (let i = 0; i < 5; i++) {
     let rows = game_table.insertRow(i)
-    rows.id = `${i + 1}r${i + 1}c`
+    rows.id = `${i}r${i}c`
     
-    for(let y = 0; y < 4; y++) {
+    for(let y = 0; y < 5; y++) {
 
         cell = rows.insertCell(y)
-        cell.id = `r${i + 1}c${y + 1}`
+        cell.id = `r${i}c${y}`
         cell.innerText = cell.id 
         cell.setAttribute('class', 'boxes')
         cell.setAttribute('data-question', 'box')
@@ -80,8 +83,9 @@ for (let i = 0; i < 5; i++) {
         const choices = document.createElement('div')
         const timer_container = document.createElement('div')
         const timer_bar = document.createElement('div')
+        choices.id = `${cell.id}-ch`
 
-        for(let k = 0; k < 3; k++) {
+        for(let k = 0; k < 4; k++) {
             const choices_option = document.createElement('p')
             choices_option.innerHTML = `${k}`   
             choices.setAttribute('data-choice', 'choice')
@@ -104,58 +108,39 @@ for (let i = 0; i < 5; i++) {
 } _dom.main.insertBefore(game_table, document.getElementById('player-info-table'))
 
 let headers = game_table.insertRow(0)
-headers.setAttribute('class', 'headers')
-for(let i = 0; i < 4; i++) {
+headers.setAttribute('class', 'headers-category')
+headers.id = "headers"
+for(let i = 0; i < 5; i++) {
     headers.insertCell()
+    headers.children[i].setAttribute('class', 'headers-category')
+    headers.children[i].setAttribute('class', 'headers')
 }
 
-let choices = document.querySelectorAll('[data-choice="choice"]')
-let cells = document.querySelectorAll('.boxes')
 let questions = document.querySelectorAll('.questions')
+let choices = document.querySelectorAll('.boxes')
 
 questions.forEach((element, index) => {
     element.id = `q${index + 1}`
 })
 
-fetch('./questions.json')
-    .then((response) => response.json())
-    .then((info) => {
-        for(let i = 0; i < info['headings'].length; i++) {
-            headers.children[i].innerHTML = info['headings'][i]
-        }
+//TODO: use for loop to make this run faster
 
-        cells.forEach((element, index) => {
-            element.childNodes[0].textContent = info['questions'][index].value
-            element.childNodes[1].children[0].innerHTML = info['questions'][index]['question']
-        })
-        choices.forEach((element, index) => {
-            getRandomOptionSlot(element, index, 'answer', info)
-            getRandomOptionSlot(element, index, 'wrong_1', info)
-            getRandomOptionSlot(element, index, 'wrong_2', info)
-        })
-    })
 
-function getRandomOptionSlot(element, index, option, json) {
-    let pickedSlot = element.children[pickRadomElement(3)]
-    let pickedValidSlot = false
-    do {
-        if(pickedSlot.hasAttribute('data-choices', 'correct') || pickedSlot.hasAttribute('data-choices', 'wrong_1')) {
-            pickedSlot = element.children[pickRadomElement(3)]
-        } else {
-            pickedValidSlot = true
-            pickedSlot.innerHTML = json['questions'][index][`${option}`]
-            if(pickedSlot.innerHTML === "undefined") {
-                pickedSlot.remove()
-            }
-            pickedSlot.setAttribute('data-choices', `${option}`)
-        }
+choices.forEach((element, index) => {
+    if(element.id.includes('r0')) {
+        element.childNodes[0].textContent = '$200'
+    } else if(element.id.includes('r1')) {
+        element.childNodes[0].textContent = '$400'
+    } else if(element.id.includes('r2')) {
+        element.childNodes[0].textContent = '$600'
+    } else if(element.id.includes('r3')) {
+        element.childNodes[0].textContent = '$800'
+    } else if(element.id.includes('r4')) {
+        element.childNodes[0].textContent = '$1000'
     }
-    while (pickedValidSlot == false)
-}
+})
 
-function pickRadomElement(max) {
-    return Math.floor(Math.random() * max)
-}
+
 
 function stopAudio(audio) {
     audio.pause()
