@@ -1,0 +1,211 @@
+{   
+    "headings": [
+        "tim's book reviews",
+        "what rex said in a series",
+        "centeral support core values",
+        "\"NEW\" Year",
+        "Top 10 Christian Artists of 2023"
+    ],
+    "questions": [
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "You have to be a Genius to figure this out",
+            "answer": "Working Genius",
+            "wrong_1": "The Ultimate Exodus",
+            "wrong_2": "The Deeply Formed Life"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "\"Imagin you are going to a funeral of a loved one\"",
+            "answer": "Get Check Parables",
+            "wrong_1": "Angels Among Us",
+            "wrong_2": "Better Together"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "We are flexible, teachable, and open to collaboration and conversation regarding how we work to benefit our staff team",
+            "answer": "Approach with Humility",
+            "wrong_1": "Assume the Best",
+            "wrong_2": "Seek Perpetual Growth"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "Times Square, Central Park, Madison Square Garden",
+            "answer": "New York City",
+            "wrong_1": "New Jersey City",
+            "wrong_2": "New Jack City"
+        },
+        {
+            "value": "$200",
+            "bonusValue": "$400",
+            "question": "House of the Lord, This Is Our God, Hymn of Heaven",
+            "answer": "Phil Wickahm",
+            "wrong_1": "Zach Williams",
+            "wrong_2": "Elevation Worship"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "Breaking free from things that enslave us",
+            "answer": "The Ultimate Exodus",
+            "wrong_1": "The Deeply Formed Life",
+            "wrong_2": "Working Genius"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "\"What tends to scare you? Do you know some people have an intense fear of Christmas itself?\"",
+            "answer": "Angels Among Us",
+            "wrong_1": "Gut Check Parables",
+            "wrong_2": "Better Together"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "We listen first, are slow to anger in conflict, measured and generous in our responses to teammates, and proactive in seeking mutual understanding.",
+            "answer": "Assume the Best",
+            "wrong_1": "Approach with Humility",
+            "wrong_2": "Celebrate one Another"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "Batman sells newspapers",
+            "answer": "Newsies",
+            "wrong_1": "New in Gotham",
+            "wrong_2": "Batman Renewed"
+        },
+        {
+            "value": "$400",
+            "bonusValue": "$800",
+            "question": "Coat of Many Colors, Tear off the Roof, Praise You Anywhere",
+            "answer": "Brandon Lake",
+            "wrong_1": "Elevation Worship",
+            "wrong_2": "Maverick City Music"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "God wants to be with us, so we should develop habits to cultivate communion with him.",
+            "answer": "The Deeply Formed Life",
+            "wrong_1": "The Ultimate Exodus",
+            "wrong_2": "Working Genius"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "\"There was this a dalmatian dog sitting right there in the front of seat of this fire truck\"",
+            "answer": "Angels Among Us",
+            "wrong_1": "Better Together",
+            "wrong_2": "Gut Check Parables"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "Out of a high sense of responsibility, we strive to do our work, and enable others to do their work, in a thorough and complete manner, whether the task is big or small.",
+            "answer": "Do Everything with Excellence",
+            "wrong_1": "Know the Why",
+            "wrong_2": "Your Life is Your Ministry"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "Kuzco, Pacha, Yzma",
+            "answer": "The Emperor’s New Groove",
+            "wrong_1": "A New Discovery",
+            "wrong_2": "Newfoundland"
+        },
+        {
+            "value": "$600",
+            "bonusValue": "$1200",
+            "question": "Burn the Ships, God Only Knows, Together",
+            "answer": "For King and Country",
+            "wrong_1": "Toby Mac",
+            "wrong_2": "Lauren Daigle"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "When we realize that we have a God-given purpose, all of life becomes an opportunity to participate in God’s mission.",
+            "answer": "The Deeply Formed Life",
+            "wrong_1": "The Ultimate Exodus",
+            "wrong_2": "Working Genius"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",  
+            "question": "\"It stands for High Occupancy Vehicle\"",
+            "answer": "Better Together",
+            "wrong_1": "Gut Check Parables",
+            "wrong_2": "Angles Among Us"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "We never stop learning and, with childlike curiosity, seeking more effective and dynamic ways to do what we do.",
+            "answer": "Seek Perpetual Growth",
+            "wrong_1": "Your Life Is Your Ministry",
+            "wrong_2": "Approach With Humility"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "Jeans that have been treated to produce a faded, worn appearance",
+            "answer": "Stonewashed jeans",
+            "wrong_1": "New Old jeans",
+            "wrong_2": "Renewable Clothing"
+        },
+        {
+            "value": "$800",
+            "bonusValue": "$1600",
+            "question": "Tim Kong is going to see this artist on June 1st.",
+            "answer": "Lauren Daigle",
+            "wrong_1": "Toby Mac",
+            "wrong_2": "Maverick City Music"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "Wonder, Discernment, Tenacity",
+            "answer": "Working Genius",
+            "wrong_1": "The Deeply Formed Life",
+            "wrong_2": "The Ultimate Exodus"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "\"This is taught by one of our pastors Tim Kong and it is amazing\"",
+            "answer": "Better Together",
+            "wrong_1": "Angels Among Us",
+            "wrong_2": "Gut Check Parables"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "Be ready to explain the rationale behind policies and decisions with clarity and precision;",
+            "answer": "Know The Why",
+            "wrong_1": "Balance Grace and Truth",
+            "wrong_2": "Be Humble"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "SC Trainer, Fuel Cell Rebel, 1080",
+            "answer": "New Balance",
+            "wrong_1": "ReNew",
+            "wrong_2": "Newton"
+        },
+        {
+            "value": "$1000",
+            "bonusValue": "$2000",
+            "question": "Praise God, On God, Selah",
+            "answer": "Kayne West",
+            "wrong_1": "Chris Tomlin",
+            "wrong_2": "Mercy Me"
+        }
+    ]
+}
