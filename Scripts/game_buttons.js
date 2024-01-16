@@ -5,10 +5,11 @@ window.addEventListener('click', function(event) {
 
   try {
     if(event.target.classList[1].includes('q')) _dom.default_point_value = event.target.classList[2]
+    console.log(event.target.classList[1])
   } catch(error) {
-    // Do nothing
   }
   
+  // clicked button is the ID for the button you click
   for(let i = 0; i < 8; i++) {
     let pxs = document.getElementById(`player${i}_score`)
     if(clicked_button == `add_p${i}`) {
