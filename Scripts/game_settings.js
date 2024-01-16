@@ -1,5 +1,5 @@
 import {_dom, _rows} from '/Scripts/game_variables.js'
-import { systemMessage, screenShake } from '/Scripts/createNewPlayers.js' 
+import { systemMessage} from '/Scripts/createNewPlayers.js' 
 
 let isOpen = false
 let player_headers = document.getElementsByClassName('headers'), i;
