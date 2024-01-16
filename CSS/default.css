@@ -1,36 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-@font-face {
-    font-family: Jeopardy;
-    src: url(/assets/Korinna-Regular.otf);
-}
-
 :root {
     /* Blue Theme  (default)*/
     --theme-points-color: #d7a04b;
     --theme-box-background-color: #010a78;
-    --theme-font: Jeopardy;
+    --theme-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     --theme-settings-header-color:white;
     --theme-background: #010a78;
     --theme-text-color: #d7a04b;
     --theme-border: 2px solid #d7a04b;
     --theme-outline: 2px solid #d7a04b;
-    --theme-choices-outline: 2px solid white;
     --theme-button-active: #030a58;
-    --theme-timer-color: white;
+    --theme-timer-color: #d7a04b;
     --theme-boxes-border-color: #d7a04b;
-    --theme-headings-border-color: white;
-    --theme-questions-border: 2px solid white;
 
     /* Global Styling */
     --global-box-font-size: 4vw;
     --global-box-borders: black solid 3px;
-    --global-border-radius: 10px;  
+    --global-border-radius: 4px;  
 
     user-select: none;
     overflow: hidden;
 }
+
 
 .input-menu {
     display: none;
@@ -47,7 +40,7 @@ input[type=text] {
 
 .context-menu{
     display: none;
-    font-family: var(--theme-font);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     border-radius: 5px;
     width:150px;
@@ -76,22 +69,40 @@ input[type=text] {
 .questions {
     text-shadow:2px 2px black;
     font-size: 58px;
-    font-family: var(--theme-font);
-    font-weight: 500;
-    text-transform: uppercase;
     position: absolute;
     background-color: var(--theme-background);
-    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--theme-yellow);
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 12%;
     visibility: hidden;
     text-align: center;
-    border: var(--theme-questions-border);
+    border: var(--theme-border);
     border-radius: 4px;
 }
 
+.theme-gray-questions {
+    text-shadow:2px 2px black;
+    font-size: 58px;
+    position: absolute;
+    background-color: var(--theme-gray-gray);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--theme-gray-white);
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 12%;
+    visibility: hidden;
+    text-align: center;
+    border: var(--theme-gray-border);
+    border-radius: 4px;
+}
+
+  
 .timer-container {
     height: 25px;
     background-color: var(--theme-background);
@@ -124,10 +135,11 @@ input[type=text] {
 .choices > p {
     margin: 0;
     margin-bottom: 10px;    
-    outline: var(--theme-choices-outline);
+    outline: var(--theme-outline);
     border-radius: 4px;
     margin: 10px;
     padding: 0.5em;
+    text-wrap: stable;
 }
 
 .choices >p:hover {
@@ -170,7 +182,7 @@ ion-icon:hover {
 .text-icon {
     font-size: 2.7rem;
     margin: 0;
-    font-family: var(--theme-font);
+    font-family: 'Roboto', sans-serif;
     color: white;
     height: 48px;
     width: 48px;
@@ -190,11 +202,16 @@ ion-icon:hover {
     top: 5px;
 }
 
+
+.settings-header {
+    display: flex;
+    color: var(--theme-settings-header-color);
+    font-family: 'Roboto', sans-serif; 
+}
+
 p.settings-header {
-    text-align: center;
     font-size: 50px;
     color: var(--theme-settings-header-color);
-    font-family: var(--theme-font);
     font-weight: 700;
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -204,7 +221,7 @@ div.settings-container {
     border-radius: var(--global-border-radius);
     margin-left: 25%;
     margin-right: 25%;
-    font-family: var(--theme-font);
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     background-color: var(--theme-background);
     color: var(--theme-text-color);
@@ -236,28 +253,6 @@ div.settings-container.top {
 .flex-container {
     justify-content: center;
     display: flex;
-}
-
-.flex-bottom {
-    border-left: var(--theme-border);
-    border-bottom-left-radius: var(--global-border-radius);
-    border-bottom: var(--theme-border);
-    border-right: var(--theme-border);
-    border-bottom-right-radius: var(--global-border-radius);
-}
-
-.flex-top {
-    border-left: var(--theme-border);
-    border-top-left-radius: var(--global-border-radius);
-    border-top: var(--theme-border);
-    border-right: var(--theme-border);
-    border-top-right-radius: var(--global-border-radius);
-}
-
-
-.flex-middle {
-    border-left: var(--theme-border);
-    border-right: var(--theme-border);
 }
 
 .flex-container > button {
@@ -308,7 +303,7 @@ div.settings-container.top {
     background-color: var(--theme-background);
     border-radius: var(--global-border-radius);
     text-align: center;
-    font-family: var(--theme-font);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: medium;
     z-index: 1;
 }
@@ -354,30 +349,19 @@ table.player-info-table {
 }
 
 
-.headers {
+.headers, .headers-category {
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     font-size: 2vw;
+    border-radius: var(--global-border-radius);
     width: 25%;
-    font-family: var(--theme-font);
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     text-align: center;
     background-color: var(--theme-box-background-color);
     color: white;
-    padding: 5px;
-    border: var(--global-box-borders);
-    border-radius: var(--global-border-radius);
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    border-top-color: var(--theme-headings-border-color);
-}
-
-.headers-category {
-    border: var(--global-box-borders);
-    border-radius: var(--global-border-radius);
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    border-top-color: var(--theme-boxes-border-color);
+    padding: 3px;
+    border: var(--global-box-borders)
 }
 
 .headers-edit:hover{ 
@@ -393,14 +377,12 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    font-family: var(--theme-font);
-    font-weight:900;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--theme-box-background-color);
     color: var(--theme-points-color);
     cursor: pointer;
     transition: transform 2s;
     text-align: center;
-    
 }
 
 .boxes:hover {
@@ -416,7 +398,7 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    font-family: var(--theme-font);
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
     background-color: var(--theme-box-background-color);
     color: var(--theme-points-color);
@@ -426,7 +408,7 @@ table.player-info-table {
     font-size: var(--global-box-font-size);
     border-radius: var(--global-border-radius);
     border: var(--global-box-borders);
-    font-family: var(--theme-font);
+    font-family: var(--theme-global-font);
     background-color: var(--theme-box-background-color);
     color: var(--theme-points-color);
 }
@@ -444,7 +426,7 @@ tr.player_score_buttons {
     color: var(--theme-points-color);
     font-size: 20px;
     border-radius: 2px;
-    font-family: var(--theme-font);
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     padding: 0 10px;
     cursor: pointer;
@@ -469,22 +451,26 @@ button#delete:hover {
     transform: scale(1);
 }
 
+#popup-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #popup {
     background-color: var(--theme-background);
     border: var(--theme-border);
-    font-family: var(--theme-font);
-    color: white;
+    font-family: 'Roboto', sans-serif;
     display: none;
+    color: white;
     min-width: 250px;
-    margin-left: -125px;
     text-align: center;
     border-radius: 4px;
     padding: 16px;
     position: fixed;
     z-index: 1;
-    left: 50%;
     bottom: 30px;
-    font-size: 17px;
+    font-size: 50px;
 }
 
 #popup.show {
