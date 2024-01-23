@@ -1,8 +1,8 @@
 const _dom = {
-  questionLength: 15000, //Default 6000
+  questionLength: 30000, //Default 6000
   //  Settings --------------------
   colorTheme: "default", // Default color (light, dark)
-  loadedGame: false, // Defult false
+  loadedGame: false, // Default false
   editMode: document.getElementById('n-bar'),
   caretBackOutline: document.getElementsByName("caret-back-outline"),
   main: document.getElementById("main"),

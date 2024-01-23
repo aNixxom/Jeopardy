@@ -10,9 +10,7 @@ let resetPlayerNameButton = document.getElementById('reset-player-name')
 let validId = null // Pre-defined variable to hold the id of clicked player
 let customContextMenuOpen = false // Default false
 
-let newPlayerNames = [
-    
-]
+let newPlayerNames = []
 
 window.addEventListener('contextmenu', editMenu);
 editButton.addEventListener('click', createInputMenu);

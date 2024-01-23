@@ -39,10 +39,9 @@
             //screenShake()
             systemMessage("You can't have more than 5 players")
             return
-        } else {
         }
         
-        const tr_player_names = document.getElementById('player_names')
+        const tr_player_names = document.getElementById('player_names') // Player names table row
         let th_player_name = document.createElement('th') // Creates player name
         let playerName = prompt("Enter Name")
 
@@ -52,7 +51,6 @@
             return
         } else if (playerName != null && playerName != "") {
 
-            console.log(playerName.length)
             _pVars.players_added += 1 // add 1 to player list
             _pVars.total_players = _pVars.players_added + _pVars.starting_players // new player total 
             let player_Number = _pVars.total_players.toString()
@@ -65,7 +63,7 @@
             player_list.push(new_player_score)
             player_name_list.push(new_player_name)
 
-            current_player_count.innerText = number_of_players
+            current_player_count.innerText = number_of_players // Set player count text
 
             if(_dom.editModeToggled == false) {
                 th_player_name.setAttribute('class', "headers")
@@ -171,6 +169,7 @@
 
         let checkPoint = confirm("Are you sure you want to remove a player?")
         if(checkPoint != false) {
+            // TO DO: Find better way to get ID player ID
             let every_id = document.querySelectorAll('*[id]')
             _pVars.players_added -= 1
             _pVars.total_players = _pVars.players_added + _pVars.starting_players 
@@ -184,6 +183,7 @@
             let player_name_to_remove = player_name_list.pop() //gets last name in list
             let player_name_to_remove_string = document.getElementById(player_name_to_remove)
             let player_buttons_to_remove = player_buttons_list.pop() //gets last button in list
+
             for (let i = 0; i < every_id.length; i++) {
                 if(player_score_to_remove == every_id[i].id) {
                     let score_to_remove = document.getElementById(player_score_to_remove)
