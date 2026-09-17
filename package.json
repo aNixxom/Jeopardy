@@ -1,0 +1,13 @@
+{
+  "name": "jeopardy-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node node_modules/@playwright/test/cli.js test",
+    "start": "node tools/dev-server.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}

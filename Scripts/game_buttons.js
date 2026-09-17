@@ -1,28 +1,11 @@
-import {_dom} from '/Scripts/game_variables.js'
+import {_dom} from './game_variables.js';
 
-window.addEventListener('click', function(event) {
-  let clicked_button = event.target.id
-
-  try {
-    if(event.target.classList[1].includes('q')) _dom.default_point_value = event.target.classList[2]
-  } catch(error) {
-    // Do nothing
-  }
-  
-  for(let i = 0; i < 8; i++) {
-    let pxs = document.getElementById(`player${i}_score`)
-    if(clicked_button == `add_p${i}`) {
-      _dom[`p${i}_score`] = +_dom.default_point_value + +_dom[`p${i}_score`]
-      pxs.innerHTML = _dom[`p${i}_score`]
-    }
-  } 
-
-  for(let i = 0; i < 8; i++) {
-    let pxs = document.getElementById(`player${i}_score`)
-    if(clicked_button == `take_p${i}`) {
-      _dom[`p${i}_score`] -= _dom.default_point_value
-      pxs.innerHTML = _dom[`p${i}_score`]
-    }
-  } 
-
-})
+document.getElementById('player_score_buttons').addEventListener('click', event => {
+  if (_dom.viewingQuestion || !_dom.boardReady) return;
+  const match = event.target.closest('button')?.id.match(/^(add|take)_p([1-5])$/);
+  if (!match) return;
+  const player = _dom.players[Number(match[2]) - 1];
+  if (!player) return;
+  player.score += (match[1] === 'add' ? 1 : -1) * _dom.default_point_value;
+  document.getElementById(`player${match[2]}_score`).textContent = player.score;
+});

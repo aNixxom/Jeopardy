@@ -1,28 +1,14 @@
-import {_dom} from '/Scripts/game_variables.js'
-
-var menu = document.querySelector('.context-menu') // Gets 'context-menu' from DOM 
-
-function showEditMenu() {
-    menu.style.display = "block"
-    menu.style.display = "initial"
-    menu.style.position = 'absolute';
-    menu.style.opacity = 1;
-    menu.style.left = event.pageX + 'px';  //set context menu pos where user clicked
-    menu.style.top = event.pageY + 'px';    //show context menu pos where user clicked
+const menu = document.getElementById('context-menu');
+export function showEditMenu(event) {
+  menu.style.display = 'block';
+  menu.style.left = `${Math.max(0, Math.min(event.clientX, window.innerWidth - menu.offsetWidth))}px`;
+  menu.style.top = `${Math.max(0, Math.min(event.clientY, window.innerHeight - menu.offsetHeight))}px`;
+  document.getElementById('edit-context-menu').focus();
 }
-
-function hideEditMenu() {
-    menu.style.display = "none"
-}
-
-function removeInputMenu() {
-    document.querySelectorAll('#name-input').forEach(e => e.remove())
-}
-
-window.addEventListener("click", function(event){
-    if(event.target.closest('.context-menu'))
-    return;
-        hideEditMenu()
-})
-
-export { hideEditMenu, removeInputMenu, showEditMenu }
+export function hideEditMenu() { menu.style.display = 'none'; }
+window.addEventListener('click', event => {
+  if (!event.target.closest('.context-menu')) hideEditMenu();
+});
+window.addEventListener('keydown', event => {
+  if (event.key === 'Escape') hideEditMenu();
+});

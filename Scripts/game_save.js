@@ -1,172 +1,129 @@
-import { closeMenu } from '/Scripts/game_settings.js'
-import { systemMessage, screenShake, addSavedPlayer} from '/Scripts/createNewPlayers.js'
-import {_dom, _rows} from '/Scripts/game_variables.js'
-import {_pVars} from '/Scripts/game_variables.js'
-import { _themes } from '/Scripts/game_variables.js'
-import { changeTheme } from '/Scripts/game_theme_change.js'
+import {_dom, _themes} from './game_variables.js';
+import {closeMenu, applySettings} from './game_settings.js';
+import {renderPlayers} from './createNewPlayers.js';
+import {closeQuestion, updateBoardValues} from './game_main.js';
+import {changeTheme} from './game_theme_change.js';
+import {loadBoard} from './api.js';
+import {systemMessage} from './ui.js';
 
-let loadButton = document.getElementById('load')
-let saveButton = document.getElementById('save')
-let deleteButton = document.getElementById('delete')
-let player_names_table = document.getElementById('player_names')
-let player_score_text = document.getElementById('player_score_text')
-let player_headers = document.getElementsByClassName('headers'), i;
-let cells = document.querySelectorAll('.boxes')
+export const SAVE_KEY = 'jeopardy.save.v2';
+const legacyKeys = ['questionLength', 'theme', 'currentStyleSheet', 'editModeToggled', 'doublePointToggled', 'audioMuted',
+  ...Array.from({length: 7}, (_, i) => [`player${i + 1}_name`, `player${i + 1}_score`]).flat(),
+  ...Array.from({length: 5}, (_, row) => Array.from({length: 5}, (_, col) => `r${row}c${col}`)).flat()];
+const isText = value => typeof value === 'string' && value.trim().length > 0 && value.length <= 2000;
 
-saveButton.addEventListener('click', saveGame)
-loadButton.addEventListener('click', loadSave)
-deleteButton.addEventListener('click', deleteLocalStorage)
-
-setTimeout(function() {
-    if(localStorage.length != 0) {
-        let loadRecentSave = confirm("Load recent save?")
-        if(loadRecentSave == true) {
-            loadSave()
-        }
-    }
-}, 100)
-
-function saveGame() {
-    localStorage.clear()
-    for(let i = 0; i < player_names_table.children.length; i++) {
-        localStorage.setItem(player_names_table.children[i].id, player_names_table.children[i].innerHTML)
-    }
-
-    for(let i = 0; i < player_score_text.children.length; i++) {
-        localStorage.setItem(player_score_text.children[i].id, player_score_text.children[i].innerHTML)
-    }
-
-    let used_questions = document.querySelectorAll("[data-used='true']")
-    for(let i = 0; i < used_questions.length; i++) {
-        if(used_questions[i].hasAttribute('data-used')) {
-            let question_id = used_questions[i].id
-            let attribute = used_questions[i].getAttribute('data-used')
-            localStorage.setItem(question_id, attribute)
-        }
-    }
-    
-    if(_dom.editModeToggled == true ) {
-        localStorage.setItem('editModeToggled', true)
-    }
-
-    if(_dom.doublePointToggled == true) {
-        localStorage.setItem('doublePointToggled', true)
-    }
-
-    if(_dom.is_muted == true) {
-        localStorage.setItem('audioMuted', true)
-    }
-
-    localStorage.setItem('questionLength', _dom.questionLength)   
-    localStorage.setItem('theme', _themes[_dom.current_stylesheet])
-    localStorage.setItem('currentStyleSheet', _dom.current_stylesheet)
-    
-    systemMessage("Game saved")
+function validSettings(save) {
+  return save?.version === 2 && Array.isArray(save.players) && save.players.length >= 3 && save.players.length <= 5 &&
+    save.players.every(player => isText(player.name) && player.name.length <= 10 && Number.isSafeInteger(player.score)) &&
+    Number.isInteger(save.questionLength) && save.questionLength >= 4000 && save.questionLength <= 60000 &&
+    _themes.includes(save.theme) && ['muted', 'editMode', 'doublePoints'].every(key => typeof save[key] === 'boolean') &&
+    [200, 400, 600, 800, 1000].includes(save.selectedBaseValue);
 }
 
-function loadSave() {
-    
-    if(localStorage.length === 0) {
-       systemMessage("No saved game found")
-       screenShake()
-       return
-    }
-    
-    _dom.questionLength = localStorage.getItem('questionLength')
-    _dom.question_length_text.innerHTML = ` ${_dom.questionLength / 1000}s `
-    _dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
-
-    let rows = document.querySelectorAll('td')
-    rows.forEach(function(cell) {
-       for(let i = 0; i < localStorage.length; i++) {
-            if(cell.id == localStorage.key(i)) {
-                cell.innerHTML = "-"
-                cell.setAttribute('data-used', 'true')
-            }
-       }
-    })
-
-    if(localStorage.getItem('doublePointToggled') == "true") {
-        _dom.doublePointsSwitch.setAttribute("name", "radio-button-on-outline")
-        fetch('./questions.json')
-        .then((response) => response.json())
-        .then((info) => {
-            cells.forEach((element, index) => {
-                if(element.innerHTML != "-") {
-                    element.childNodes[0].textContent = info['questions'][index].bonusValue
-                }
-            })
-        })
-
-        _dom.default_point_value = 400
-        _dom.doublePointToggled = true
-        _dom.double_points_icon.style.display = "block"
-    }
-
-
-    if(localStorage.getItem('editModeToggled') == "true") {
-        _dom.editModeSwitch.setAttribute("name", "radio-button-on-outline")
-        for (i = 0; i < player_headers.length; i++) {
-            player_headers[i].className = "headers headers-edit"
-        }
-        _dom.editModeToggled = true
-        _dom.edit_mode_icon.style.display = "block"
-    }
-
-    for(let i=4; i < 8; i++) {
-        if(localStorage.getItem(`player${i}_score`) != null) {
-            addSavedPlayer(localStorage.getItem(`player${i}_name`), localStorage.getItem(`player${i}_score`))
-        }
-    }
-
-    if (localStorage.getItem('audioMuted') == "true" ) {
-        _dom.mute_button.style.display = "none"
-        _dom.unmute_button.style.display = "block"
-
-        _dom.countdown_music.muted = true
-        _dom.countdown_music.pause()
-        _dom.countdown_music.currentTime = 0
-
-        _dom.times_up.muted = true
-        _dom.times_up.pause()
-        _dom.times_up.currentTime = 0
-    }
-
-    for(let i = 0; i < player_names_table.children.length; i++) {
-        document.getElementById(player_names_table.children[i].id).innerText = localStorage.getItem(player_names_table.children[i].id)
-    }
-
-    for(let i = 0; i < player_score_text.children.length; i++ ) {
-        document.getElementById(player_score_text.children[i].id).innerText = localStorage.getItem(player_score_text.children[i].id)
-    }
-
-    for(let i=0; i < 7; i++) {
-        _dom[`p${i + 1}_score`] = localStorage.getItem(`player${i + 1}_score`)
-    }
-
-    changeTheme(localStorage.getItem('theme'))
-    _dom.current_theme.innerText = ` ${localStorage.getItem('theme')} `
-
-    _dom.loadedGame = true
-
-    systemMessage("Loaded Save")
-    closeMenu()
+function validSave(save) {
+  return validSettings(save) && Array.isArray(save.board) && save.board.length === 5 && save.board.every(column =>
+      isText(column.category) && Array.isArray(column.questions) && column.questions.length === 5 && column.questions.every(clue =>
+        isText(clue.question) && Array.isArray(clue.answers) && clue.answers.length === 4 && clue.answers.every(isText) &&
+        new Set(clue.answers).size === 4 && Number.isInteger(clue.correctIndex) && clue.correctIndex >= 0 && clue.correctIndex < 4 &&
+        typeof clue.used === 'boolean'));
 }
 
-function deleteLocalStorage() {
-    if(localStorage.length === 0) {
-        systemMessage("No game data found")
-        //screenShake()
-        return
-     }
-    let confirmDelete = confirm("Delete saved game? This will remove all player data, the currently selected theme, reset the game board and revert all settings.")
-        if(confirmDelete != false) {
-            localStorage.clear()
-            systemMessage("Deleted saved games")
-            window.location.reload()
-        } else {
-            return
-        }   
+export function saveGame() {
+  if (!_dom.boardReady || _dom.viewingQuestion) return systemMessage('Wait for the board to finish loading before saving.');
+  const save = {
+    version: 2, players: _dom.players, board: _dom.board,
+    questionLength: _dom.questionLength, theme: _themes[_dom.current_stylesheet],
+    muted: _dom.is_muted, editMode: _dom.editModeToggled,
+    doublePoints: _dom.doublePointToggled, selectedBaseValue: _dom.selectedBaseValue,
+  };
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify(save));
+    systemMessage('Game saved, including every question and score.');
+  } catch {
+    systemMessage('The game could not be saved. Browser storage may be full or unavailable.');
+  }
 }
 
+function readLegacySave() {
+  if (localStorage.getItem('player1_name') === null || localStorage.getItem('player1_score') === null) return null;
+  const players = [];
+  for (let i = 1; i <= 5; i++) {
+    const name = localStorage.getItem(`player${i}_name`);
+    const rawScore = localStorage.getItem(`player${i}_score`);
+    if (name === null || rawScore === null) break;
+    players.push({name, score: Number(rawScore)});
+  }
+  return {
+    version: 2, players,
+    questionLength: Number(localStorage.getItem('questionLength')),
+    theme: localStorage.getItem('theme'),
+    muted: localStorage.getItem('audioMuted') === 'true',
+    editMode: localStorage.getItem('editModeToggled') === 'true',
+    doublePoints: localStorage.getItem('doublePointToggled') === 'true',
+    selectedBaseValue: 200,
+    board: null,
+  };
+}
 
+export async function loadSave() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    const save = raw ? JSON.parse(raw) : readLegacySave();
+    if (!save) { systemMessage('No saved game found.'); return false; }
+    const legacy = !raw;
+    if (legacy) {
+      // Old saves omitted question content. Validate their settings before requesting a replacement board.
+      if (!validSettings(save)) throw new Error('Invalid legacy save');
+      if (!_dom.boardReady && !await loadBoard()) return false;
+      save.board = structuredClone(_dom.board);
+      save.board.forEach((column, col) => column.questions.forEach((clue, row) => {
+        clue.used = localStorage.getItem(`r${row}c${col}`) === 'true';
+      }));
+    }
+    if (!validSave(save)) throw new Error('Invalid save');
+    ++_dom.boardVersion;
+    closeQuestion();
+    _dom.board = save.board;
+    _dom.boardReady = true;
+    _dom.players = save.players;
+    _dom.questionLength = save.questionLength;
+    _dom.is_muted = save.muted;
+    _dom.editModeToggled = save.editMode;
+    _dom.doublePointToggled = save.doublePoints;
+    _dom.selectedBaseValue = save.selectedBaseValue;
+    renderPlayers();
+    applySettings();
+    changeTheme(save.theme);
+    updateBoardValues();
+    document.getElementById('board-status').textContent = legacy
+      ? 'Older save restored. Its original questions were not stored, so this board uses new questions.'
+      : '';
+    document.getElementById('retry-questions').hidden = true;
+    closeMenu();
+    systemMessage(legacy ? 'Older save restored. Save again to keep this question board.' : 'Loaded saved game.');
+    return true;
+  } catch {
+    systemMessage('This save could not be read. Your current game has not been replaced.');
+    return false;
+  }
+}
+
+export async function offerSavedGame() {
+  try {
+    const exists = localStorage.getItem(SAVE_KEY) !== null || readLegacySave() !== null;
+    return exists && confirm('Load your saved Jeopardy game?') ? await loadSave() : false;
+  } catch { return false; }
+}
+
+document.getElementById('save').addEventListener('click', saveGame);
+document.getElementById('load').addEventListener('click', loadSave);
+document.getElementById('delete').addEventListener('click', () => {
+  try {
+    const legacy = readLegacySave() !== null;
+    if (!localStorage.getItem(SAVE_KEY) && !legacy) return systemMessage('No saved game found.');
+    if (!confirm('Delete the saved Jeopardy game? The game currently on screen will keep running.')) return;
+    localStorage.removeItem(SAVE_KEY);
+    if (legacy) legacyKeys.forEach(key => localStorage.removeItem(key));
+    systemMessage('Saved game deleted.');
+  } catch { systemMessage('Browser storage is unavailable. The save could not be deleted.'); }
+});

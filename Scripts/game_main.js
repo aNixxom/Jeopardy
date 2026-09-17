@@ -1,149 +1,145 @@
-import {_dom} from '/Scripts/game_variables.js'
-import { systemMessage} from '/Scripts/createNewPlayers.js'
+import {_dom} from './game_variables.js';
+import {systemMessage, playAudio, stopAudio} from './ui.js';
 
-let cell
-const game_table = document.createElement('table')
-game_table.setAttribute('id', 'main_table')
-game_table.setAttribute('class', 'main_table')
-game_table.addEventListener('click', function(event) {
-    let clicked_box = event.target
-    if(event.target.hasAttribute('data-question')) {
-        _dom.viewingQuestion = true
-        _dom.answered_question = false
+const table = document.createElement('table');
+table.id = 'main_table';
+table.className = 'main_table';
+table.setAttribute('aria-label', 'Jeopardy question board');
+const headers = table.createTHead().insertRow();
+headers.id = 'headers';
+for (let column = 0; column < 5; column++) {
+  const header = document.createElement('th');
+  header.scope = 'col';
+  header.className = 'headers';
+  header.textContent = 'Loading…';
+  headers.append(header);
+}
+const body = table.createTBody();
+for (let row = 0; row < 5; row++) {
+  const tr = body.insertRow();
+  for (let column = 0; column < 5; column++) {
+    const cell = tr.insertCell();
+    cell.id = `r${row}c${column}`;
+    cell.className = 'boxes';
+    const button = document.createElement('button');
+    button.className = 'clue-button';
+    button.type = 'button';
+    button.disabled = true;
+    button.textContent = `$${(row + 1) * 200}`;
+    button.addEventListener('click', () => openQuestion(column, row));
+    cell.append(button);
+  }
+}
+_dom.main.insertBefore(table, document.getElementById('player-info-table'));
 
-        let clicked_question = event.target.children[0]
-        let question_timer = clicked_question.children[2].children[0]
-        let choices = clicked_question.children[1]
-        
-        question_timer.setAttribute('id', "play-timer-animation")
-        question_timer.style.animationDuration = _dom.questionLength/ 1000 + "s"
+const dialog = document.createElement('dialog');
+dialog.className = 'questions';
+dialog.setAttribute('aria-labelledby', 'question-text');
+const questionText = document.createElement('h1');
+questionText.id = 'question-text';
+questionText.className = 'question-color';
+const choices = document.createElement('div');
+choices.className = 'choices';
+const timerContainer = document.createElement('div');
+timerContainer.className = 'timer-container';
+timerContainer.setAttribute('aria-hidden', 'true');
+const timerBar = document.createElement('div');
+timerBar.className = 'timer-bar';
+timerContainer.append(timerBar);
+const back = document.createElement('button');
+back.className = 'question-back';
+back.textContent = 'Back to board';
+back.addEventListener('click', () => closeQuestion(false));
+dialog.append(questionText, choices, timerContainer, back);
+document.body.append(dialog);
+dialog.addEventListener('cancel', event => {
+  event.preventDefault();
+  closeQuestion(false);
+});
+let activeQuestion = null;
+let questionTimeout;
+let deadline;
+const compactCategories = {
+  'General Knowledge': 'General',
+  'Arts & Literature': 'Arts & lit.',
+  'Society & Culture': 'Society',
+  'Sport & Leisure': 'Sports',
+};
 
-        _dom.main.style.visibility = "hidden"
-        clicked_question.style.visibility = "visible"
-        clicked_question.style.right = "0px"
-        clicked_question.style.left = "0px"
-        clicked_question.style.top = "0px"
-
-        _dom.edit_mode_icon.style.cursor = "not-allowed"
-        _dom.double_points_icon.style.cursor = "not-allowed"
-        _dom.menu_button.style.cursor = "not-allowed"
-
-        choices.addEventListener('click', function(event) {
-            let correctAnswer = document.getElementById(`${choices.id}-correct`).innerHTML
-            let clicked_answer = event.target
-            if(clicked_answer.getAttribute('data-choices') === 'correct' && _dom.viewingQuestion === true) {
-                systemMessage("Correct!")
-                _dom.answered_question = true
-                stopAudio(_dom.corret_answer_sound)
-                _dom.corret_answer_sound.play()
-                exitQuestion()
-            } else if(clicked_answer.getAttribute('data-choice') != 'correct') {
-                systemMessage(`The answer was: ${correctAnswer}`)
-                _dom.answered_question = true
-                stopAudio(_dom.times_up)
-                _dom.times_up.play()
-                exitQuestion()
-            }
-        })
-
-        question_timer.addEventListener("animationend", function(event) {
-            if(_dom.answered_question == false) {
-                _dom.times_up.play()
-                exitQuestion()
-            }
-        })
-        function exitQuestion() {
-            clicked_box.innerHTML = "-"
-            _dom.main.style.visibility = "visible"
-            clicked_box.setAttribute('data-used', 'true')
-
-            _dom.viewingQuestion = false
-            clicked_question.style.visibility 
-            _dom.edit_mode_icon.style.cursor = "pointer"
-            _dom.double_points_icon.style.cursor = "pointer"
-            _dom.menu_button.style.cursor = "pointer"
-        }
+export function updateBoardValues() {
+  const multiplier = _dom.doublePointToggled ? 2 : 1;
+  _dom.default_point_value = _dom.selectedBaseValue * multiplier;
+  for (let column = 0; column < 5; column++) {
+    const category = _dom.board[column]?.category || 'Loading…';
+    const header = headers.children[column];
+    header.replaceChildren();
+    const fullLabel = document.createElement('span');
+    fullLabel.className = 'category-full';
+    fullLabel.textContent = category;
+    const compactLabel = document.createElement('span');
+    compactLabel.className = 'category-compact';
+    compactLabel.textContent = compactCategories[category] || category;
+    compactLabel.setAttribute('aria-hidden', 'true');
+    header.setAttribute('aria-label', category);
+    header.title = category;
+    header.append(fullLabel, compactLabel);
+    for (let row = 0; row < 5; row++) {
+      const clue = _dom.board[column]?.questions[row];
+      const cell = document.getElementById(`r${row}c${column}`);
+      const button = cell.firstElementChild;
+      const value = (row + 1) * 200 * multiplier;
+      cell.dataset.used = String(Boolean(clue?.used));
+      button.disabled = !_dom.boardReady || !clue || clue.used;
+      button.textContent = clue?.used ? '—' : `$${value}`;
+      button.setAttribute('aria-label', `${_dom.board[column]?.category || 'Question'}, $${value}${clue?.used ? ', used' : ''}`);
     }
-})
-
-for (let i = 0; i < 5; i++) {
-    let rows = game_table.insertRow(i)
-    rows.id = `${i}r${i}c`
-    
-    for(let y = 0; y < 5; y++) {
-
-        cell = rows.insertCell(y)
-        cell.id = `r${i}c${y}`
-        cell.innerText = cell.id 
-        cell.setAttribute('class', 'boxes')
-        cell.setAttribute('data-question', 'box')
-
-        const question = document.createElement('div')
-        const question_p = document.createElement('p')
-        const choices = document.createElement('div')
-        const timer_container = document.createElement('div')
-        const timer_bar = document.createElement('div')
-        choices.id = `${cell.id}-ch`
-
-        for(let k = 0; k < 4; k++) {
-            const choices_option = document.createElement('p')
-            choices_option.innerHTML = `${k}`   
-            choices.setAttribute('data-choice', 'choice')
-            choices.appendChild(choices_option)
-        }
-
-        timer_bar.setAttribute('class', "timer-bar")
-        timer_container.setAttribute('class', "timer-container")
-        choices.setAttribute('class', "choices")
-        question_p.setAttribute('class', "question-color")
-        question.setAttribute('class', "questions")
-
-        timer_container.appendChild(timer_bar)
-        question.appendChild(question_p)    
-        question.appendChild(choices)
-        question.appendChild(timer_container)
-        cell.appendChild(question)
-
-    }
-} _dom.main.insertBefore(game_table, document.getElementById('player-info-table'))
-
-let headers = game_table.insertRow(0)
-headers.setAttribute('class', 'headers-category')
-headers.id = "headers"
-for(let i = 0; i < 5; i++) {
-    headers.insertCell()
-    headers.children[i].setAttribute('class', 'headers-category')
-    headers.children[i].setAttribute('class', 'headers')
+  }
 }
 
-let questions = document.querySelectorAll('.questions')
-let choices = document.querySelectorAll('.boxes')
-
-questions.forEach((element, index) => {
-    element.id = `q${index + 1}`
-})
-
-//TODO: use for loop to make this run faster
-
-
-choices.forEach((element, index) => {
-    if(element.id.includes('r0')) {
-        element.childNodes[0].textContent = '$200'
-    } else if(element.id.includes('r1')) {
-        element.childNodes[0].textContent = '$400'
-    } else if(element.id.includes('r2')) {
-        element.childNodes[0].textContent = '$600'
-    } else if(element.id.includes('r3')) {
-        element.childNodes[0].textContent = '$800'
-    } else if(element.id.includes('r4')) {
-        element.childNodes[0].textContent = '$1000'
-    }
-})
-
-
-
-function stopAudio(audio) {
-    audio.pause()
-    audio.currentTime = 0
+function openQuestion(column, row) {
+  const clue = _dom.board[column]?.questions[row];
+  if (!_dom.boardReady || _dom.viewingQuestion || !clue || clue.used) return;
+  activeQuestion = clue;
+  _dom.viewingQuestion = true;
+  _dom.selectedBaseValue = (row + 1) * 200;
+  _dom.default_point_value = _dom.selectedBaseValue * (_dom.doublePointToggled ? 2 : 1);
+  questionText.textContent = clue.question;
+  choices.replaceChildren();
+  clue.answers.forEach((answer, index) => {
+    const button = document.createElement('button');
+    button.className = 'answer-button';
+    button.textContent = answer;
+    button.addEventListener('click', () => {
+      if (!activeQuestion) return;
+      if (Date.now() >= deadline) return finishQuestion(null);
+      finishQuestion(index === clue.correctIndex);
+    });
+    choices.append(button);
+  });
+  dialog.showModal();
+  timerBar.style.animation = 'none';
+  void timerBar.offsetWidth;
+  timerBar.style.animation = `timer-bar-animation ${_dom.questionLength}ms linear forwards`;
+  deadline = Date.now() + _dom.questionLength;
+  questionTimeout = setTimeout(() => finishQuestion(null), _dom.questionLength);
+  playAudio(_dom.countdown_music);
 }
-_dom.question_length_icon.innerHTML = ` ${_dom.questionLength / 1000}s `
+
+function finishQuestion(correct) {
+  if (!activeQuestion) return;
+  const answer = activeQuestion.answers[activeQuestion.correctIndex];
+  systemMessage(correct === true ? 'Correct! Use ADD to award the selected clue’s points.' : `${correct === null ? 'Time’s up! ' : ''}The answer was: ${answer}`);
+  playAudio(correct === true ? _dom.correct_answer_sound : _dom.times_up);
+  closeQuestion(true);
+}
+
+export function closeQuestion(used = false) {
+  clearTimeout(questionTimeout);
+  stopAudio(_dom.countdown_music);
+  if (activeQuestion && used) activeQuestion.used = true;
+  activeQuestion = null;
+  _dom.viewingQuestion = false;
+  timerBar.style.animation = 'none';
+  if (dialog.open) dialog.close();
+  updateBoardValues();
+}

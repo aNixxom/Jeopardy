@@ -1,146 +1,63 @@
-import {_dom} from '/Scripts/game_variables.js'
+import {_dom} from './game_variables.js';
+import {updateBoardValues} from './game_main.js';
 
-let headers = document.getElementById('headers')
+const categories = ['history', 'music', 'general_knowledge', 'science', 'film_and_tv',
+  'food_and_drink', 'sports', 'geography', 'arts_and_literature', 'society_and_culture'];
 
-let used_categories = []
-let categories = [
-  'history',
-  'music',
-  'general_knowledge',
-  'science',
-  'film_and_tv',
-  'food_and_drink',
-  'sports',
-  'geography',
-  'arts_and_literature',
-  'society_and_culture'
-]
+function shuffle(items) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
 
-let cellIds = [
-  'r0c0',
-  'r1c0',
-  'r2c0',
-  'r3c0',
-  'r4c0',
-  'r0c1',
-  'r1c1',
-  'r2c1',
-  'r3c1',
-  'r4c1',
-  'r0c2',
-  'r1c2',
-  'r2c2',
-  'r3c2',
-  'r4c2',
-  'r0c3',
-  'r1c3',
-  'r2c3',
-  'r3c3',
-  'r4c3',
-  'r0c4',
-  'r1c4',
-  'r2c4',
-  'r3c4',
-  'r4c4',
-]
-
-setTimeout(() => {
-  test(0, 5)
-  test(5, 10)
-  test(10, 15)
-  test(10, 15)
-  test(15, 20)
-  test(20, 25)
-}, 2000)
-
-function test(x, y) {
-  for(let i = x; i < y; i++) {
-    let element = document.getElementById(cellIds[i])
-    console.log(element.childNodes[1].children[0].innerHTML, element)
+export async function loadBoard() {
+  const version = ++_dom.boardVersion;
+  _dom.boardReady = false;
+  updateBoardValues();
+  const status = document.getElementById('board-status');
+  const retry = document.getElementById('retry-questions');
+  status.textContent = 'Loading questions…';
+  retry.hidden = true;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+  try {
+    const board = await Promise.all(shuffle(categories).slice(0, 5).map(async category => {
+      const response = await fetch(`https://the-trivia-api.com/api/questions?categories=${category}&limit=5&difficulty=medium`, {signal: controller.signal});
+      if (!response.ok) throw new Error(`Question service returned ${response.status}`);
+      const data = await response.json();
+      if (!Array.isArray(data) || data.length !== 5) throw new Error('Incomplete question set');
+      const questions = data.map(item => {
+        if (typeof item.question !== 'string' || !item.question.trim() ||
+            typeof item.correctAnswer !== 'string' || !item.correctAnswer.trim() ||
+            typeof item.category !== 'string' || !item.category.trim() ||
+            !Array.isArray(item.incorrectAnswers) || item.incorrectAnswers.length !== 3 ||
+            item.incorrectAnswers.some(answer => typeof answer !== 'string' || !answer.trim())) {
+          throw new Error('Invalid question data');
+        }
+        const answers = shuffle([item.correctAnswer, ...item.incorrectAnswers]);
+        if (new Set(answers).size !== 4) throw new Error('Duplicate answers');
+        return {question: item.question, answers, correctIndex: answers.indexOf(item.correctAnswer), used: false};
+      });
+      return {category: data[0].category, questions};
+    }));
+    // An older network response must never overwrite a loaded save or a retry.
+    if (version !== _dom.boardVersion) return false;
+    _dom.board = board;
+    _dom.boardReady = true;
+    status.textContent = '';
+    updateBoardValues();
+    return true;
+  } catch (error) {
+    controller.abort();
+    if (version !== _dom.boardVersion) return false;
+    status.textContent = 'Questions could not be loaded. Check your connection and try again, or load a saved game.';
+    retry.hidden = false;
+    return false;
+  } finally {
+    clearTimeout(timeout);
   }
 }
-
-for(let column = 0; column <= 4; column++) {
-  fillCategories(column)
-}
-console.table(used_categories)
-
-for(let column = 0, pos1 = 0, pos2  = 5;  column < 5; pos1 += 5, pos2 += 5, column++) {
-  fillTable(column, pos1, pos2)
-}
-
-function fillTable(cat, pos1, pos2) {
-  setTimeout(() => {
-    fetch(`https://the-trivia-api.com/api/questions?categories=${used_categories[cat]}&limit=5&difficulty=medium`, {
-      headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-      .then((response) => response.json())
-      .then((info) => {
-        fillQuestions(pos1, pos2, info)
-        fillAnswers(pos1, pos2, info)
-      })
-  }, 500)
-}
-
-function fillCategories(col) {
-  let catLength = categories.length
-  let pickedCategory = categories[pickRandomNumber(catLength)]
-
-  fetch(`https://the-trivia-api.com/api/questions?categories=${pickedCategory}&limit=5&difficulty=easy`, {
-  headers: {
-      'Content-Type': 'application/json'
-    },
-  })
-  .then((response) => response.json())
-  .then((info) => {
-    for(let i = 0; i < 3; i++) {
-        headers.children[col].innerHTML = info[i].category
-        headers.children[col].setAttribute("data-category", pickedCategory)
-    }
-  })
-  categories.splice(categories.indexOf(pickedCategory), 1)
-  used_categories.push(pickedCategory)
-}
-
-function fillQuestions(x, y, json) {
-  for(let i = 0, j = x; j < y; i++, j++) {
-    let element = document.getElementById(cellIds[j])
-    element.childNodes[1].children[0].innerHTML = json[i].question
-  }
-}
-
-function fillAnswers(x, y, json) {
-  for(let i=0, j = x; j < y; i++, j++) {
-    let element = document.getElementById(`${cellIds[j]}-ch`)
-    getRandomOptionSlot(element, 'correct', json[i].correctAnswer)
-    getRandomOptionSlot(element, 'wrong_1', json[i].incorrectAnswers[0])
-    getRandomOptionSlot(element, 'wrong_2', json[i].incorrectAnswers[1])
-    getRandomOptionSlot(element, 'wrong_3', json[i].incorrectAnswers[2])
-  }
-}
-
-function getRandomOptionSlot(element, option, json) {
-  let pickedSlot = element.children[pickRandomNumber(4)]
-  let pickedValidSlot = false
-  do {
-      if(pickedSlot.hasAttribute('data-choices', 'wrong_1') || pickedSlot.hasAttribute('data-choices', 'wrong_2') || pickedSlot.hasAttribute('data-choices', 'wrong_3') || pickedSlot.hasAttribute('data-choices', 'correct')) {
-        pickedSlot = element.children[pickRandomNumber(4)] 
-      } else {
-        pickedValidSlot = true
-        pickedSlot.innerHTML = json
-
-      if(pickedSlot.innerHTML === "undefined") {
-        pickedSlot.remove()
-      }
-      pickedSlot.setAttribute('data-choices', `${option}`)
-      pickedSlot.setAttribute('id', `${element.id}-${option}`)
-      }
-  }
-  while (pickedValidSlot == false)
-}
-
-function pickRandomNumber(max) {
-  return  Math.floor(Math.random() * max)
-}
+document.getElementById('retry-questions').addEventListener('click', loadBoard);
